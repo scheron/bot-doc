@@ -77,6 +77,8 @@ Rate limit считается для каждой вебсокет сессии 
 Если сообщение, отправленное пользователем, не удовлетворяет общему формату входящих сообщений (т.е. не является валидным `JSON` сообщением или не содержит всех, обязательных для сообщения, полей), соединение будет автоматически закрыто,
 текст причины закрытия будет отправлен в `payload` close фрейма
 
+Примеры ответов на запросы по API - это всего лишь примеры, обязательные поля всегда будут соответствовать документации, но необязательные поля в примерах могут отличаться от реальных полей
+
 ## Авторизация
 
 <details>
@@ -186,6 +188,13 @@ Example:
 
 
 ## Портфели
+
+Конкретные поля портфелей НЕ описаны в данном API, т.к. НЕ являются его частью. Описаны только обязательные (ключевые) поля,
+т.к. без них просто не получится отправить запрос и однозначно идентифицировать необходимый портфель или его бумагу. Для того
+чтобы узнать набор полей конкретного портфеля, типы этих полей и допустимые диапазоны значений, необходимо [получить идентификатор
+шаблона данного портфеля](#get_template_id), а затем [сам шаблон](#get_template_by_id). Шаблоны "ни с того ни с сего" НЕ меняются
+и по возможноси сохраняют обратную совместимость. Кроме того, как вариант, вы можете "подсмотреть" названия полей портфеля в
+консоли разработчика в браузере на [сайте](https://bot.fkviking.com), сайт пользуется этим же API
 
 ### Подписка на список доступных портфелей <Anchor :ids="['подписка-на-список-доступных-портфелей']" />
 
@@ -1181,191 +1190,206 @@ Example:
 
 ```json
 {
-    "type": "portfolio.subscribe",
-    "data": {
-        "r_id": "1",
-        "p_id": "test3",
-        "value": {
-            "name": "test3",
-            "owner": "test@gmail.com",
-            "securities": {
-                "OKF_ADA_USDT_SWAP": {
-                    "all_free": 1,
-                    "comission_sign": 1,
-                    "count_type": 0,
-                    "decimals": 4,
-                    "depth_ob": 1,
-                    "leverage": 1,
-                    "ob_c_p_t": 1,
-                    "ob_t_p_t": 0,
-                    "on_buy": 1,
-                    "put": -1,
-                    "ratio_sign": 0,
-                    "ratio_type": 0,
-                    "timer": 60,
-                    "ban_period": 1,
-                    "count": 1,
-                    "max_trans_musec": 1000000,
-                    "old_pos": 0,
-                    "pos": 0,
-                    "sec_type": 67108864,
-                    "client_code": "virtual",
-                    "count_formula": "return 1;",
-                    "ratio_b_formula": "return 1;",
-                    "ratio_s_formula": "return 1;",
-                    "sec_board": "",
-                    "sec_code": "",
-                    "sec_key": "OKF_ADA_USDT_SWAP",
-                    "sec_key_subscr": "ADA-USDT-SWAP",
-                    "comission": 0,
-                    "d_pg": 2147483647,
-                    "fin_res_mult": 1,
-                    "k": 0,
-                    "k_sl": 0,
-                    "mc_level_close": 0,
-                    "mc_level_to0": 0,
-                    "percent_of_quantity": 100,
-                    "ratio": 1,
-                    "sl": 0,
-                    "tp": 1,
-                    "is_first": true,
-                    "maker": false,
-                    "mm": false,
-                    "move_limits": false,
-                    "move_limits1": false,
-                    "sle": false,
-                    "te": true
-                }
-            },
-            "_buy_time": 5,
-            "_fin_res_time": 60,
-            "_fin_res_val": 10,
-            "_freq_count": 1000,
-            "_freq_delta": 10,
-            "_freq_type": 0,
-            "_l_b_time": 10,
-            "_l_s_time": 10,
-            "_max_running_percent": 70,
-            "_pos_time": 5,
-            "_sell_time": 5,
-            "all_free": 1,
-            "buy_status": 0,
-            "cur_day_month": 30,
-            "decimals": 4,
-            "hedge_after": 1,
-            "log_level": 0,
-            "max_not_hedged": 1,
-            "n_perc_fill": 0,
-            "portfolio_num": 0,
-            "portfolio_type": 0,
-            "price_type": 0,
-            "sell_status": 0,
-            "timer": 1,
-            "type_trade": 0,
-            "_pos_v": 1000,
-            "mkt_volume": 100,
-            "move_limits1_date": -1,
-            "overlay": 0,
-            "pos": 0,
-            "return_first": 0,
-            "v_in_l": 1,
-            "v_in_r": 1,
-            "v_max": 1,
-            "v_min": -1,
-            "v_out_l": 1,
-            "v_out_r": 1,
-            "btnBuy": "",
-            "btnMarket": "",
-            "btnSell": "",
-            "buy_tt": "",
-            "color": "#FFFFFF",
-            "comment": "",
-            "ext_field1_": "return 0;",
-            "ext_field2_": "return 0;",
-            "sell_tt": "",
-            "trade_formula": "return 0;",
-            "trading_tt": "can trade",
-            "_buy_v": 10,
-            "_fin_res_abs": 1000,
-            "_l_b_val": 10,
-            "_l_s_val": 10,
-            "_sell_v": 10,
-            "_too_much_n_h_portfolios": 100,
-            "buy": 0.31537,
-            "delta": 0,
-            "ext_field1": 0,
-            "ext_field2": 0,
-            "fin_res": 0,
-            "fin_res_wo_c": 0,
-            "first_delta": 0,
-            "k": 0,
-            "k1": 0,
-            "k2": 0,
-            "lim_b": 0,
-            "lim_s": 0,
-            "opened": 0,
-            "opened_comission": 0,
-            "percent": 100,
-            "price_b": 0,
-            "price_check": 10,
-            "price_s": 0,
-            "sell": 0.31532,
-            "tp": 1,
-            "uf0": {},
-            "uf1": {"c":"asd", "v":1},
-            "uf2": {"c":"qwe"},
-            "uf3": {"v":666},
-            "_buy_en": false,
-            "_fin_res_en": false,
-            "_fin_res_stop": false,
-            "_freq_en": false,
-            "_l_b_en": false,
-            "_l_b_stop": false,
-            "_l_s_en": false,
-            "_l_s_stop": false,
-            "_max_running_en": false,
-            "_pos_en": false,
-            "_sell_en": false,
-            "_too_much_n_h_en": false,
-            "always_limits_timer": false,
-            "custom_trade": false,
-            "disabled": false,
-            "equal_prices": false,
-            "ext_formulas": false,
-            "has_virtual": true,
-            "is_fin_res_wo_c": false,
-            "quote": false,
-            "re_buy": false,
-            "re_sell": false,
-            "simply_first": false,
-            "to0": false,
-            "use_tt": false,
-            "virtual_0_pos": false,
-            "timetable": [
-                {
-                    "begin": 36000,
-                    "end": 50400,
-                    "auto_sell": false,
-                    "auto_buy": false,
-                    "auto_close": false,
-                    "auto_to_market": true,
-                    "auto_to0": false
-                },
-                {
-                    "begin": 50580,
-                    "end": 67020,
-                    "auto_sell": false,
-                    "auto_buy": false,
-                    "auto_close": false,
-                    "auto_to_market": true,
-                    "auto_to0": false
-                }
-            ]
+  "type": "portfolio.subscribe",
+  "data": {
+    "r_id": "666",
+    "p_id": "qwe",
+    "value": {
+      "log_level": 0,
+      "portfolio_type": 0,
+      "portfolio_num": 0,
+      "type_trade": 0,
+      "price_type": 0,
+      "n_perc_fill": 0,
+      "sell_status": 0,
+      "buy_status": 0,
+      "max_not_hedged": 1,
+      "_max_not_hedged_adm": 1000,
+      "hedge_after": 1,
+      "cur_day_month": 24,
+      "_freq_type": 0,
+      "_freq_delta": 10,
+      "_freq_count": 1000,
+      "_pos_time": 5,
+      "_sell_time": 5,
+      "_buy_time": 5,
+      "_max_running_percent": 100,
+      "_fin_res_time": 60,
+      "_l_s_time": 2,
+      "_l_b_time": 2,
+      "trading_days": 127,
+      "decimals": 4,
+      "timer": 1,
+      "v_in_l": 1,
+      "v_in_r": 1,
+      "v_out_l": 1,
+      "v_out_r": 1,
+      "v_min": -1,
+      "v_max": 1,
+      "mkt_volume": 100,
+      "return_first": 0,
+      "overlay": 0,
+      "move_limits1_date": -1,
+      "_pos_v": 1000,
+      "pos": 0,
+      "old_pos": 0,
+      "name": "qwe",
+      "owner": "r.liverovskiy@gmail.com",
+      "comment": "",
+      "trade_formula": "return 0;",
+      "ext_field1_": "return 0;",
+      "ext_field2_": "return 0;",
+      "sell_tt": "",
+      "buy_tt": "buy: is signal=0, quantity=1, is valid market volume=1, is price check=0, is max not hedged=1, is orderbook valid=1",
+      "trading_tt": "can trade",
+      "color": "#FFFFFF",
+      "k": 0,
+      "k1": 0,
+      "k2": 0,
+      "tp": 1,
+      "lim_s": 0,
+      "lim_b": 0,
+      "delta": 0,
+      "first_delta": 0,
+      "percent": 100,
+      "opened": 0,
+      "opened_comission": 0,
+      "fin_res_wo_c": 0,
+      "fin_res": 0,
+      "threshold": 0,
+      "price_check": 10,
+      "_sell_v": 10,
+      "_buy_v": 10,
+      "_fin_res_abs": 1000,
+      "_too_much_n_h_portfolios": 100,
+      "ext_field1": 0,
+      "ext_field2": 0,
+      "sell": 33599,
+      "buy": 33600,
+      "price_s": 0,
+      "price_b": 0,
+      "_l_s_val": 10,
+      "_l_b_val": 10,
+      "_fin_res_val": 10,
+      "lot_size": 1,
+      "disabled": false,
+      "equal_prices": false,
+      "always_limits_timer": false,
+      "simply_first": false,
+      "quote": false,
+      "to0": false,
+      "virtual_0_pos": false,
+      "is_fin_res_ok": true,
+      "is_pos_ok": true,
+      "_freq_en": false,
+      "_pos_en": false,
+      "_sell_en": false,
+      "_buy_en": false,
+      "_max_running_en": false,
+      "_fin_res_en": false,
+      "_fin_res_stop": false,
+      "_l_s_en": false,
+      "_l_s_stop": false,
+      "_l_b_en": false,
+      "_l_b_stop": false,
+      "_too_much_n_h_en": false,
+      "custom_trade": false,
+      "ext_formulas": false,
+      "re_sell": false,
+      "re_buy": false,
+      "use_tt": false,
+      "maker": false,
+      "_saving": false,
+      "all_free": true,
+      "has_formula": false,
+      "_save_h": false,
+      "has_virtual": true,
+      "_sh_f": true,
+      "uf0": {},
+      "uf1": {},
+      "uf2": {},
+      "uf3": {},
+      "uf4": {},
+      "uf5": {},
+      "uf6": {},
+      "uf7": {},
+      "uf8": {},
+      "uf9": {},
+      "uf10": {},
+      "uf11": {},
+      "uf12": {},
+      "uf13": {},
+      "uf14": {},
+      "uf15": {},
+      "uf16": {},
+      "uf17": {},
+      "uf18": {},
+      "uf19": {},
+      "securities": {
+        "SRM5": {
+          "put": -1,
+          "decimals": 4,
+          "on_buy": 1,
+          "leverage": 1,
+          "count_type": 0,
+          "timer": 60,
+          "ratio_sign": 0,
+          "ratio_type": 0,
+          "comission_sign": 1,
+          "depth_ob": 1,
+          "ob_c_p_t": 1,
+          "ob_t_p_t": 0,
+          "pos": 0,
+          "count": 1,
+          "max_trans_musec": 1000000,
+          "ban_period": 0,
+          "sec_type": 2,
+          "sec_board": "",
+          "sec_code": "SBRF-6.25",
+          "count_formula": "return 1;",
+          "ratio_b_formula": "return 1;",
+          "ratio_s_formula": "return 1;",
+          "sec_key": "SRM5",
+          "sec_key_subscr": "5157900",
+          "client_code": "virtual",
+          "k": 0,
+          "tp": 1,
+          "sl": 1000,
+          "k_sl": 0,
+          "ratio": 1,
+          "percent_of_quantity": 100,
+          "fin_res_mult": 1,
+          "comission": 0,
+          "mc_level_to0": 0,
+          "mc_level_close": 0,
+          "d_pg": 1750366800,
+          "lot_size": 1,
+          "all_free": true,
+          "mm": false,
+          "sle": false,
+          "te": true,
+          "move_limits": false,
+          "move_limits1": false,
+          "is_first": true
         }
-    },
-    "r": "s",
-    "eid": "qwerty",
-    "ts": 1669808254519347837
+      },
+      "timetable": [
+        {
+          "begin": 36000,
+          "end": 67200,
+          "a_sell": 2,
+          "a_buy": 2,
+          "auto_close": false,
+          "auto_to_market": false,
+          "auto_to0": 2,
+          "save_history": false
+        }
+      ]
+    }
+  },
+  "r": "s",
+  "eid": "7299",
+  "ts": 1742802030377497687
 }
 ```
 </details>    
@@ -9657,7 +9681,7 @@ Example:
 
 ## Фронт
 
-### Запрос идентификатора шаблона объекта
+### Запрос идентификатора шаблона объекта <Anchor :ids="['get_template_id']"/>
 
 Получить идентификатор шаблона для заданного объекта
 
@@ -9671,7 +9695,7 @@ Payload:
 | type = get_template_id | y | string |  | Operation type |
 | eid | y | string | string_36 | External user id that will be received in response |
 | data | y | object |  |  |
-| > view | y | string |  | View ID |
+| > view | y | string |  | View ID (portfolio, trans_conn) |
 | > id | y | object |  | Object ID |
 | >> r_id | n | string |  | Robot ID |
 | >> p_id | n | string |  | Portfolio name |
@@ -9753,7 +9777,7 @@ Example:
 ```
 </details>    
 
-### Запрос шаблона по его идентификатору
+### Запрос шаблона по его идентификатор <Anchor :ids="['get_template_by_id']"/>
 
 Получить шаблон для заданного объекта
 
@@ -9775,7 +9799,7 @@ Example:
 {
 	"type": "get_template_by_id",
 	"data": {
-		"template_id": "3"
+		"template_id": "portfolio_viking_base"
 	},
 	"eid": "qwerty"
 }
@@ -9794,6 +9818,12 @@ Payload:
 | r = p | y | string | request_result | Request result |
 | data | y | object |  |  |
 | > template | y | object |  | Template |
+| >> template_fields | y | object |  | Template fields |
+| >>> portfolio | n | array |  | Portfolio fields |
+| >>> security | n | array |  | Portfolio securities fields |
+| >>> timetable | n | array |  | Portfolio timetable fields |
+| >>> notifications | n | array |  | Portfolio notifications fields |
+| >> template_id | y | string|  | Template unique ID |
 
 Example:
 
@@ -9802,20 +9832,3044 @@ Example:
 	"type":"get_templateby_id",
 	"data":
 	{
-		"template":
-		{
-			"template_fields":
-			{
-				"portfolio":
-				[
-					{"field":"name","title":"Name","is_key":true,"_comment":"Specify value check","formatter":"string","max_len":30,"default":"","visible":true,"disabled":false}
-				],
-				"security":
-				[
-					{"field":"sec_key","title":"SecKey","is_key":true,"formatter":"string","default":"","visible":true,"disabled":false}
-				]
-			}
-		}
+      "template": {
+        "_comment": "All sorters were not specified, use default sorter for formatter",
+        "template_fields": {
+          "portfolio": [
+            {
+              "field": "disabled",
+              "title": "Disabled",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "name",
+              "title": "Name",
+              "is_key": true,
+              "formatter": "string",
+              "fullmatch": "[_A-Za-z][0-9_A-Za-z]*",
+              "max_len": 30,
+              "default": "",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "has_virtual",
+              "title": "Virtual",
+              "formatter": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_save_h",
+              "title": "Save history",
+              "formatter": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "portfolio_chart",
+              "title": "Chart",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "has_formula",
+              "title": "Has formulas",
+              "formatter": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "re_sell",
+              "title": "re_sell",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "set_on_add": false,
+              "default": false,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "re_buy",
+              "title": "re_buy",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "set_on_add": false,
+              "default": false,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "to0",
+              "title": "To0",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "use_tt",
+              "title": "Use timetable",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "set_on_import": false,
+              "set_on_clone": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "trading_days",
+              "title": "TradingDays",
+              "formatter": "bitmask_select",
+              "editor": "bitmask_select",
+              "enum_values": [
+                {
+                  "id": 1,
+                  "value": "Sunday"
+                },
+                {
+                  "id": 2,
+                  "value": "Monday"
+                },
+                {
+                  "id": 4,
+                  "value": "Tuesday"
+                },
+                {
+                  "id": 8,
+                  "value": "Wednesday"
+                },
+                {
+                  "id": 16,
+                  "value": "Thursday"
+                },
+                {
+                  "id": 32,
+                  "value": "Friday"
+                },
+                {
+                  "id": 64,
+                  "value": "Saturday"
+                }
+              ],
+              "min": 0,
+              "max": 127,
+              "default": 127,
+              "visible": false,
+              "disabled": false
+            },
+            {
+              "field": "sell",
+              "title": "Sell",
+              "formatter": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "buy",
+              "title": "Buy",
+              "formatter": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "price_s",
+              "title": "Price_s",
+              "formatter": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "price_b",
+              "title": "Price_b",
+              "formatter": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_limits_first_leg",
+              "title": "",
+              "formatter": "group",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_limits",
+              "title": "<b>Trading signals</b>",
+              "group": "_limits_first_leg",
+              "formatter": "html_string",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "lim_s",
+              "title": "Lim_Sell",
+              "group": "_limits_first_leg",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "lim_b",
+              "title": "Lim_Buy",
+              "group": "_limits_first_leg",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_first_leg",
+              "title": "<b>First leg settings</b>",
+              "group": "_limits_first_leg",
+              "formatter": "html_string",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "quote",
+              "title": "Quote",
+              "group": "_limits_first_leg",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "simply_first",
+              "title": "Simply first",
+              "group": "_limits_first_leg",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "maker",
+              "title": "Only maker",
+              "group": "_limits_first_leg",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "threshold",
+              "title": "Threshold",
+              "group": "_limits_first_leg",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "pos",
+              "title": "Pos",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_poses_volumes",
+              "title": "",
+              "formatter": "group",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_poses",
+              "title": "<b>Position limits</b>",
+              "group": "_poses_volumes",
+              "formatter": "html_string",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "v_min",
+              "title": "v_min",
+              "group": "_poses_volumes",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": -1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "v_max",
+              "title": "v_max",
+              "group": "_poses_volumes",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_volumes",
+              "title": "<b>Volumes</b>",
+              "group": "_poses_volumes",
+              "formatter": "html_string",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "v_in_l",
+              "title": "v_in_left",
+              "group": "_poses_volumes",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 9007199254740991,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "v_in_r",
+              "title": "v_in_right",
+              "group": "_poses_volumes",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 9007199254740991,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "v_out_l",
+              "title": "v_out_left",
+              "group": "_poses_volumes",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 9007199254740991,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "v_out_r",
+              "title": "v_out_right",
+              "group": "_poses_volumes",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 9007199254740991,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "virtual_0_pos",
+              "title": "Virt 0 pos",
+              "group": "_poses_volumes",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "n_perc_fill",
+              "title": "n_perc_fill",
+              "group": "_poses_volumes",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 100,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_utilities",
+              "title": "Utilities",
+              "formatter": "group",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "custom_trade",
+              "title": "Custom trade",
+              "group": "_utilities",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "trade_formula",
+              "title": "Trade formula",
+              "group": "_utilities",
+              "formatter": "code",
+              "editor": "code",
+              "max_len": 12000,
+              "default": "return 0;",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "ext_formulas",
+              "title": "Extra formulas",
+              "group": "_utilities",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "ext_field1_",
+              "title": "Extra field#1",
+              "group": "_utilities",
+              "formatter": "code",
+              "editor": "code",
+              "max_len": 12000,
+              "default": "return 0;",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "ext_field2_",
+              "title": "Extra field#2",
+              "group": "_utilities",
+              "formatter": "code",
+              "editor": "code",
+              "max_len": 12000,
+              "default": "return 0;",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "decimals",
+              "title": "Decimals",
+              "group": "_utilities",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 14,
+              "default": 4,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "comment",
+              "title": "Comment",
+              "group": "_utilities",
+              "formatter": "string_area",
+              "editor": "string_area",
+              "max_len": 100,
+              "default": "",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "color",
+              "title": "Color",
+              "group": "_utilities",
+              "formatter": "color",
+              "editor": "color",
+              "default": "#FFFFFF",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "log_level",
+              "title": "Log level",
+              "group": "_utilities",
+              "formatter": "bitmask_select",
+              "editor": "bitmask_select",
+              "enum_values": [
+                {
+                  "id": 4,
+                  "value": "Price info",
+                  "tooltip": "Log all price updates"
+                },
+                {
+                  "id": 8,
+                  "value": "Adding order reason",
+                  "tooltip": "Log reasons for adding/not adding orders"
+                },
+                {
+                  "id": 32,
+                  "value": "Limits info",
+                  "tooltip": "Log information about moving limits"
+                },
+                {
+                  "id": 1,
+                  "value": "Order state",
+                  "tooltip": "Log state of orders"
+                },
+                {
+                  "id": 16,
+                  "value": "Pos info",
+                  "tooltip": "Log position information (real and theoretical)"
+                },
+                {
+                  "id": 64,
+                  "value": "v_in/v_out info",
+                  "tooltip": "Log information about \"Is first\" contract order quantity"
+                },
+                {
+                  "id": 256,
+                  "value": "Orderbook info",
+                  "tooltip": "Log orderbook"
+                },
+                {
+                  "id": 2,
+                  "value": "Option info",
+                  "tooltip": "Log information about options"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_sh_f",
+              "title": "Shared formulas",
+              "group": "_utilities",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": true,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_trading_options",
+              "title": "Trading options",
+              "formatter": "group",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "portfolio_type",
+              "title": "Type",
+              "group": "_trading_options",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Arbitrage",
+                  "tooltip": "Trading using all specified parameters"
+                },
+                {
+                  "id": 1,
+                  "value": "Option hedge",
+                  "tooltip": "Main contract count=1/delta, other contracts count=1"
+                },
+                {
+                  "id": 3,
+                  "value": "TP algo",
+                  "tooltip": "Algorithm with TP for main contract"
+                },
+                {
+                  "id": 4,
+                  "value": "TP algo 2",
+                  "tooltip": "Another algorithm with TP for main contract with timer/SL"
+                }
+              ],
+              "default": 0,
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "type_trade",
+              "title": "Type trade",
+              "group": "_trading_options",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Price",
+                  "tooltip": "Trade on bid/offer"
+                },
+                {
+                  "id": 1,
+                  "value": "IV",
+                  "tooltip": "Trade on IV"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "price_type",
+              "title": "Type price",
+              "group": "_trading_options",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Bid/offer",
+                  "tooltip": "Trade on bid/offer"
+                },
+                {
+                  "id": 1,
+                  "value": "Orderbook",
+                  "tooltip": "Find prices in orderbook"
+                },
+                {
+                  "id": 2,
+                  "value": "Orderbook+filter",
+                  "tooltip": "Find prices in orderbook and filter your orders"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "portfolio_num",
+              "title": "Order ID",
+              "group": "_trading_options",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "a"
+                },
+                {
+                  "id": 1,
+                  "value": "b"
+                },
+                {
+                  "id": 2,
+                  "value": "c"
+                },
+                {
+                  "id": 3,
+                  "value": "d"
+                },
+                {
+                  "id": 4,
+                  "value": "e"
+                },
+                {
+                  "id": 5,
+                  "value": "f"
+                },
+                {
+                  "id": 6,
+                  "value": "g"
+                },
+                {
+                  "id": 7,
+                  "value": "h"
+                },
+                {
+                  "id": 8,
+                  "value": "i"
+                },
+                {
+                  "id": 9,
+                  "value": "j"
+                },
+                {
+                  "id": 10,
+                  "value": "k"
+                },
+                {
+                  "id": 11,
+                  "value": "l"
+                },
+                {
+                  "id": 12,
+                  "value": "m"
+                },
+                {
+                  "id": 13,
+                  "value": "n"
+                },
+                {
+                  "id": 14,
+                  "value": "o"
+                },
+                {
+                  "id": 15,
+                  "value": "p"
+                },
+                {
+                  "id": 16,
+                  "value": "q"
+                },
+                {
+                  "id": 17,
+                  "value": "r"
+                },
+                {
+                  "id": 18,
+                  "value": "s"
+                },
+                {
+                  "id": 19,
+                  "value": "t"
+                },
+                {
+                  "id": 20,
+                  "value": "u"
+                },
+                {
+                  "id": 21,
+                  "value": "v"
+                },
+                {
+                  "id": 22,
+                  "value": "w"
+                },
+                {
+                  "id": 23,
+                  "value": "x"
+                },
+                {
+                  "id": 24,
+                  "value": "y"
+                },
+                {
+                  "id": 25,
+                  "value": "z"
+                },
+                {
+                  "id": -32,
+                  "value": "A"
+                },
+                {
+                  "id": -31,
+                  "value": "B"
+                },
+                {
+                  "id": -30,
+                  "value": "C"
+                },
+                {
+                  "id": -29,
+                  "value": "D"
+                },
+                {
+                  "id": -28,
+                  "value": "E"
+                },
+                {
+                  "id": -27,
+                  "value": "F"
+                },
+                {
+                  "id": -26,
+                  "value": "G"
+                },
+                {
+                  "id": -25,
+                  "value": "H"
+                },
+                {
+                  "id": -24,
+                  "value": "I"
+                },
+                {
+                  "id": -23,
+                  "value": "J"
+                },
+                {
+                  "id": -22,
+                  "value": "K"
+                },
+                {
+                  "id": -21,
+                  "value": "L"
+                },
+                {
+                  "id": -20,
+                  "value": "M"
+                },
+                {
+                  "id": -19,
+                  "value": "N"
+                },
+                {
+                  "id": -18,
+                  "value": "O"
+                },
+                {
+                  "id": -17,
+                  "value": "P"
+                },
+                {
+                  "id": -16,
+                  "value": "Q"
+                },
+                {
+                  "id": -15,
+                  "value": "R"
+                },
+                {
+                  "id": -14,
+                  "value": "S"
+                },
+                {
+                  "id": -13,
+                  "value": "T"
+                },
+                {
+                  "id": -12,
+                  "value": "U"
+                },
+                {
+                  "id": -11,
+                  "value": "V"
+                },
+                {
+                  "id": -10,
+                  "value": "W"
+                },
+                {
+                  "id": -9,
+                  "value": "X"
+                },
+                {
+                  "id": -8,
+                  "value": "Y"
+                },
+                {
+                  "id": -7,
+                  "value": "Z"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "hedge_after",
+              "title": "Hedge (sec)",
+              "group": "_trading_options",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": -1,
+              "max": 1000000000,
+              "default": 1,
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "equal_prices",
+              "title": "Equal prices",
+              "group": "_trading_options",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_limits_shift",
+              "title": "Trading signals shift",
+              "formatter": "group",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "k",
+              "title": "K",
+              "group": "_limits_shift",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "tp",
+              "title": "TP",
+              "group": "_limits_shift",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "k1",
+              "title": "K1",
+              "group": "_limits_shift",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "k2",
+              "title": "K2",
+              "group": "_limits_shift",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "timer",
+              "title": "Limits timer",
+              "group": "_limits_shift",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 100000,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "percent",
+              "title": "Percent",
+              "group": "_limits_shift",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 200,
+              "default": 100,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "always_limits_timer",
+              "title": "Always timer",
+              "group": "_limits_shift",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_anti_spam",
+              "title": "Anti \"spam\"",
+              "formatter": "group",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "delta",
+              "title": "Delta",
+              "group": "_anti_spam",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "first_delta",
+              "title": "First delta",
+              "group": "_anti_spam",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 200,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "mkt_volume",
+              "title": "Market volume",
+              "group": "_anti_spam",
+              "formatter": "exchange",
+              "editor": "exchange",
+              "min": 0,
+              "max": 9007199254740991,
+              "default": 100,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "price_check",
+              "title": "Price check",
+              "group": "_anti_spam",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "max_not_hedged",
+              "title": "Max not hedged",
+              "group": "_anti_spam",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 70,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_max_not_hedged_adm",
+              "title": "Max not hedged adm",
+              "group": "_anti_spam",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 1000,
+              "default": 1000,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "overlay",
+              "title": "Overlay",
+              "group": "_anti_spam",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "sell_status",
+              "title": "Sell status",
+              "formatter": "select",
+              "set_on_action": 0,
+              "set_on_add": 0,
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "free"
+                },
+                {
+                  "id": 1,
+                  "value": "adding"
+                },
+                {
+                  "id": 2,
+                  "value": "running"
+                },
+                {
+                  "id": 4,
+                  "value": "deleting"
+                },
+                {
+                  "id": 5,
+                  "value": "first_deleting"
+                },
+                {
+                  "id": 6,
+                  "value": "sl_deleting"
+                },
+                {
+                  "id": 7,
+                  "value": "moving"
+                },
+                {
+                  "id": 99,
+                  "value": "error"
+                }
+              ],
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "buy_status",
+              "title": "Buy status",
+              "formatter": "select",
+              "set_on_action": 0,
+              "set_on_add": 0,
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "free"
+                },
+                {
+                  "id": 1,
+                  "value": "adding"
+                },
+                {
+                  "id": 2,
+                  "value": "running"
+                },
+                {
+                  "id": 4,
+                  "value": "deleting"
+                },
+                {
+                  "id": 5,
+                  "value": "first_deleting"
+                },
+                {
+                  "id": 6,
+                  "value": "sl_deleting"
+                },
+                {
+                  "id": 7,
+                  "value": "moving"
+                },
+                {
+                  "id": 99,
+                  "value": "error"
+                }
+              ],
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "return_first",
+              "title": "Return first",
+              "formatter": "exchange",
+              "set_on_action": 0,
+              "min": 0,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "opened_comission",
+              "title": "Commission sum",
+              "formatter": "float",
+              "editor": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "opened",
+              "title": "Opened",
+              "formatter": "float",
+              "editor": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "fin_res",
+              "title": "Fin res",
+              "formatter": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "fin_res_wo_c",
+              "title": "Fin res wo C",
+              "formatter": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "sell_portfolio",
+              "title": "Sell clicker",
+              "formatter": "action",
+              "editor": "action",
+              "default": "",
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "buy_portfolio",
+              "title": "Buy clicker",
+              "formatter": "action",
+              "editor": "action",
+              "default": "",
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "start",
+              "title": "Start portfolios",
+              "formatter": "action",
+              "editor": "action",
+              "portfolio_action": {
+                "re_sell": true,
+                "re_buy": true
+              },
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "stop",
+              "title": "Stop portfolios",
+              "portfolio_action": {
+                "re_sell": false,
+                "re_buy": false
+              },
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "hard_stop",
+              "title": "Hard stop",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "dependent_fields": {
+                "portfolio": [
+                  "re_sell",
+                  "re_buy",
+                  "use_tt",
+                  "ext_formulas",
+                  "custom_trade"
+                ],
+                "security": [
+                  "count_type",
+                  "ratio_type"
+                ]
+              },
+              "disabled": false
+            },
+            {
+              "field": "formulas_stop",
+              "title": "Stop formulas",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "dependent_fields": {
+                "portfolio": [
+                  "re_sell",
+                  "re_buy",
+                  "use_tt",
+                  "ext_formulas",
+                  "custom_trade"
+                ],
+                "security": [
+                  "count_type",
+                  "ratio_type"
+                ]
+              },
+              "disabled": false
+            },
+            {
+              "field": "reset_statuses",
+              "title": "Reset statuses",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "to_market",
+              "title": "To market",
+              "formatter": "action",
+              "editor": "action",
+              "default": "",
+              "visible": [
+                "list",
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "order_security",
+              "title": "Place order",
+              "formatter": "action",
+              "editor": "action",
+              "default": "",
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "ext_field1",
+              "title": "Extra field#1",
+              "formatter": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "ext_field2",
+              "title": "Extra field#2",
+              "formatter": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "owner",
+              "title": "Owner",
+              "formatter": "string",
+              "default": "",
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf0",
+              "title": "User field#0",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf1",
+              "title": "User field#1",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf2",
+              "title": "User field#2",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf3",
+              "title": "User field#3",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf4",
+              "title": "User field#4",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf5",
+              "title": "User field#5",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf6",
+              "title": "User field#6",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf7",
+              "title": "User field#7",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf8",
+              "title": "User field#8",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf9",
+              "title": "User field#9",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf10",
+              "title": "User field#10",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf11",
+              "title": "User field#11",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf12",
+              "title": "User field#12",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf13",
+              "title": "User field#13",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf14",
+              "title": "User field#14",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf15",
+              "title": "User field#15",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf16",
+              "title": "User field#16",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf17",
+              "title": "User field#17",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf18",
+              "title": "User field#18",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "uf19",
+              "title": "User field#19",
+              "formatter": "user_value",
+              "editor": "user_value",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "max_len": 64,
+              "default": {},
+              "visible": [
+                "list"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "cur_day_month",
+              "title": "Cur day of month",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": -1,
+              "max": 32,
+              "default": 1,
+              "visible": false,
+              "disabled": false
+            },
+            {
+              "field": "lot_size",
+              "title": "lot_size",
+              "formatter": "float",
+              "editor": "float",
+              "min": 1e-8,
+              "max": 1,
+              "default": 1,
+              "visible": false,
+              "disabled": false
+            },
+            {
+              "field": "move_limits1_date",
+              "title": "Cur day of month",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": -1,
+              "max": 9007199254740991,
+              "default": -1,
+              "visible": false,
+              "disabled": false
+            },
+            {
+              "field": "update",
+              "title": "Update",
+              "formatter": "action",
+              "editor": "action",
+              "visible": false,
+              "disabled": false
+            },
+            {
+              "field": "add_security",
+              "title": "Add security",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "remove_security",
+              "title": "Remove security",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "replace_security",
+              "title": "Replace security",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "update_timetable",
+              "title": "Add timetable row",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "form"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_to0",
+              "title": "To0",
+              "portfolio_action": {
+                "to0": true
+              },
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_trading_days",
+              "title": "TradingDays",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "remove",
+              "title": "Remove",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "clone",
+              "title": "Clone portfolio",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "enable",
+              "title": "Enable portfolio",
+              "portfolio_action": {
+                "disabled": false
+              },
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "_disable",
+              "title": "Disable portfolio",
+              "portfolio_action": {
+                "disabled": true
+              },
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "export",
+              "title": "Export portfolio",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "import",
+              "title": "Import portfolio",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            },
+            {
+              "field": "mail_to",
+              "title": "Mail to",
+              "formatter": "action",
+              "editor": "action",
+              "visible": [
+                "toolbar"
+              ],
+              "disabled": false
+            }
+          ],
+          "user_fields": [
+            {
+              "field": "id",
+              "title": "ID",
+              "formatter": "integer",
+              "min": 0,
+              "max": 100,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "c",
+              "title": "Caption",
+              "formatter": "string",
+              "editor": "string",
+              "max_len": 64,
+              "default": "",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "v",
+              "title": "Value",
+              "formatter": "float",
+              "editor": "float",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            }
+          ],
+          "security": [
+            {
+              "field": "sec_type",
+              "title": "Exchange",
+              "is_key": true,
+              "visible": true,
+              "disabled": false,
+              "formatter": "select",
+              "default": 1,
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "ANY"
+                },
+                {
+                  "id": 1,
+                  "value": "MOEX_OPT"
+                },
+                {
+                  "id": 2,
+                  "value": "MOEX_FUT"
+                },
+                {
+                  "id": 3,
+                  "value": "MOEX_FUT_OPT"
+                },
+                {
+                  "id": 4,
+                  "value": "MOEX_FOND"
+                },
+                {
+                  "id": 8,
+                  "value": "MOEX_CURR"
+                },
+                {
+                  "id": 12,
+                  "value": "MOEX_FOND_CURR"
+                },
+                {
+                  "id": 16,
+                  "value": "EXANTE"
+                },
+                {
+                  "id": 32,
+                  "value": "SPB"
+                },
+                {
+                  "id": 64,
+                  "value": "BYBITSPOT"
+                },
+                {
+                  "id": 128,
+                  "value": "EBS"
+                },
+                {
+                  "id": 256,
+                  "value": "FEEDOS"
+                },
+                {
+                  "id": 512,
+                  "value": "SPIMEX"
+                },
+                {
+                  "id": 1024,
+                  "value": "ALORSPB"
+                },
+                {
+                  "id": 2048,
+                  "value": "CQG"
+                },
+                {
+                  "id": 34832,
+                  "value": "CQG_EXANTE_J2T"
+                },
+                {
+                  "id": 2064,
+                  "value": "CQG_EXANTE"
+                },
+                {
+                  "id": 8192,
+                  "value": "ALORMOEX"
+                },
+                {
+                  "id": 16384,
+                  "value": "CTRADER"
+                },
+                {
+                  "id": 32768,
+                  "value": "J2T"
+                },
+                {
+                  "id": 65536,
+                  "value": "KRAKEN"
+                },
+                {
+                  "id": 268435456,
+                  "value": "KRAKENFUT"
+                },
+                {
+                  "id": 262144,
+                  "value": "BITFINEX"
+                },
+                {
+                  "id": 524288,
+                  "value": "HITBTC"
+                },
+                {
+                  "id": 1048576,
+                  "value": "BITMEX"
+                },
+                {
+                  "id": 4194304,
+                  "value": "BINANCE"
+                },
+                {
+                  "id": 34359738368,
+                  "value": "BINANCEFUT"
+                },
+                {
+                  "id": 4398046511104,
+                  "value": "BINANCECM"
+                },
+                {
+                  "id": 33554432,
+                  "value": "DERIBIT"
+                },
+                {
+                  "id": 67108864,
+                  "value": "OKEX"
+                },
+                {
+                  "id": 134217728,
+                  "value": "BEQUANT"
+                },
+                {
+                  "id": 536870912,
+                  "value": "KUCOIN"
+                },
+                {
+                  "id": 2147483648,
+                  "value": "CEXIO"
+                },
+                {
+                  "id": 4294967296,
+                  "value": "HUOBI"
+                },
+                {
+                  "id": 8589934592,
+                  "value": "HUOBIFUT"
+                },
+                {
+                  "id": 4096,
+                  "value": "HUOBIFUTCM"
+                },
+                {
+                  "id": 131072,
+                  "value": "HUOBIFUTUM"
+                },
+                {
+                  "id": 2199023255552,
+                  "value": "VIKINGTRADE"
+                },
+                {
+                  "id": 17592186044416,
+                  "value": "MOEX_IDX"
+                },
+                {
+                  "id": 35184372088832,
+                  "value": "BYBIT"
+                },
+                {
+                  "id": 70368744177664,
+                  "value": "LMAX"
+                },
+                {
+                  "id": 140737488355328,
+                  "value": "IMEX"
+                },
+                {
+                  "id": 9223372036854776000,
+                  "value": "ALL"
+                }
+              ]
+            },
+            {
+              "field": "sec_key",
+              "title": "SecKey",
+              "is_key": true,
+              "formatter": "string",
+              "default": "",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "sec_key_subscr",
+              "title": "Key subscription",
+              "is_key": true,
+              "formatter": "string",
+              "default": "",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "sec_board",
+              "title": "SecBoard",
+              "is_key": true,
+              "formatter": "string",
+              "default": "",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "sec_code",
+              "title": "SecCode",
+              "is_key": true,
+              "formatter": "string",
+              "default": "",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "pos",
+              "title": "Curpos",
+              "formatter": "exchange",
+              "editor": "exchange",
+              "min": -9007199254740991,
+              "max": 9007199254740991,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "count_type",
+              "title": "Count type",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Count constant"
+                },
+                {
+                  "id": 1,
+                  "value": "Count formula"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "count",
+              "title": "Count",
+              "formatter": "exchange",
+              "editor": "exchange",
+              "min": 0,
+              "max": 9007199254740991,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "count_formula",
+              "title": "Count formula",
+              "formatter": "code",
+              "editor": "code",
+              "max_len": 12000,
+              "default": "return 1;",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "k",
+              "title": "k",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "on_buy",
+              "title": "On buy",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 1,
+                  "value": "Buy"
+                },
+                {
+                  "id": 2,
+                  "value": "Sell"
+                }
+              ],
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "is_first",
+              "title": "Is first",
+              "unique": true,
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "sle",
+              "title": "SLE",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "sl",
+              "title": "SL",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 1000,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "k_sl",
+              "title": "k_sl",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "te",
+              "title": "TE",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": true,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "timer",
+              "title": "Timer",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 1000000000,
+              "default": 60,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "percent_of_quantity",
+              "title": "Percent of quantity",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 100,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ratio_sign",
+              "title": "Ratio sign",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "*"
+                },
+                {
+                  "id": 1,
+                  "value": "+"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ratio_type",
+              "title": "Ratio type",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Ratio constant"
+                },
+                {
+                  "id": 1,
+                  "value": "Ratio formula"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ratio",
+              "title": "Ratio",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ratio_b_formula",
+              "title": "Ratio buy formula",
+              "formatter": "code",
+              "editor": "code",
+              "max_len": 12000,
+              "default": "return 1;",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ratio_s_formula",
+              "title": "Ratio sell formula",
+              "formatter": "code",
+              "editor": "code",
+              "max_len": 12000,
+              "default": "return 1;",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "fin_res_mult",
+              "title": "Fin res multiplier",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "tp",
+              "title": "TP",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "client_code",
+              "title": "Client code",
+              "formatter": "str_select",
+              "editor": "str_select",
+              "enum_values": [
+                {
+                  "id": "",
+                  "value": ""
+                },
+                {
+                  "id": "virtual",
+                  "value": "virtual"
+                }
+              ],
+              "set_on_import": "virtual",
+              "partial_enum_values": true,
+              "default": "virtual",
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "comission_sign",
+              "title": "Commission type",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "%"
+                },
+                {
+                  "id": 1,
+                  "value": "pt"
+                }
+              ],
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "comission",
+              "title": "Commission",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1000000000,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "decimals",
+              "title": "Decimals",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 14,
+              "default": 4,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "move_limits",
+              "title": "FUT move limits",
+              "unique": true,
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "move_limits1",
+              "title": "SPOT move limits",
+              "unique": true,
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "mm",
+              "title": "MM",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ob_c_p_t",
+              "title": "Calc price OB",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Deepest",
+                  "tooltip": "Deepest price"
+                },
+                {
+                  "id": 1,
+                  "value": "Weighted avg.",
+                  "tooltip": "Weighted average price"
+                }
+              ],
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ob_t_p_t",
+              "title": "Trading price OB",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Deepest",
+                  "tooltip": "Deepest price"
+                },
+                {
+                  "id": 1,
+                  "value": "Weighted avg.",
+                  "tooltip": "Weighted average price"
+                }
+              ],
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "depth_ob",
+              "title": "Depth OB",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 1000,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "mc_level_to0",
+              "title": "Level to0",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "mc_level_close",
+              "title": "Level close",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "leverage",
+              "title": "Leverage",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 1000000000,
+              "default": 1,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "max_trans_musec",
+              "title": "Max trans time",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 1,
+              "max": 1000000000,
+              "default": 1000000,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "ban_period",
+              "title": "Ban period",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 1000000000,
+              "default": 0,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "lot_size",
+              "title": "lot_size",
+              "formatter": "float",
+              "editor": "float",
+              "min": 1e-8,
+              "max": 1,
+              "default": 1,
+              "visible": false,
+              "disabled": false
+            },
+            {
+              "field": "d_pg",
+              "title": "d_pg",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 40000000000000,
+              "default": 0,
+              "visible": false,
+              "disabled": false
+            },
+            {
+              "field": "put",
+              "title": "put",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": -1,
+              "max": 1,
+              "default": -1,
+              "visible": false,
+              "disabled": false
+            }
+          ],
+          "timetable": [
+            {
+              "field": "begin",
+              "title": "Begin",
+              "formatter": "time",
+              "editor": "time",
+              "default": 36000,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "end",
+              "title": "End",
+              "formatter": "time",
+              "editor": "time",
+              "default": 67200,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "a_sell",
+              "title": "re_sell",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Not trading",
+                  "tooltip": "Not trading"
+                },
+                {
+                  "id": 1,
+                  "value": "Trading",
+                  "tooltip": "Trading"
+                },
+                {
+                  "id": 2,
+                  "value": "Manual",
+                  "tooltip": "Manual"
+                }
+              ],
+              "default": 2,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "a_buy",
+              "title": "re_buy",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Not trading",
+                  "tooltip": "Not trading"
+                },
+                {
+                  "id": 1,
+                  "value": "Trading",
+                  "tooltip": "Trading"
+                },
+                {
+                  "id": 2,
+                  "value": "Manual",
+                  "tooltip": "Manual"
+                }
+              ],
+              "default": 2,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "auto_to0",
+              "title": "To0",
+              "formatter": "select",
+              "editor": "select",
+              "enum_values": [
+                {
+                  "id": 0,
+                  "value": "Inactive",
+                  "tooltip": "Inactive"
+                },
+                {
+                  "id": 1,
+                  "value": "Active",
+                  "tooltip": "Active"
+                },
+                {
+                  "id": 2,
+                  "value": "Manual",
+                  "tooltip": "Manual"
+                }
+              ],
+              "default": 2,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "save_history",
+              "title": "Save history",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "auto_close",
+              "title": "Close",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "auto_to_market",
+              "title": "To market",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            }
+          ],
+          "notifications": [
+            {
+              "field": "_fin_res_en",
+              "title": "FinRes fall",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_fin_res_time",
+              "title": "Time (sec)",
+              "group": "_fin_res_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 86400,
+              "default": 60,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_fin_res_abs",
+              "title": "Min fall (pt)",
+              "group": "_fin_res_en",
+              "formatter": "float",
+              "editor": "float",
+              "min": -2000000000,
+              "max": 2000000000,
+              "default": 1000,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_fin_res_val",
+              "title": "Fall (%)",
+              "group": "_fin_res_en",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 100,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_fin_res_stop",
+              "title": "Stop trading",
+              "group": "_fin_res_en",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_s_en",
+              "title": "Lim_Sell change",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_s_time",
+              "title": "Time (sec)",
+              "group": "_l_s_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 86400,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_s_val",
+              "title": "Value",
+              "group": "_l_s_en",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_s_stop",
+              "title": "Stop trading",
+              "group": "_l_s_en",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_b_en",
+              "title": "Lim_Buy change",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_b_time",
+              "title": "Time (sec)",
+              "group": "_l_b_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 86400,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_b_val",
+              "title": "Value",
+              "group": "_l_b_en",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_l_b_stop",
+              "title": "Stop trading",
+              "group": "_l_b_en",
+              "formatter": "boolean",
+              "editor": "boolean",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_sell_en",
+              "title": "Severe sell change",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_sell_time",
+              "title": "Time (sec)",
+              "group": "_sell_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 86400,
+              "default": 5,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_sell_v",
+              "title": "Value",
+              "group": "_sell_en",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_buy_en",
+              "title": "Severe buy change",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_buy_time",
+              "title": "Time (sec)",
+              "group": "_buy_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 86400,
+              "default": 5,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_buy_v",
+              "title": "Value",
+              "group": "_buy_en",
+              "formatter": "float",
+              "editor": "float",
+              "min": 0,
+              "max": 1000000000,
+              "default": 10,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_max_running_en",
+              "title": "Too much running orders",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_max_running_percent",
+              "title": "Percent (%)",
+              "group": "_max_running_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 100,
+              "default": 70,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_too_much_n_h_en",
+              "title": "Too much not hedged",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_too_much_n_h_portfolios",
+              "title": "Limit portfolios",
+              "group": "_too_much_n_h_en",
+              "formatter": "float",
+              "editor": "float",
+              "min": -1,
+              "max": 1000000000,
+              "default": 100,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_pos_en",
+              "title": "Severe pos change",
+              "formatter": "check_group",
+              "editor": "check_group",
+              "default": false,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_pos_time",
+              "title": "Time (sec)",
+              "group": "_pos_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 10,
+              "default": 5,
+              "visible": true,
+              "disabled": false
+            },
+            {
+              "field": "_pos_v",
+              "title": "Value",
+              "group": "_pos_en",
+              "formatter": "integer",
+              "editor": "integer",
+              "min": 0,
+              "max": 9007199254740991,
+              "default": 1000,
+              "visible": true,
+              "disabled": false
+            }
+          ]
+        },
+        "template_id": "portfolio_viking_base"
+      }
 	},
 	"r":"p",
 	"eid":"qwerty",
