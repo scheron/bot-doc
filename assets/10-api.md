@@ -14867,7 +14867,7 @@ Example:
 | --- | --- | --- |
 | string_6 | string | String with maximum length of 6 symbols |
 | string_36 | string | String with maximum length of 36 symbols |
-| user_role | string | Enum: “demo” — demo user |
+| user_role | string | Enum: “demo” — demo user, “trader” — regular trader, “head_of_traders” — head of traders, “admin_view_only” — admin without write permissions, “admin” — administrator  |
 | epoch_nsec | string | Epoch time in nanoseconds integer representation. Example: 1584629107000000000 |
 | epoch_msec | number | Epoch time in milliseconds integer representation. Example: 1584629107000 |
 | epoch_sec | number | Epoch time in seconds integer representation. Example: 1584629107 |
