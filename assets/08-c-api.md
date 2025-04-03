@@ -175,7 +175,7 @@ section: 8
 | void set_ob_c_p_t(int v)               | изменить "Calc price OB" инструмента портфеля на значение v       |
 | void set_ob_t_p_t(int v)               | изменить "Trading price OB" инструмента портфеля на значение v    |
 | void set_decimals(int v)               | изменить "Decimals" инструмента портфеля на значение v            |
-| void set_client_code(std::string v)    | изменить "Client code" инструмента портфеля на значение v         |
+| void set_client_code(const std::string& v) | изменить "Client code" инструмента портфеля на значение v         |
 | void set_on_buy(int v)                 | изменить "On buy" инструмента портфеля на значение v              |
 | void set_leverage(int v)               | изменить "Leverage" инструмента портфеля на значение v            |
 | void set_count_type(int v)             | изменить "Count type" инструмента портфеля на значение v          |
@@ -252,6 +252,7 @@ section: 8
 | std::string name()                                          | получить "Name" портфеля                                                                                 |
 | int decimals()                                              | получить "Decimals" портфеля                                                                             |
 | std::string comment()                                       | получить "Comment" портфеля                                                                              |
+| std::string color()                                         | получить "Color" портфеля в формате [валидного CSS цвета](https://www.w3schools.com/colors/default.asp)  |
 | bool re_sell()                                              | получить "re_sell" портфеля                                                                              |
 | bool re_buy()                                               | получить "re_buy" портфеля                                                                               |
 | bool use_tt()                                               | получить "Use timetable" портфеля                                                                        |
@@ -302,7 +303,8 @@ section: 8
 | ...                                                         | ...                                                                                                      |
 | void set_uf19(const user_value& v)                          | изменить "пользовательское поле" под номером 19 (пользовательские значения никак НЕ используются в штатном алгоритме робота)|
 | void set_decimals(int v)                                    | изменить "Decimals" портфеля на значение v                                                               |
-| void set_comment(std::string v)                             | изменить "Comment" портфеля на значение v                                                                |
+| void set_comment(const std::string& v)                      | изменить "Comment" портфеля на значение v                                                                |
+| void set_color(const std::string& v)                        | изменить "Color" портфеля на значение v в формате [валидного CSS цвета](https://www.w3schools.com/colors/default.asp)  |
 | void set_re_sell(bool v)                                    | изменить "re_sell" портфеля на значение v                                                                |
 | void set_re_buy(bool v)                                     | изменить "re_buy" портфеля на значение v                                                                 |
 | void set_use_tt(bool v)                                     | изменить "Use timetable" портфеля на значение v                                                          |

@@ -61,6 +61,13 @@ ignore-section-number: true
 ```
 
 ### Для запуска на локальной машине
+
+To install packages
+```
+yarn install
+```
+
+To start test server
 ```
 NODE_OPTIONS=--openssl-legacy-provider yarn run dev
 ```
