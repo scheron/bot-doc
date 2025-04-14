@@ -721,9 +721,9 @@ section: 7
 
 ### MOEX spot and currencies
 
-Актуальный справочник кодов ошибок для Фондового и Валютного рынков находится в открытом доступе на ftp Московской биржи. Ознакомиться можно по [ссылке](https://ftp.moex.com/pub/ClientsAPI/ASTS/docs/asts_order_cancel_messages.csv)
+Актуальный справочник кодов ошибок для Фондового и Валютного рынков находится в открытом доступе на ftp Московской биржи. Ознакомиться можно по [ссылке](https://ftp.moex.com/pub/ClientsAPI/ASTS/docs/asts_message_list.csv)
 
-**MOEX ASTS ERRORS**
+**MOEX ASTS ERRORS**  
 (001) Message #%d sent  
 (065) Invalid market: %s  
 (071) Invalid board: %s  
