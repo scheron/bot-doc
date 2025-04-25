@@ -61,16 +61,16 @@ module.exports = {
         {
           collapsable: false,
           children: [
-            '01-change-history',
-            '02-introduction',
-            '03-getting-started',
-            '04-creating-connection',
-            '05-params-description',
-            '06-algorithm-comments',
-            '07-order-error',
-            '08-c-api',
-            '09-faq',
-            '10-api'
+            'change-history',
+            'introduction',
+            'getting-started',
+            'creating-connection',
+            'params-description',
+            'algorithm-comments',
+            'order-error',
+            'c-api',
+            'faq',
+            'api'
           ]
         }
       ],
