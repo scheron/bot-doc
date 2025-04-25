@@ -4,7 +4,7 @@ home: true
 
 heroText: Арбитражный робот ФК "Викинг"
 actionText: Введение →
-actionLink: /docs/02-introduction.html
+actionLink: /docs/introduction.html
 heroImage: /images/chart-main.svg
 features:
 - title: Торговый алгоритм
@@ -14,5 +14,5 @@ features:
 - title: WebSocket API
   details: Описание методов API для управления портфелями и роботами
 
-footer: ФК Викинг | Copyright © 2010-2024
+footer: ФК Викинг | Copyright © 2010-2025
 ---
