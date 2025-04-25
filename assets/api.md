@@ -3636,8 +3636,8 @@ Payload:
 | eid | y | string | string_36 | External user id that will be received in response |
 | ts | y | number | epoch_nsec | Response time in nano seconds |
 | r = s | y | string | request_result | Request result |
-| mt | y | string | epoch_nsec | Max time, written in data base |
 | data | y | object |  |  |
+| > mt | y | string | epoch_nsec | Max time, written in data base |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
 | > values | y | object |  | Portfolio snapshot |
@@ -4549,8 +4549,8 @@ Payload:
 | eid | y | string | string_36 | External user id that will be received in response |
 | ts | y | number | epoch_nsec | Response time in nano seconds |
 | r = s | y | string | request_result | Request result |
-| mt | y | string | epoch_nsec | Max time, written in data base |
 | data | y | object |  |  |
+| > mt | y | string | epoch_nsec | Max time, written in data base |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
 | > values | y | object |  | Portfolio snapshot |
@@ -5349,8 +5349,8 @@ Payload:
 | eid | y | string | string_36 | External user id that will be received in response |
 | ts | y | number | epoch_nsec | Response time in nano seconds |
 | r = s | y | string | request_result | Request result |
-| mt | y | number | epoch_nsec | Max time, written in data base |
 | data | y | object |  |  |
+| > mt | y | number | epoch_nsec | Max time, written in data base |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
 | > values | y | object |  | Portfolio snapshot |
@@ -5616,8 +5616,8 @@ Payload:
 | eid | y | string | string_36 | External user id that will be received in response |
 | ts | y | number | epoch_nsec | Response time in nano seconds |
 | r = s | y | string | request_result | Request result |
-| mt | y | number | epoch_nsec | Max time, written in data base |
 | data | y | object |  |  |
+| > mt | y | number | epoch_nsec | Max time, written in data base |
 | > r_id | y | string |  | Robot ID |
 | > values | y | object |  |  |
 | >> [] | y | array |  | List of logs |
