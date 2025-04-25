@@ -99,8 +99,24 @@ function createAnchorTag(slug) {
 	return `<Anchor :ids="['${slug}']" />`;
 }
 
+function transliterateLinks(content) {
+	const linkRegex = /\[([^\]]+)\]\(([^)]+\.md)(#([^)]+))?\)/g;
+	
+	return content.replace(linkRegex, (match, text, file, fullAnchor, anchor) => {
+		if (!anchor) return match;
+		
+		const transliteratedAnchor = transliterator.transform(anchor)
+			.trim()
+			.toLowerCase()
+			.replace(/\s+/g, '-');
+			
+		return `[${text}](${file}#${transliteratedAnchor})`;
+	});
+}
+
 module.exports = {
 	addNumberingToHeaders,
 	removeNumberingFromHeaders,
-	addAnchorsToHeaders
+	addAnchorsToHeaders,
+	transliterateLinks
 }
