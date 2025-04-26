@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
-const {addNumberingToHeaders, addAnchorsToHeaders} = require('./helpers')
+const {addNumberingToHeaders, addAnchorsToHeaders, transliterateLinks} = require('./helpers')
 
 const WARN_PLACEHOLDER = `\
 [//]: # (====== AUTO-GENERATED FILE ======)
@@ -44,9 +44,11 @@ function generateDocFile(filePath) {
 	const content = fs.readFileSync(filePath, 'utf-8');
 	const {data: frontMatter, content: markdownContent} = matter(content);
 
+	const withTransliteratedLinks = transliterateLinks(markdownContent);
+	
 	const processedContent = (frontMatter?.['ignore-section-number']) ?
-		addAnchorsToHeaders(markdownContent) :
-		addNumberingToHeaders(markdownContent, frontMatter?.section ? frontMatter.section - 1 : 0);
+		addAnchorsToHeaders(withTransliteratedLinks) :
+		addNumberingToHeaders(withTransliteratedLinks, frontMatter?.section ? frontMatter.section - 1 : 0);
 
 	return matter.stringify('', frontMatter).concat(WARN_PLACEHOLDER, '\n\n', processedContent);
 }

@@ -11,6 +11,7 @@
   "scripts": {
     "pre-process": "node scripts/generate-docs.js",
     "reset-assets": "node scripts/reset-assets.js",
+    "transliterate-assets": "node scripts/transliterate-assets.js",
     "dev": "npm run pre-process & vuepress dev src",
     "build": "npm run pre-process & vuepress build src"
   },
