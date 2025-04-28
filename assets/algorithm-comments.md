@@ -97,9 +97,9 @@ section: 6
 
 ## Особенности поведения заявок, переставленных по SL или Timer <Anchor :ids="['sl_timer']" />
 
-Если после переставления заявки по событиям [SL](params-description.md#s.sl) или [Timer](params-description.md#s.timer) новая заявка не проходит в течение 1 секунды, то она будет автоматически переставлена по цене `bid` - [k_sl](params-description.md#s.k_sl) на продажу или `offer` + [k_sl](params-description.md#s.k_sl) на покупку, вне зависимости от значений [SL](params-description.md#s.sl) и [Timer](params-description.md#s.timer) и вне зависимости от того включен ли [Timer](params-description.md#s.timer) вообще. Заявки, выставляемые при закрытии или выравнивании позиции (это либо настройка в расписании, либо "кликер" [To market](params-description.md#p.to_market)) всегда выставляются с включенным таймером и значение параметра [Timer](params-description.md#s.timer) для таких заявок всегда равно 1.
+При нулевом или положительном значении параметра [k_sl](params-description.md#s.k_sl) заявки, выставленные по следующим событиям: переставление заявки из-за срабатывания условия на [SL](params-description.md#s.sl), переставление заявки из-за срабатывания условия на [Timer](params-description.md#s.timer), закрытие или выравнивание позиции в соответствии с настройками в расписании или по нажатию на "кликер" [To market](params-description.md#p.to_market), будут переставляться раз в секунду до момента сведения в сделку, до выключения торговли с помощью [Hard stop](getting-started.md#portfolio_actions.hard_stop) или до получения ошибки выставления. Переставление заявок будет осуществляться на цену `bid` - [k_sl](params-description.md#s.k_sl) для продажи и `offer` + [k_sl](params-description.md#s.k_sl) для покупки.
 
-При отрицательном заданном значении [k_sl](params-description.md#s.k_sl) вышеописанное правило отменятся, а именно: отменяется перевыставление заявки, если она не проходила в течении 1 секунды. При этом логика работы остальных параметров, в том числе [Timetable](params-description.md#p.use_tt), не изменилась.
+Это дополнительное переставление, оно не меняет существующие настройки параметра [Timer](params-description.md#s.timer) и параметра [TE](params-description.md#s.te) и не зависит от них, т.е. оно выполняется даже при снятом флаге [TE](params-description.md#s.te).
 
 ## Подсчёт финансового результата
 
