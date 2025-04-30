@@ -64,6 +64,7 @@ module.exports = {
             'change-history',
             'introduction',
             'getting-started',
+            'stable-work',
             'creating-connection',
             'params-description',
             'algorithm-comments',
