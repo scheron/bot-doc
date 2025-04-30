@@ -1,6 +1,6 @@
 ---
-title: 9. Часто задаваемые вопросы
-section: 9
+title: 10. Часто задаваемые вопросы
+section: 10
 ignore-section-number: true
 ---
 
