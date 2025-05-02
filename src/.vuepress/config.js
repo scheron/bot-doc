@@ -53,7 +53,7 @@ module.exports = {
     nav: [
       {
         text: 'Документация',
-        link: '/docs/'
+        link: '/docs/introduction'
       }
     ],
      sidebar: {
