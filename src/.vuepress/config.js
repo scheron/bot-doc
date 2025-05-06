@@ -63,6 +63,7 @@ module.exports = {
           children: [
             'change-history',
             'introduction',
+            'interface',
             'getting-started',
             'stable-work',
             'creating-connection',

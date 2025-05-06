@@ -1,6 +1,6 @@
 ---
-title: 9. C++
-section: 9
+title: 10. C++
+section: 10
 ---
 
 # C++
