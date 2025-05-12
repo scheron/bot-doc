@@ -3,7 +3,7 @@ title: 10. C++
 section: 10
 ---
 
-# C++
+# C++ <Anchor :ids="['cpp']" />
 
 
 ## Редактор формул
