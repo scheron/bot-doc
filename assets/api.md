@@ -3664,7 +3664,7 @@ Payload:
 | >>>> q | y | number |  | Quantity |
 | >>>> d | y | number | direction | Direction |
 | >>>> ono | y | string |  | Order numebr |
-| >>>> t | y | string |  | Time in format HH:MM:SS |
+| >>>> dt | y | number | epoch_sec | Date time |
 | >>>> ls | y | number | | Lot size |
 | >>>> dec | y | number |  | Integer number of decimal points in p field |
 | >>> decimals | y | number |  | Integer number of decimal points in price field |
@@ -3691,7 +3691,7 @@ Example:
                   "d": 2,
                   "p": 26387,
                   "q": 1,
-                  "t": "14:42:45",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -3701,7 +3701,7 @@ Example:
                   "d": 1,
                   "p": 26.22,
                   "q": 10,
-                  "t": "14:42:45",
+                  "t": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
@@ -3725,7 +3725,7 @@ Example:
                   "d": 2,
                   "p": 26301,
                   "q": 2,
-                  "t": "14:21:42",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -3735,7 +3735,7 @@ Example:
                   "d": 1,
                   "p": 26.165,
                   "q": 20,
-                  "t": "14:21:57",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
@@ -3784,7 +3784,7 @@ Payload:
 | >>>> q | y | number |  | Quantity |
 | >>>> d | y | number | direction | Direction |
 | >>>> ono | y | string |  | Order numebr |
-| >>>> t | y | string |  | Time in format HH:MM:SS |
+| >>>> dt | y | number | epoch_sec | Date time |
 | >>>> ls | y | number | | Lot size |
 | >>>> dec | y | number |  | Integer number of decimal points in p field |
 | >>> decimals | y | number |  | Integer number of decimal points in price field |
@@ -3811,7 +3811,7 @@ Example:
                   "d": 2,
                   "p": 26387,
                   "q": 1,
-                  "t": "14:42:45",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -3821,7 +3821,7 @@ Example:
                   "d": 1,
                   "p": 26.22,
                   "q": 10,
-                  "t": "14:42:45",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
@@ -3845,7 +3845,7 @@ Example:
                   "d": 2,
                   "p": 26301,
                   "q": 2,
-                  "t": "14:21:42",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -3855,7 +3855,7 @@ Example:
                   "d": 1,
                   "p": 26.165,
                   "q": 20,
-                  "t": "14:21:57",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
@@ -4054,7 +4054,7 @@ Payload:
 | >>>> q | y | number |  | Quantity |
 | >>>> d | y | number | direction | Direction |
 | >>>> ono | y | string |  | Order numebr |
-| >>>> t | y | string |  | Time in format HH:MM:SS |
+| >>>> dt | y | number | epoch_sec | Date time |
 | >>>> ls | y | number |  | Lot size |
 | >>>> dec | y | number |  | Integer number of decimal points in p field |
 | >>> decimals | y | number |  | Integer number of decimal points in price field |
@@ -4079,7 +4079,7 @@ Example:
                   "d": 2,
                   "p": 26387,
                   "q": 1,
-                  "t": "14:42:45",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -4089,7 +4089,7 @@ Example:
                   "d": 1,
                   "p": 26.22,
                   "q": 10,
-                  "t": "14:42:45",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
@@ -4113,7 +4113,7 @@ Example:
                   "d": 2,
                   "p": 26301,
                   "q": 2,
-                  "t": "14:21:42",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -4123,7 +4123,7 @@ Example:
                   "d": 1,
                   "p": 26.165,
                   "q": 20,
-                  "t": "14:21:57",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
@@ -4239,7 +4239,7 @@ Payload:
 | >>>> q | y | number |  | Quantity |
 | >>>> d | y | number | direction | Direction |
 | >>>> ono | y | string |  | Order numebr |
-| >>>> t | y | string |  | Time in format HH:MM:SS |
+| >>>> dt | y | number | epoch_sec | Date time |
 | >>>> ls | y | number |  | Lot size |
 | >>>> dec | y | number |  | Integer number of decimal points in p field |
 | >>> decimals | y | number |  | Integer number of decimal points in price field |
@@ -4264,7 +4264,7 @@ Example:
                   "d": 2,
                   "p": 26387,
                   "q": 1,
-                  "t": "14:42:45",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -4274,7 +4274,7 @@ Example:
                   "d": 1,
                   "p": 26.22,
                   "q": 10,
-                  "t": "14:42:45",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
@@ -4298,7 +4298,7 @@ Example:
                   "d": 2,
                   "p": 26301,
                   "q": 2,
-                  "t": "14:21:42",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "SNH5",
                   "dec": 4,
@@ -4308,7 +4308,7 @@ Example:
                   "d": 1,
                   "p": 26.165,
                   "q": 20,
-                  "t": "14:21:57",
+                  "dt": 1747386550,
                   "ls": 1,
                   "sk": "TQBRSNGS",
                   "dec": 4,
