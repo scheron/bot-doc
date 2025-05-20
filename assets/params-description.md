@@ -177,6 +177,8 @@ ratio_2$$
 
 - если при уменьшении позиции целая часть от деления нацело [Curpos](params-description.md#s.pos) на [Count](params-description.md#s.count) уменьшилась, а модуль остатка от деления нацело [Curpos](params-description.md#s.pos) на [Count](params-description.md#s.count) меньше или равен `(100 - n_perc_fill)` процентов от [Count](params-description.md#s.count), то позицию по портфелю округляем по модулю вниз, иначе вверх.
 
+Таким образом, использование параметра `n_perc_fill` со значением отличным от нуля имеет смысл только когда [Count](params-description.md#s.count) инструмента первой ноги больше единицы. В таком случае значение параметра `n_perc_fill` отличное от нуля обеспечивает возможность в определенных пределах фильтровать "дребезг" позиции по инструменту первой ноги.
+
 ### Delta <Anchor :ids="['p.delta']" />
 
 Минимальное отклонение [Price_s](params-description.md#p.price_s) и `[Price_b](params-description.md#p.price_b) от цены выставленной заявки на продажу или покупку, соответственно, при превышении которого робот может переставить котируемую заявку, то есть заявку по [Is first](params-description.md#s.is_first) инструменту (используется только при включенном режиме [Quote](params-description.md#p.quote));
