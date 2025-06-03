@@ -6,6 +6,11 @@ ignore-section-number: true
 
 # История изменений
 
+## 2025-06-04
+
+- В C++ интерфейс добавлена константа [`NULL_VALUE`](c-api.md#__null_value__) для индикации отсутствия значения на [графиках в WebSocket API](api.md#portfolio-history)
+- В [WebSocket API](api.md#portfolio-history) добавлена информация про "отсутствующие значения", которые не будут отображаться в вебинтерфейсе на графиках
+
 ## 2025-06-02
 
 - В C++ интерфейс для объекта [портфеля](c-api.md#доступ-и-изменение-полей-портфеля) добавлены методы `bool is_sell_ok()`, `bool is_buy_ok()`,
@@ -85,7 +90,7 @@ ignore-section-number: true
 
 ## 2024-05-02
 
-- В C++ интерфейс добавлена функция [tgr_notify()](c-api.md#__TGR_NOTIFY__) для отправки уведомлений в telegram.
+- В C++ интерфейс добавлена функция [tgr_notify()](c-api.md#__tgr_notify__) для отправки уведомлений в telegram.
 
 ## 2024-04-19
 

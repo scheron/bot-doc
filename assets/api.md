@@ -2361,7 +2361,10 @@ Example:
 ```
 </details>    
 
-## История изменений полей портфеля
+## История изменений полей портфеля <Anchor :ids="['portfolio-history']"/>
+
+Везде в данном разделе значение поля `v` равное `-9007199254740992` (т.е. `-(1 << 53)`) считается "отсутствующим значением" и
+не будет будет отображаться в вебинтерфейсе на графиках
 
 ### Подписка на отдельные поля портфеля
 
@@ -2383,7 +2386,7 @@ Payload:
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s' 'pos', 'fin_res', 'uf0', ..., 'uf19'|
 | > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
 | > mt | n | epoch_msec |  | Minumum date/time to include in snapshot, set null to get last values (maximum number of returned values is 10000) |
 
