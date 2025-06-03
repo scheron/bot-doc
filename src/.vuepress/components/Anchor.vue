@@ -157,8 +157,8 @@ export default {
       }
     },
 
-    handleRouteChange() {
-      if (!this.ids.includes(this.formatHash(this.$route.hash))) return;
+    handleRouteChange(hash = this.$route.hash) {
+      if (!this.ids.includes(this.formatHash(hash))) return;
       
       this.initialScrollDone = false;
       
@@ -178,8 +178,11 @@ export default {
       this.handleRouteChange();
     }
   },
+
   
   mounted() {
+    const hash = this.$route.hash;
+
     setTimeout(() => {
       if (window.location.hash) {
         const hash = this.formatHash(window.location.hash);
@@ -192,7 +195,7 @@ export default {
         }
       }
       
-      this.handleRouteChange();
+      this.handleRouteChange(hash);
     }, 500);
   },
   
