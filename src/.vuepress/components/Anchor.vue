@@ -114,10 +114,10 @@ export default {
       if (!this.anchorRef) return;
       
       requestAnimationFrame(() => {
-        this.anchorRef?.scrollIntoView?.({ behavior: 'smooth' });
+        this.anchorRef?.scrollIntoView?.();
         
         setTimeout(() => {
-          this.anchorRef?.scrollIntoView?.({ behavior: 'smooth' });
+          this.anchorRef?.scrollIntoView?.();
         }, 300);
       } );
     },
