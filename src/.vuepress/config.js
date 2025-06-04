@@ -71,8 +71,9 @@ module.exports = {
             'algorithm-comments',
             'order-error',
             'c-api',
-            'faq',
-            'api'
+            'api',
+            'comparison',
+            'faq'
           ]
         }
       ],

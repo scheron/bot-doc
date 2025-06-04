@@ -13,7 +13,7 @@ section: 10
 Написание формул возможно как для всего портфеля, так и для каждого инструмента в отдельности.
 
 В первом случае будут отображены поля [Trade formula](params-description.md#p.trade_formula), [Extra field#1](params-description.md#p.ext_field1_) и [Extra field#2](params-description.md#p.ext_field2_).
-Во втором [Count formula](params-description.md#_5-3-9-count-formula), [Ratio buy formula](params-description.md#_5-3-28-ratio-buy-formula), [Ratio sell formula](params-description.md#_5-3-29-ratio-sell-formula).
+Во втором [Count formula](params-description.md#s.count_formula), [Ratio buy formula](params-description.md#s.ratio_b_formula), [Ratio sell formula](params-description.md#s.ratio_s_formula).
 
 В редакторе формул существует возможность тестового выполнения выбранной формулы (кнопка `Test`, при этом в строку компиляции добавляется флаг `-DDEBUG`) и на момент вычисления формулы создаётся временная копия портфеля, НО если вы в формуле изменяете значения полей портфеля, и у вас существует портфель с тем же именем, то изменения применятся к этому портфелю. При нажатии на кнопку `Test` сначала происходит компиляция формулы, а потом ее вызов на текущих рыночных данных и текущих параметрах портфелей. Компиляция формулы и ее успешная работа на одном наборе данных не гарантируют успешное выполнение на других наборах данных. Задачей пользователя является предусмотреть корректную работу формулы при всех возможных значениях параметров портфелей и рыночных данных. Наиболее часто встречающиеся ошибки в формулах, приводящие в аварийному выключению робота, описаны [тут](#errors).
 
@@ -80,8 +80,8 @@ if (t.tick())
 
 | Функция                                                 | Описание                                                                      |
 |---------------------------------------------------------|-------------------------------------------------------------------------------|
-| struct security get_security(const std::string& s)      | получить инструмент по его [SecKey](params-description.md#_5-3-1-seckey) s |
-| struct security get_security(const char* s)             | получить инструмент по его [SecKey](params-description.md#_5-3-1-seckey) s |
+| struct security get_security(const std::string& s)      | получить инструмент по его [SecKey](params-description.md#s.sec_key) s |
+| struct security get_security(const char* s)             | получить инструмент по его [SecKey](params-description.md#s.sec_key) s |
 | struct security get_security()                          | получить инструмент, соответствующий главной бумаге текущего портфеля         |
 | struct security get_security(const security_fields& sf) | получить инструмент, соответствующий заданной бумаге портфеля                 |
 
@@ -151,9 +151,9 @@ if (t.tick())
 
 | Функция                                                                                | Описание                                                                                 |
 |----------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
-| struct security_fields get_security_fields(const std::string& p, const std::string& s) | получить бумагу портфеля с именем p с [SecKey](params-description.md#_5-3-1-seckey) s |
+| struct security_fields get_security_fields(const std::string& p, const std::string& s) | получить бумагу портфеля с именем p с [SecKey](params-description.md#s.sec_key) s |
 | struct security_fields get_security_fields()                                           | получить главную бумагу текущего портфеля                                                |
-| struct security_fields get_security_fields(const std::string& s)                       | получить бумагу текущего портфеля с [SecKey](params-description.md#_5-3-1-seckey) s   |
+| struct security_fields get_security_fields(const std::string& s)                       | получить бумагу текущего портфеля с [SecKey](params-description.md#s.sec_key) s   |
 
 Методы `security_fields`:
 
@@ -1209,7 +1209,7 @@ ___
 
 ## Примеры использования функций и классов
 
-Пусть имеется портфель с именем "test" и в этом портфеле есть два инструмента: фьючерс на индекс РТС "RIH6" и его опцион `call` на страйк 70000 "RI70000BB6", позиция по обоим бумагам в портфеле равна 1, а направление торговли у обоих [On_by](params-description.md#_5-3-10-on-buy) = [Buy](params-description.md#p.buy).
+Пусть имеется портфель с именем "test" и в этом портфеле есть два инструмента: фьючерс на индекс РТС "RIH6" и его опцион `call` на страйк 70000 "RI70000BB6", позиция по обоим бумагам в портфеле равна 1, а направление торговли у обоих [On_by](params-description.md#s.on_buy) = [Buy](params-description.md#p.buy).
 
 Рассчитаем дельту одного из инструментов портфеля, например, "RIH6". Для этого воспользуемся функцией delta из модуля options. Дельта для фьючерса всегда равна 1, проверим, для этого надо написать:
 
@@ -1297,18 +1297,18 @@ ___
 
 При написании формул можно использовать все те инструменты, которые используются в любом из портфелей, также можно использовать доступные значения других портфелей , например, их позиции по бумагам.
 
-Для того, чтобы использовать поле [Ratio sell/buy formula](params-description.md#_5-3-28-ratio-buy-formula) необходимо для выбранного инструмента портфеля выбрать [Ratio type](params-description.md#_5-3-27-ratio-type) = `Ratio formula`. После этого двойным кликом войти в редактор и написать необходимое значение.
+Для того, чтобы использовать поле [Ratio sell/buy formula](params-description.md#s.ratio_b_formula) необходимо для выбранного инструмента портфеля выбрать [Ratio type](params-description.md#s.ratio_type) = `Ratio formula`. После этого двойным кликом войти в редактор и написать необходимое значение.
 
-Пусть имеется портфель с именем "si" и в этом портфеле есть один инструмент - фьючерс на доллар "SiH6", направление торговли этого инструмента [On by](params-description.md#_5-3-10-on-buy) = [Buy](params-description.md#p.buy).
+Пусть имеется портфель с именем "si" и в этом портфеле есть один инструмент - фьючерс на доллар "SiH6", направление торговли этого инструмента [On by](params-description.md#s.on_buy) = `Buy`.
 
-Если [Ratio sign](params-description.md#_5-3-19-ratio-sign) = "×", то ничего особо интересного с формулами не придумаешь, разве что какой-то хитрый множитель (и для покупки и для продажи), например, такой:
+Если [Ratio sign](params-description.md#s.ratio_sign) = "×", то ничего особо интересного с формулами не придумаешь, разве что какой-то хитрый множитель (и для покупки и для продажи), например, такой:
 
 ```C
 security s = get_security("SiH6");
 return sqrt(s.bid());
 ```
 
-в таком случае для расчета [Buy](params-description.md#p.buy) и [Sell](params-description.md#p.sell) будет использован один и тот же множитель, если же вы хотите использовать разные множители надо вписать разные значения в [Ratio buy formula](params-description.md#_5-3-28-ratio-buy-formula) и [Ratio sell formula](params-description.md#_5-3-29-ratio-buy-formula), например, так:
+в таком случае для расчета [Buy](params-description.md#p.buy) и [Sell](params-description.md#p.sell) будет использован один и тот же множитель, если же вы хотите использовать разные множители надо вписать разные значения в [Ratio buy formula](params-description.md#s.ratio_b_formula) и [Ratio sell formula](params-description.md#s.ratio_s_formula), например, так:
 
 ```C
 security s = get_security("SiH6");
@@ -1324,7 +1324,7 @@ return sqrt(s.offer());
 
 В таком случае для расчета [Buy](params-description.md#p.buy) будет использован квадратный корень из бида, а для расчета [Sell](params-description.md#p.sell) будет использован квадратный корень из оффера.
 
-Если же [Ratio sign](params-description.md#_5-3-19-ratio-sign) = "+", то вы можете полностью изменить формулу расчета [Buy](params-description.md#p.buy) и [Sell](params-description.md#p.sell), для этого надо для начала вычесть те значения, которые используются в данный момент, тем самым обнулив [Buy](params-description.md#p.buy) и [Sell](params-description.md#p.sell):
+Если же [Ratio sign](params-description.md#s.ratio_sign) = "+", то вы можете полностью изменить формулу расчета [Buy](params-description.md#p.buy) и [Sell](params-description.md#p.sell), для этого надо для начала вычесть те значения, которые используются в данный момент, тем самым обнулив [Buy](params-description.md#p.buy) и [Sell](params-description.md#p.sell):
 
 ```C
 security s = get_security("SiH6");
@@ -1355,9 +1355,9 @@ return -s.bid() + price;
 теперь значения переменной `price` при расчете каждого из параметров будут новыми значениями для [Buy](params-description.md#p.buy) и [Sell](params-description.md#p.sell). Хочется отметить, что без использования `Ratio formula` такое "хитрое" значение получить бы не удалось.
 ___
 
-Рассмотрим еще один пример. Пусть имеется портфель с именем "test" и в этом портфеле есть два инструмента: фьючерс на доллар "SiH6", направление торговли этого инструмента [On_by](params-description.md#_5-3-10-on-buy) = [Buy](params-description.md#p.buy) и он является [Is first](params-description.md#_5-3-11-is-first) и фьючерс на индекс РТС "RIH6", направление торговли этого инструмента тоже [On_by](params-description.md#_5-3-10-on-buy) = [Buy](params-description.md#p.buy) (для примера направление не [Is first](params-description.md#_5-3-11-is-first) инструмента значения не имеет). Для того чтобы использовать эти два инструмента в одном портфеле нужно привести их цены в пунктах к одной размерности, как известно, доллар торгуется в рублях (1 : pt = 1 rub), а вот индекс торгуется не в рублях, для него 1 pt = 0.02 * `$`<sub>price</sub> rub (где `$`<sub>price</sub> - это курс доллара в рублях, но это не константа, а динамически изменяющаяся величина). Есть два варианта решения поставленной задачи, оба реализуемы только с использованием `Ratio formula` и оба приводят к абсолютно одинаковому результату. Вот они:
+Рассмотрим еще один пример. Пусть имеется портфель с именем "test" и в этом портфеле есть два инструмента: фьючерс на доллар "SiH6", направление торговли этого инструмента [On_buy](params-description.md#s.on_buy) = `Buy` и он является [Is first](params-description.md#s.is_first) и фьючерс на индекс РТС "RIH6", направление торговли этого инструмента тоже [On_buy](params-description.md#s.on_buy) = `Buy` (для примера направление не [Is first](params-description.md#s.is_first) инструмента значения не имеет). Для того чтобы использовать эти два инструмента в одном портфеле нужно привести их цены в пунктах к одной размерности, как известно, доллар торгуется в рублях (1 : pt = 1 rub), а вот индекс торгуется не в рублях, для него 1 pt = 0.02 * `$`<sub>price</sub> rub (где `$`<sub>price</sub> - это курс доллара в рублях, но это не константа, а динамически изменяющаяся величина). Есть два варианта решения поставленной задачи, оба реализуемы только с использованием `Ratio formula` и оба приводят к абсолютно одинаковому результату. Вот они:
 
-1. Для доллара просто зададим [Ratio](params-description.md#_5-3-20-ratio) = 1, а вот для индекса РТС выберем [Ratio sign](params-description.md#_5-3-19-ratio-sign) = "×", а в [Ratio buy formula](params-description.md#_5-3-28-ratio-buy-formula) напишем следующее:
+1. Для доллара просто зададим [Ratio](params-description.md#s.ratio) = 1, а вот для индекса РТС выберем [Ratio sign](params-description.md#s.ratio_sign) = "×", а в [Ratio buy formula](params-description.md#s.ratio_b_formula) напишем следующее:
 
     ```C
     security s = get_security("SiH6");
@@ -1373,7 +1373,7 @@ ___
 
     таким образом при расчете [Buy](params-description.md#p.buy) мы будем использовать бид доллара, а при расчете [Sell](params-description.md#p.sell) - его оффер, и величину получим в рублях.
 
-2. Для доллара просто зададим [Ratio](params-description.md#_5-3-20-ratio) = 1, а вот для индекса РТС выберем [Ratio sign](params-description.md#_5-3-19-ratio-sign) = "+", а в [Ratio buy formula](params-description.md#_5-3-28-ratio-buy-formula) напишем следующее (вначале обнулим значение, как в предыдущем примере, а затем зададим новое):
+2. Для доллара просто зададим [Ratio](params-description.md#s.ratio) = 1, а вот для индекса РТС выберем [Ratio sign](params-description.md#s.ratio_sign) = "+", а в [Ratio buy formula](params-description.md#s.ratio_b_formula) напишем следующее (вначале обнулим значение, как в предыдущем примере, а затем зададим новое):
 
     ```C
     security s1 = get_security("SiH6");
@@ -1382,7 +1382,7 @@ ___
     return -s2.offer() + price;
     ```
 
-    в [Ratio sell formula](params-description.md#_5-3-29-ratio-buy-formula) напишем следующее:
+    в [Ratio sell formula](params-description.md#s.ratio_s_formula) напишем следующее:
 
     ```C
     security s1 = get_security("SiH6");

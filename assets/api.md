@@ -1,6 +1,6 @@
 ---
-title: 12. WebSocket API
-section: 12
+title: 11. WebSocket API
+section: 11
 ---
 
 # WebSocket API <Anchor :ids="['api']" />
