@@ -1,4 +1,3 @@
-const { description } = require('../../package')
 const path = require('path');
 
 module.exports = {

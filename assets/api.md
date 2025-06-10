@@ -2390,8 +2390,8 @@ Payload:
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s' 'pos', 'fin_res', 'uf0', ..., 'uf19'|
-| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s', 'price_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '5m', '10m', '1h', '6h', '24h' |
 | > mt | n | epoch_msec |  | Minumum date/time to include in snapshot, set null to get last values (maximum number of returned values is 10000) |
 
 Example:
@@ -2426,8 +2426,8 @@ Payload:
 | > mt | y | number | epoch_msec | Max time, written in data base (can be null) |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
-| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s', 'price_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '5m', '10m', '1h', '6h', '24h' |
 | > values | y | object |  | Field values snapshot (can be empty) |
 | >> [] | y | array |  | List of field values |
 | >>> dt | y | number | epoch_msec | Field value time |
@@ -2470,8 +2470,8 @@ Payload:
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
-| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s', 'price_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '5m', '10m', '1h', '6h', '24h' |
 | > values | y | object |  | Field values snapshot |
 | >> [] | y | array |  | List of field values |
 | >>> dt | y | number | epoch_msec | Field value time |
@@ -2636,8 +2636,8 @@ Payload:
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
-| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s', 'price_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '5m', '10m', '1h', '6h', '24h' |
 | > mt | y | number | epoch_msec | Receive rows “older” than this value. This value is recommended to be multiple of aggregation period in milliseconds |
 | > lim | n | number |  | Number of rows to receive in range [1, 1000], default value is 1000 |
 
@@ -2672,8 +2672,8 @@ Payload:
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
-| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s', 'price_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '5m', '10m', '1h', '6h', '24h' |
 | > values | y | object |  | Field values snapshot |
 | >> [] | y | array |  | List of field values |
 | >>> dt | y | number | epoch_msec | Field value time |
@@ -2753,8 +2753,8 @@ Payload:
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
-| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s', 'price_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '5m', '10m', '1h', '6h', '24h' |
 | > mint | y | number | epoch_msec | Receive rows “newer” or equal than this value. This value is recommended to be multiple of aggregation period in milliseconds |
 | > maxt | y | number | epoch_msec | Receive rows “older” or equal than this value. This value is recommended to be multiple of aggregation period in milliseconds |
 | > lim | n | number |  | Number of rows to receive in range [1, 100000], default value is 100000 |
@@ -2791,8 +2791,8 @@ Payload:
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
 | > p_id | y | string |  | Portfolio name |
-| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
-| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '10m', '1h', '6h', '24h' |
+| > key | y | string |  | Portfolio field key, one of: 'sell', 'buy', 'lim_s', 'lim_b', 'price_s', 'price_b', 'pos', 'fin_res', 'uf0', ..., 'uf19'|
+| > aggr | y | string |  | Aggregation period, one of: 'raw', '10s', '1m', '5m', '10m', '1h', '6h', '24h' |
 | > values | y | object |  | Field values snapshot |
 | >> [] | y | array |  | List of field values |
 | >>> dt | y | number | epoch_msec | Field value time |
