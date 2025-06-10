@@ -26,7 +26,7 @@ export default ({
           if (!h2 || !featureLinks || !featureLinks?.[index]) return
 
           const a = document.createElement('a');
-          a.href = featureLinks[index];
+          a.href = `${siteData.base}${featureLinks[index]}`.replaceAll('//', '/');
           a.textContent = h2.textContent;
           a.classList.add('feature-link');
 
