@@ -121,8 +121,8 @@ section: 4
 
 ## Графики
 
-Виджет сделан на базе графика TraidingView. 
-Доступен по иконке <img src="@images/icons/chart-2.svg" width="16" height="16"/>  в столбце `Chart` виджета `Portfolios table`. Виджет может использоваться в двух вариантах RealTime и Historical в зависимости от того, ведется ли запись истории параметров портфеля.
+Виджеты сделаны на базе графика TraidingView. 
+При нажатии по иконке <img src="@images/icons/chart-2.svg" width="16" height="16"/>  в столбце `Chart` виджета [Portfolios table](interface.md#portfolios_table) будет открыт один из виджетов [Portfolios historical chart](interface.md#portfolios_historical_chart) или [Portfolios realtime chart](interface.md#Portfolios_realtime_chart) в зависимости от того, ведется ли запись истории параметров портфеля.
 
 **Режим RealTime по портфелям без записи истории параметров**
 
