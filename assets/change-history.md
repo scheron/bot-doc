@@ -6,6 +6,10 @@ ignore-section-number: true
 
 # История изменений
 
+## 2025-06-19
+
+- В интерфейс сайта добавлена возможность [изменения торговых интервалов расписания сразу по нескольким портфелям](getting-started.md#portfolio_actions.timetable)
+
 ## 2025-06-04
 
 - В C++ интерфейс добавлена константа [`NULL_VALUE`](c-api.md#__null_value__) для индикации отсутствия значения на [графиках в WebSocket API](api.md#portfolio-history)
