@@ -14899,7 +14899,7 @@ Example:
 | language | string | Enum: “en” — English, “ru” — Russian |
 | portfolio_id | [string, string] | Pair of strings, first element is a robot ID, second element is a portfolio name |
 | sec_type | number | Integer value, security exchange/connection type. Value should be received in template |
-| stream_status | number | Integer value, enum: 0 — disconnected, 1 — connecting, 2 — connected, 3 — unknown |
+| stream_status | number | Integer value, enum: 0 — disconnected, 1 — connecting, 2 — connected, 3 — unknown, 4 — closed by time |
 | trading_status | number | Integer value, enum: 0 — not trading, 2 —trading, 3 — unknown |
 | process_status | number | Integer value, enum: 0 — not running, 2 —running, 3 — unknown |
 | direction | number | Integer value, enum: 1 — buy, 2 — sell |
