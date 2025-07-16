@@ -1,9 +1,9 @@
 ---
-title: 2. Введение
+title: 2. О платформе
 section: 2
 ---
 
-# Введение
+# О платформе
 
 ![Doc](@images/bot-scheme.svg)
 
