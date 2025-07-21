@@ -1,0 +1,20 @@
+name: scrape
+on: 
+  push:
+    branches: [ alt-main ]
+  workflow_dispatch:
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check out code 🛎
+        uses: actions/checkout@v2
+      - name: scrape the site 🧽
+        env:
+          APPLICATION_ID: ${{ secrets.APPLICATION_ID }}
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          docker run \
+          -e APPLICATION_ID -e API_KEY \
+          -e CONFIG="$(cat algolia.config.json)" \
+          algolia/docsearch-scraper
