@@ -6,6 +6,12 @@ ignore-section-number: true
 
 # История изменений
 
+## 2025-07-22
+
+- Добавлен нередактируемый параметр портфеля [Is trading](params-description.md#p.is_trading).
+- Добавлен новый статус торговых и маркет-дата подключений "отключено по времени".
+- В связи с предыдущим пунктом обновлено описание интерфейсов виджетов [Robots table](interface.md#robots_table), [Data connections](interface.md#data_connections), [Trade connections](interface.mdtrade_connections).
+
 ## 2025-07-15
 
 - Добавлен отдельный [пункт](introduction.md#requirements) с подробным описанием системных требований. Вопрос о системных требованиях в [Часто задаваемых вопросах](faq.md) теперь ссылается на этот пункт.
