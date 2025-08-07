@@ -6132,6 +6132,7 @@ Payload:
 | >>> exec_end | y | number |  | Expiration data |
 | >>> strike | y | number |  | Strike (used for options) |
 | >>> lot_size | y | number |  | Lot size |
+| >>> available_margin_coins | n | string |  | Only for Bitget |
 
 Example:
 
