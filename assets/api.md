@@ -4375,6 +4375,8 @@ Example:
 
 ### Подсчет средних финансовых результатов портфеля за период
 
+Максимальное количество финансовых результатов, выгруженных из истории, равно 300000 (не зависимо от длины временного периода)
+
 <details>
 <summary>Request</summary>
 
@@ -4417,28 +4419,31 @@ Payload:
 | ts | y | number | epoch_nsec | Response time in nano seconds |
 | r = p | y | string | request_result | Request result |
 | data | y | object |  |  |
+| > ot | y | string | epoch_nsec | Receive rows “oldest" time or `null`|
+| > nt | y | string | epoch_nsec | Receive rows “newest" time or `null` |
+| > n | y | number | | Number of received rows |
 | > avg | y | object |  | Portfolio snapshot |
 | >> dec | y | number |  | Decimals |
 | >> amount_buy | y | number |  | Buy amount |
 | >> amount_sell | y | number |  | Sell amount |
 | >> avg_buy | y | number |  | Average buy price |
 | >> avg_sell | y | number |  | Average sell price |
-| >> buy | y | array |  | Buy deals |
-| >>> [] |  |  |  |  |
-| >>>> d | y | number | direction | Direction |
-| >>>> sk | y | string |  | SecKey |
-| >>>> p | y | number |  | Price |
-| >>>> dec | y | number |  | Decimals |
-| >>>> q | y | number |  | Quantity |
-| >>>> ls | y | number |  | Lot size |
-| >> sell | y | array |  | Sell deals |
-| >>> [] |  |  |  |  |
-| >>>> d | y | number | direction | Direction |
-| >>>> sk | y | string |  | SecKey |
-| >>>> p | y | number |  | Price |
-| >>>> dec | y | number |  | Decimals |
-| >>>> q | y | number |  | Quantity |
-| >>>> ls | y | number |  | Lot size |
+| > buy | y | array |  | Buy deals |
+| >> [] |  |  |  |  |
+| >>> d | y | number | direction | Direction |
+| >>> sk | y | string |  | SecKey |
+| >>> p | y | number |  | Price |
+| >>> dec | y | number |  | Decimals |
+| >>> q | y | number |  | Quantity |
+| >>> ls | y | number |  | Lot size |
+| > sell | y | array |  | Sell deals |
+| >> [] |  |  |  |  |
+| >>> d | y | number | direction | Direction |
+| >>> sk | y | string |  | SecKey |
+| >>> p | y | number |  | Price |
+| >>> dec | y | number |  | Decimals |
+| >>> q | y | number |  | Quantity |
+| >>> ls | y | number |  | Lot size |
 
 Example:
 
@@ -4446,6 +4451,9 @@ Example:
 {
     "type": "portfolio_fin_res.calc_avg",
     "data": {
+        "ot": "1657693572940145200",
+        "nt": "1657699572940145200",
+        "n": 6,
         "avg": {
             "dec": 4,
             "amount_buy": 2,
