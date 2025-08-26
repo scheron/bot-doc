@@ -6,6 +6,10 @@ ignore-section-number: true
 
 # История изменений
 
+## 2025-09-26
+
+- Добавлен [дневной лимит виртуальных сделок](params-description.md#virt_tr_daily_limit), совершенных роботом.
+
 ## 2025-09-22
 
 - Во всех [уведомлениях](params-description.md#notifications-params) знак сравнения изменен на строгий (теперь везде "строго больше");
