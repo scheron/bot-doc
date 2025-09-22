@@ -97,14 +97,14 @@ ignore-section-number: true
 - <details>
     <summary><i>I frequently encounter the REASON_FLOOD error. What should I do to avoid it?<Anchor :ids="['faq.reason_flood']" /></i></summary>
 
-    **If the error occurs when placing orders for [Is first](params-description.md#_5-3-11-is-first) instruments:**
+    **If the error occurs when placing orders for [Is first](params-description.md#s.is_first) instruments:**
     
     This error indicates the use of quoting mode ([Quote](params-description.md#p.quote)). You may try trading without quoting mode, which reduces the frequency of transaction submissions. If quoting mode is essential, review the "Anti-spam" group parameters, particularly [Delta](params-description.md#p.delta).
     [Delta](params-description.md#p.delta) - defines the deviation of [Price_s/Price_b](params-description.md#p.price_s) from the currently placed order's price that triggers an order re-quoting (i.e., a new transaction). Set this value so that minor price fluctuations do not cause constant order replacement. For example, if you are trading BTCUSD priced at 10,000, setting [Delta](params-description.md#p.delta) to 1 means even a $1 change will trigger a re-quote. Given how often prices fluctuate by $1 at this level, the robot could send multiple cancel-and-replace commands per second—this causes exchange flooding. Setting [Delta](params-description.md#p.delta) to 5–10 reduces flood risk, as a more significant price move is required before sending new orders.
     Adjust the [Market volume](params-description.md#p.mkt_volume) parameter. If there is already a large volume ahead of your order, there’s little benefit in placing your order immediately, helping to avoid spamming the exchange with replacements.
     **Important:** In `bid/offer` trading mode, this parameter only considers bid and offer volumes. Any additional depth behind them remains invisible to the robot, which may still place orders. Therefore, use this parameter primarily in `orderbook` or `orderbook+filter` modes.  
     Use the [Price check](params-description.md#p.price_check) parameter. If [Price_s/Price_b](params-description.md#p.price_s) differs from `bid/offer` by more than [Price check](params-description.md#p.price_check) points, do not quote—this also prevents unnecessary exchange spam. Naturally, lower values result in less frequent order updates.
-    You can also set a larger [TP](params-description.md#_5-3-26-tp) to take profit less frequently but in larger amounts.
+    You can also set a larger [TP](params-description.md#s.tp) to take profit less frequently but in larger amounts.
 
     **If the error occurs when placing orders for non-Is first instruments:**
     
@@ -164,7 +164,7 @@ ignore-section-number: true
 - <details>
     <summary><i>What order types does the robot use? Is it possible for the robot to place market orders?<Anchor :ids="['faq.order_type']" /></i></summary>
 
-    The robot uses only limit quote orders. Placing market-type orders is not possible, but you can emulate them by placing a limit order deep into the opposite side of the order book using the [k](params-description.md#_5-3-12-k) parameter of the corresponding instrument in the portfolio settings under the `Securities` section.
+    The robot uses only limit quote orders. Placing market-type orders is not possible, but you can emulate them by placing a limit order deep into the opposite side of the order book using the [k](params-description.md#s.k) parameter of the corresponding instrument in the portfolio settings under the `Securities` section.
     
     </details>
 ---

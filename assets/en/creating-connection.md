@@ -393,7 +393,7 @@ Instrument definition stream. To ensure proper operation of the connection, this
 
 #### Commons
 
-Stream of statistical market parameters. Not used within the robot's algorithm, but available via the[C++ interface](c-api.md#доступ-к-биржевым-данным-по-финансовым-инструментам).
+Stream of statistical market parameters. Not used within the robot's algorithm, but available via the[C++ interface](c-api.md#market-data-access).
 
 #### Top of book
 
@@ -403,7 +403,7 @@ Best bid and ask prices stream. We recommend NOT enabling it simultaneously with
 
 Order book stream. We recommend NOT enabling it simultaneously with the Top of book stream.
 
-### Транзакционный шлюз бинарного протокола
+### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
@@ -450,7 +450,7 @@ The IP address from which the connection to the exchange will be established. Th
 
 ### Прокси подключение к транзакционному шлюзу бинарного протокола
 
-Used when multiple robots need to trade through the same transactional connection (i.e., under a single login). Configured by support staff using parameters provided by the user. Parameters are the same as for [Бинарный торговый](creating-connection.md#транзакционный-шлюз-бинарного-протокола).
+Used when multiple robots need to trade through the same transactional connection (i.e., under a single login). Configured by support staff using parameters provided by the user. Parameters are the same as for [Бинарный торговый](creating-connection.md#binary-protocol-gateway).
 
 #### Name
 
@@ -583,7 +583,7 @@ To obtain the correct IP address, please contact support. The address entered in
 
 ## KRAKEN
 
-Connection to the Kraken exchange's Spot market. The robot supports only connections based on Websocket and REST API. Market data connection is activated as described in section [3.1 Setting up connections](getting-started.md#настройка-подключений). Transactional connection parameters are described below.
+Connection to the Kraken exchange's Spot market. The robot supports only connections based on Websocket and REST API. Market data connection is activated as described in section [3.1 Setting up connections](getting-started.md#connection-setup). Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.KRAKEN.name']" />
 
@@ -607,7 +607,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BITFINEX
 
-The robot supports only connections based on Websocket and REST API. The transactional connection uses two distinct API key pairs, which must be different. Market data connection is activated as described in the [Settin up connections](getting-started.md#настройка-подключений) section. Transactional connection parameters are described below.
+The robot supports only connections based on Websocket and REST API. The transactional connection uses two distinct API key pairs, which must be different. Market data connection is activated as described in the [Settin up connections](getting-started.md#connection-setup) section. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BITFINEX.name']" />
 
@@ -639,7 +639,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## HitBTC
 
-The robot supports only connection to the HitBTC exchange's Spot section via Websocket and REST API. Market data connection is activated as described in the [Setting up connection](getting-started.md#настройка-подключений). Transactional connection parameters are described below.
+The robot supports only connection to the HitBTC exchange's Spot section via Websocket and REST API. Market data connection is activated as described in the [Setting up connection](getting-started.md#connection-setup). Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.HITBTC.name']" />
 
@@ -659,7 +659,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BITMEX
 
-Connection to the BitMEX exchange's futures market. The robot supports only Websocket and REST API connections. The transactional connection uses two distinct API key pairs, which must be different. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений). Transactional connection parameters are described below.
+Connection to the BitMEX exchange's futures market. The robot supports only Websocket and REST API connections. The transactional connection uses two distinct API key pairs, which must be different. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup). Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BITMEX.name']" />
 
@@ -687,7 +687,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BINANCE
 
-Connection to Binance exchange's Spot market in either Spot or Margin mode. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connection](getting-started.md#настройка-подключений). Transactional connection parameters are described below.
+Connection to Binance exchange's Spot market in either Spot or Margin mode. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connection](getting-started.md#connection-setup). Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BINANCE.name']" />
 
@@ -715,7 +715,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BINANCEFUT
 
-Connection to Binance exchange's USD-M Futures market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connection](getting-started.md#настройка-подключений). Transactional connection parameters are described below.
+Connection to Binance exchange's USD-M Futures market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connection](getting-started.md#connection-setup). Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BINANCEFUT.name']" />
 
@@ -757,7 +757,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BINANCECM
 
-Connection to Binance exchange's COIN-M Futures market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connection](getting-started.md#настройка-подключений). Transactional connection parameters are described below.
+Connection to Binance exchange's COIN-M Futures market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connection](getting-started.md#connection-setup). Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BINANCECM.name']" />
 
@@ -801,7 +801,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 The robot supports only Websocket API connections. There are two ways to add a market data connection:
 
-1. Public market data connection — activated as described in the [Setting up connections](getting-started.md#настройка-подключений);
+1. Public market data connection — activated as described in the [Setting up connections](getting-started.md#connection-setup);
 2. If you are creating a transactional connection, you can set the [Create fast data connection](creating-connection.md#create-fast-data-connection) flag, In this case, a market data connection will be created using the same credentials as the transactional connection. The market data connection created via the second method will react slightly faster to market changes. Additionally, such a paired connection can only be activated or deactivated together with the transactional connection. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.DERIBIT.name']" />
@@ -830,7 +830,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## OKX
 
-Connection to OKX exchange platforms: SPOT, SWAP, FUTURES, OPTION, in cross, isolated, and cash modes. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+Connection to OKX exchange platforms: SPOT, SWAP, FUTURES, OPTION, in cross, isolated, and cash modes. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.OKEX.name']" />
 
@@ -858,7 +858,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BEQUANT
 
-The robot supports BEQUANT connections via both Websocket/REST API and FIX protocol. Public market data connection via Websocket and REST API is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chaper. When creating a transactional connection, you can select which connection type to use. Adding a transactional FIX connection creates two FIX connections: market data and transactional. Such a pair can only be activated or deactivated together — attempting to deactivate the market data connection will also deactivate the transactional one, and vice versa. Transactional connection parameters are described below.
+The robot supports BEQUANT connections via both Websocket/REST API and FIX protocol. Public market data connection via Websocket and REST API is activated as described in the [Setting up connections](getting-started.md#connection-setup) chaper. When creating a transactional connection, you can select which connection type to use. Adding a transactional FIX connection creates two FIX connections: market data and transactional. Such a pair can only be activated or deactivated together — attempting to deactivate the market data connection will also deactivate the transactional one, and vice versa. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BEQUANT.name']" />
 
@@ -900,7 +900,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## KRAKENFUT
 
-Connection to Kraken exchange's Futures market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+Connection to Kraken exchange's Futures market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.KRAKENFUT.name']" />
 
@@ -928,7 +928,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## KUCOIN
 
-The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.KUCOIN.name']" />
 
@@ -952,7 +952,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## HUOBI
 
-Connection to the Spot market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+Connection to the Spot market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.HUOBI.name']" />
 
@@ -976,7 +976,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## HUOBIFUT
 
-Connection to the Coin-M Futures market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений)chapter. Transactional connection parameters are described below.
+Connection to the Coin-M Futures market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup)chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.HUOBIFUT.name']" />
 
@@ -1000,7 +1000,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## HUOBIFUTCM
 
-Connection to the Coin-M Swaps market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений)chapter. Transactional connection parameters are described below.
+Connection to the Coin-M Swaps market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup)chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.HUOBIFUTCM.name']" />
 
@@ -1024,7 +1024,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## HUOBIFUTUM
 
-Connection to the USDT-M market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+Connection to the USDT-M market of Huobi Global exchange. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.HUOBIFUTUM.name']" />
 
@@ -1048,7 +1048,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## VIKINGTRADE
 
-The robot supports only Websocket API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+The robot supports only Websocket API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.VIKINGTRADE.name']" />
 
@@ -1072,7 +1072,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BYBIT
 
-Connection to Bybit exchange markets: Inverse Perpetual, USDT Perpetual, and Inverse Futures. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+Connection to Bybit exchange markets: Inverse Perpetual, USDT Perpetual, and Inverse Futures. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BYBIT.name']" />
 
@@ -1092,7 +1092,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BYBITSPOT
 
-Connection to Bybit exchange's Spot market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#настройка-подключений) chapter. Transactional connection parameters are described below.
+Connection to Bybit exchange's Spot market. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BYBITSPOT.name']" />
 
@@ -1161,7 +1161,7 @@ Best bid and ask prices stream. We recommend NOT enabling it simultaneously with
 
 Order book stream. We recommend NOT enabling it simultaneously with the Top of book stream.
 
-### Транзакционный шлюз бинарного протокола
+### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 

@@ -102,7 +102,7 @@ if (t.tick())
 }
 ```
 
-## Accessing Market Data for Financial Instruments <Anchor :ids="['Доступ-к-биржевым-данным-по-финансовым-инструментам']" />
+## Accessing Market Data for Financial Instruments <Anchor :ids="['market-data-access']" />
 
 | Function                                                | Description                                                                 |
 |---------------------------------------------------------|-----------------------------------------------------------------------------|
@@ -287,7 +287,7 @@ Fields of `order_item`:
 
 [_Example:_](#__Example9__) Example usage of `order_pool` and `order_item`.
 
-## Accessing and Modifying Portfolio Fields
+## Accessing and Modifying Portfolio Fields <Anchor :ids="['portfolio-field-access']" />
 
 | Function                                             | Description                                |
 |------------------------------------------------------|--------------------------------------------|

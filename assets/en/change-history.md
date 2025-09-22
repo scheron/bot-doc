@@ -42,7 +42,7 @@ ignore-section-number: true
 ## 2025-06-02
 
 - Added C++ API methods `bool is_sell_ok()`, `bool is_buy_ok()`,  
-  `bool is_price_s_ok()`, `bool is_price_b_ok()` in the [portfolio object](c-api.md#доступ-и-изменение-полей-портфеля) for validating current field values `Sell`, `Buy`, `Price_s`, `Price_b`.
+  `bool is_price_s_ok()`, `bool is_price_b_ok()` in the [portfolio object](c-api.md#portfolio-field-access) for validating current field values `Sell`, `Buy`, `Price_s`, `Price_b`.
 
 ## 2025-05-29
 
@@ -56,12 +56,12 @@ ignore-section-number: true
 
 ## 2025-04-08
 
-- Added methods `std::string color()` and `void set_color(const std::string& v)` to the [portfolio object](c-api.md#доступ-и-изменение-полей-портфеля) in the C++ API;
+- Added methods `std::string color()` and `void set_color(const std::string& v)` to the [portfolio object](c-api.md#portfolio-field-access) in the C++ API;
 - Updated C++ API setters for `std::string` fields to accept arguments by reference (`const std::string&`).
 
 ## 2025-02-10
 
-- Added [two-factor authentication](getting-started.md#двухфакторная-аутентификация) support on the website.
+- Added [two-factor authentication](getting-started.md#two-factor-authentication) support on the website.
 
 ## 2025-02-06
 
@@ -97,7 +97,7 @@ ignore-section-number: true
 ## 2024-09-16
 
 - Added [TradingDays](params-description.md#p.trading_days) parameter to portfolio schedule settings;
-- Added method [mid_price()](c-api.md#доступ-к-биржевым-данным-по-финансовым-инструментам) for security objects in the C++ API;
+- Added method [mid_price()](c-api.md#market-data-access) for security objects in the C++ API;
 - Added [indicator calculation objects](c-api.md#indicators-docs) to the C++ API.
 
 ## 2024-06-26
@@ -120,14 +120,14 @@ ignore-section-number: true
 
 ## 2024-04-19
 
-- Added portfolio creator information in the WebSocket API [subscription to available portfolios](api.md#подписка-на-список-доступных-портфелей).
+- Added portfolio creator information in the WebSocket API [subscription to available portfolios](api.md#portfolio-list-subscription).
 
 ## 2023-12-13
 
 - Removed `extra()` method from the portfolio object in the C++ API;
 - Removed `dict_double` structure from the C++ API;
 - Removed `__extra` field from portfolios in the WebSocket API;
-- Added methods `uf0(), ..., uf19()` and `set_uf0(), ..., set_uf19()` for "user fields" to the [portfolio object](c-api.md#доступ-и-изменение-полей-портфеля) in the C++ API;
+- Added methods `uf0(), ..., uf19()` and `set_uf0(), ..., set_uf19()` for "user fields" to the [portfolio object](c-api.md#portfolio-field-access) in the C++ API;
 - Added `user_value` structure to the C++ API;
 - Added iteration over portfolio instruments in the C++ API (`restart_sec_iter()`, `has_next_sec()`, `next_sec()`);
 - Added fields `uf0, ..., uf19` to portfolios in the WebSocket API.
@@ -139,14 +139,14 @@ ignore-section-number: true
 
 ## 2022-06-15
 
-- Added methods [min_step()](c-api.md#доступ-к-биржевым-данным-по-финансовым-инструментам) and [lot_round()](c-api.md#доступ-к-биржевым-данным-по-финансовым-инструментам) for security objects in the C++ API;
-- Added methods [funding_rate()](c-api.md#доступ-к-биржевым-данным-по-финансовым-инструментам) and [funding_time()](c-api.md#доступ-к-биржевым-данным-по-финансовым-инструментам) for security objects in the C++ API (for some exchanges).
+- Added methods [min_step()](c-api.md#market-data-access) and [lot_round()](c-api.md#market-data-access) for security objects in the C++ API;
+- Added methods [funding_rate()](c-api.md#market-data-access) and [funding_time()](c-api.md#market-data-access) for security objects in the C++ API (for some exchanges).
 
 ## 2022-02-03
 
 - Added support for Deribit connections with fast market data (requires re-creating the trade connection to Deribit);
 - Changed behavior of all market data connections requiring authorization (Exante FIX, LMAX FIX, Bequant FIX, Deribit). Such market data connections are now always tied to the corresponding trade connection and can only be enabled/disabled together;
 - Added `extra()` method to the portfolio object in the C++ API;
-- Added log output support in the C++ API ([log_* functions](c-api.md#функции-для-работы-с-опционами));
+- Added log output support in the C++ API ([log_* functions](c-api.md#option-functions));
 - Added "To0" action on the main page menu;
 - Added portfolio field [__extra](api.md) to the WebSocket API for storing custom user settings.

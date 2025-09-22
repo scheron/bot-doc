@@ -35,7 +35,7 @@ Hotkeys are assigned for accessing main widgets and performing portfolio operati
 The complete list of hotkeys is available in the user menu (top-right corner) under "Keyboard Shortcuts".
 
 
-## Telegram Bot
+## Telegram Bot <Anchor :ids="['telegram-bot']" />
 
 For Telegram notifications, the bot [FKVikingBot](https://t.me/FKVikingBot) is used. To connect the Telegram bot, follow these steps:
 
@@ -66,7 +66,7 @@ The selected instrument will then appear in the `PORTFOLIO SECURITIES` section.
 ![Doc](@images/3.3_1_4.jpg)
 
 Add all required instruments in the same way. After adding all instruments, click `Apply`. 
-This will open the portfolio settings window. [Portfolio parameters](params-description.md#параметры-портфеля) are configured on the `Portfolio settings` tab, and [instrument parameters](params-description.md#_5-3-параметры-инструментов-портфеля) are set on the `Securities` tab. Detailed parameter descriptions can be viewed by clicking the <img src="@images/icons/help.svg" width="16" height="16"/> icon. For portfolio instrument parameters, the help icon <img src="@images/icons/help.svg" width="16" height="16"/> is located within the dropdown list: 
+This will open the portfolio settings window. [Portfolio parameters](params-description.md#p) are configured on the `Portfolio settings` tab, and [instrument parameters](params-description.md#portfolio-instrument-parameters) are set on the `Securities` tab. Detailed parameter descriptions can be viewed by clicking the <img src="@images/icons/help.svg" width="16" height="16"/> icon. For portfolio instrument parameters, the help icon <img src="@images/icons/help.svg" width="16" height="16"/> is located within the dropdown list: 
 
 ![Doc](@images/3.3_1_5.jpg)
  

@@ -214,7 +214,7 @@ The specific fields of portfolios are not described in this API, as they are not
 Portfolio templates do not change arbitrarily and, whenever possible, maintain backward compatibility.
 Alternatively, you can inspect the actual portfolio field names and values using the API Tester in your browser on the [website](https://bot.fkviking.com) - the website uses the same API.
 
-### Subscribe to List of Available Portfolios <Anchor :ids="['подписка-на-список-доступных-портфелей']" />
+### Subscribe to List of Available Portfolios <Anchor :ids="['portfolio-list-subscription']" />
 
 Updates are sent when a portfolio is added, removed, or access to it is revoked
 
