@@ -1,7 +1,7 @@
 ---
 home: true
 
-heroText: FK "Viking" Arbitrage Robot
+heroText: FC "Viking" Arbitrage Robot
 actionText: User Manual, Algorithm Description, and API →
 actionLink: /en/docs/introduction.html
 heroImage: /images/chart-main.svg

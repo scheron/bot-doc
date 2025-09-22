@@ -39,6 +39,7 @@ module.exports = {
   },
   themeConfig: {
     logo: '/images/vkg_logo.svg',
+    search: false,
     locales: {
       '/': {
         lang: 'ru-RU',
@@ -47,18 +48,18 @@ module.exports = {
         selectText: '🇷🇺 RU',
         label: '🇷🇺 RU',
         ariaLabel: 'Languages',
-        algolia: {
-          apiKey: '7d6295408b07d0fac47f9f4f4082d107',
-          indexName: 'test_viking2',
-          // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
-          appId: 'GRBQWTRZK3',
-          searchParameters: {
-            queryLanguages: ['en', 'ru'],
-            ignorePlurals: true,
-            advancedSyntax: true,
-            hitsPerPage: 10
-          }
-        },
+        // algolia: {
+          // apiKey: '7d6295408b07d0fac47f9f4f4082d107',
+          // indexName: 'test_viking2',
+          // // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
+          // appId: 'GRBQWTRZK3',
+          // searchParameters: {
+          //   queryLanguages: ['en', 'ru'],
+          //   ignorePlurals: true,
+          //   advancedSyntax: true,
+          //   hitsPerPage: 10
+          // }
+        // },
         sidebar: {
           '/docs/': [
             {
@@ -100,18 +101,18 @@ module.exports = {
         selectText: '🇺🇸 EN',
         label: '🇺🇸 EN',
         ariaLabel: 'Languages',
-        algolia: {
-          apiKey: '7d6295408b07d0fac47f9f4f4082d107',
-          indexName: 'test_viking2',
-          // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
-          appId: 'GRBQWTRZK3',
-          searchParameters: {
-            queryLanguages: ['en', 'ru'],
-            ignorePlurals: true,
-            advancedSyntax: true,
-            hitsPerPage: 10
-          }
-        },
+        // algolia: {
+        //   apiKey: '7d6295408b07d0fac47f9f4f4082d107',
+        //   indexName: 'test_viking2',
+        //   // If Algolia did not provided you any `appId`, use `BH4D9OD16A` or remove this option
+        //   appId: 'GRBQWTRZK3',
+        //   searchParameters: {
+        //     queryLanguages: ['en', 'ru'],
+        //     ignorePlurals: true,
+        //     advancedSyntax: true,
+        //     hitsPerPage: 10
+        //   }
+        // },
         sidebar: {
           '/en/docs/': [
             {

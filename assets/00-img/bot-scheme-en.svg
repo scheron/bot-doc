@@ -569,16 +569,16 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;shape-inside:url(#rect1274);"
        x="231.50391"
        y="0"><tspan
-         x="2277.9673"
+         x="2500"
          y="1524.2181"><tspan
            style="font-size:53.3333px;line-height:1.45;text-align:center;text-anchor:middle">Web interface for </tspan></tspan><tspan
-         x="2438.2666"
+         x="2500"
          y="1601.5513"><tspan
            style="font-size:53.3333px;line-height:1.45;text-align:center;text-anchor:middle">robot </tspan></tspan><tspan
-         x="2330.0245"
+         x="2500"
          y="1678.8846"><tspan
            style="font-size:53.3333px;line-height:1.45;text-align:center;text-anchor:middle">management </tspan></tspan><tspan
-         x="2284.9855"
+         x="2500"
          y="1756.2178"><tspan
            style="font-size:53.3333px;line-height:1.45;text-align:center;text-anchor:middle">Bot.fkviking.com</tspan></tspan></text>
     <text
@@ -587,13 +587,13 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;shape-inside:url(#rect1280);"
        x="107.06055"
        y="0"><tspan
-         x="2937.6215"
+         x="3050"
          y="1540.2656"><tspan
            style="font-size:53.3333px;line-height:1.25;text-align:center;text-anchor:middle">Client's </tspan></tspan><tspan
-         x="2937.8428"
+         x="3050"
          y="1606.9322"><tspan
            style="font-size:53.3333px;line-height:1.25;text-align:center;text-anchor:middle">custom </tspan></tspan><tspan
-         x="2889.5616"
+         x="3050"
          y="1673.5988"><tspan
            style="font-size:53.3333px;line-height:1.25;text-align:center;text-anchor:middle">integration</tspan></tspan></text>
     <text
@@ -609,10 +609,10 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;shape-inside:url(#rect1292);"
        x="143.19002"
        y="0"><tspan
-         x="204.66251"
+         x="330"
          y="269.88994"><tspan
            style="font-size:53.3333px;line-height:1.45;text-align:center;text-anchor:middle">Exchange </tspan></tspan><tspan
-         x="188.03492"
+         x="330"
          y="347.22323"><tspan
            style="font-size:53.3333px;line-height:1.45;text-align:center;text-anchor:middle">connection</tspan></tspan></text>
     <text
@@ -635,10 +635,10 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:0;font-family:sans-serif;text-align:center;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;shape-inside:url(#rect1316)"
        x="319.44336"
        y="0"><tspan
-         x="19.128775"
+         x="310"
          y="693.04293"><tspan
            style="font-size:53.3333px;line-height:1.55;text-align:center;text-anchor:middle">C++ robot, autonomous </tspan></tspan><tspan
-         x="248.64687"
+         x="110"
          y="775.70956"><tspan
            style="font-size:53.3333px;line-height:1.55;text-align:center;text-anchor:middle">trading</tspan></tspan></text>
     <text

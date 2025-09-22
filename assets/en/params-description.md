@@ -611,7 +611,7 @@ A comment can be added to each portfolio if needed. Maximum allowed number of ch
 
 The portfolio can be highlighted with a color in the `color` field, if necessary..
 
-## Portfolio Instrument Parameters 
+## Portfolio Instrument Parameters <Anchor :ids="['portfolio-instrument-parameters']" /> 
 
 Below is a description of portfolio instrument parameters. All parameters are editable unless otherwise specified.
 
@@ -813,10 +813,10 @@ Maximum allowed Round trip time (i.e., the difference between the time the excha
 The duration in seconds during which the robot will not place any orders on the first leg of the portfolio. Used in conjunction with [Max trans time](params-description.md#s.ban_period).
 
 <Anchor hide :ids="['notifications-params']" />
-## Notifications Parameters 
+## Notifications Parameters <Anchor :ids="['notification-parameters']" /> 
 
 The robot can notify the user about the occurrence of certain events. In addition to purely signaling functionality, all notifications can disable trading for a given portfolio.
-When the corresponding event occurs, the notification appears on the website and also in the [Telegram-bot](getting-started.md#тelegram-бот) (if it is connected and configured).
+When the corresponding event occurs, the notification appears on the website and also in the [Telegram-bot](getting-started.md#telegram-bot) (if it is connected and configured).
 
 For all notifications that have parameters `Time (sec)` and `Value`, the logic of these parameters is the same:
 1. The current value of the selected parameter is recorded at the current moment in time.
@@ -825,7 +825,7 @@ For all notifications that have parameters `Time (sec)` and `Value`, the logic o
 
 Thus, the user will receive a notification if, within no more than `Time (sec)` seconds from the moment a value was recorded, the current value of the specified parameter differs from this recorded value by strictly more than `Value`.
 
-There are also notifications configured for a specific exchange trading connection; they are described in the section [Position Parameters](params-description.md#параметры-позиций).
+There are also notifications configured for a specific exchange trading connection; they are described in the section [Position Parameters](params-description.md#position-parameters).
 
 ### FinRes fall
 
@@ -898,9 +898,9 @@ And here is how it might appear in the main table of the [Portfolios table](inte
 
 ![Alt text](@images/uf_table.png)
 
-## Position Parameters
+## Position Parameters <Anchor :ids="['position-parameters']" />
 
-### Instrument Position Parameters
+### Instrument Position Parameters <Anchor :ids="['instrument-positions']" />
 
 Instrument position parameters are displayed separately for each connection on the "Positions/Balance" tab of that connection and are presented as a table. The rows of the table correspond to the instruments of this connection used in the robot’s portfolios. If multiple client accounts are accessible through this trading connection, each row will represent a pair (client account, instrument). Instruments with zero position may be hidden (to do this, uncheck the `Show_zero_poses`flag). Below are descriptions of the table columns; parameters are assumed to be editable unless otherwise specified.
 
@@ -954,7 +954,7 @@ If the flag is set, send notifications about mismatch between robot and exchange
 
 Place an order with specified direction, price, and volume. By default, direction and volume are set to align the exchange position with the robot's position (this order does not change positions in the robot’s portfolio instruments).
 
-### Currency Position Parameters
+### Currency Position Parameters <Anchor :ids="['currency-positions']" />
 
 Currency position parameters are displayed separately for each connection on the "Positions/Balance" tab of that connection and presented as a table. The rows correspond to currencies/cryptocurrencies included in the instruments traded through this connection and used in the robot’s portfolios. If multiple client accounts are accessible via this trading connection, each row represents a pair (client account, currency). Currencies with zero balance may be hidden (to do this, uncheck the `Show zero` poses flag). Below are descriptions of the table columns; parameters are assumed to be editable unless otherwise specified.
 

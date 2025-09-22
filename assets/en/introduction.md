@@ -27,11 +27,11 @@ Note that these requirements assume a scenario where only one browser window wit
 
 Each robot can trade multiple identical algorithms. An algorithm, along with all its settings, will hereafter be referred to as a portfolio. Each robot's portfolio must contain the financial instruments intended for trading or for use in calculations. A portfolio must contain at least one instrument, and all instruments within a portfolio are unique.
 
-One of the instruments in the portfolio must be marked with the [Is first](params-description.md#is-first) flag; this instrument will be referred to as the main instrument or the first leg of the portfolio. Instruments in the portfolio not marked with the [Is first](params-description.md#is-first) flag will be referred to as the second leg of the portfolio. Each robot's portfolio has parameters that apply to the entire portfolio; these are called [portfolio parameters](params-description.md#параметры-портфеля).
- In addition, there are parameters set individually for each instrument in the portfolio; these are called [instrument-specific portfolio parameters](params-description.md#параметры-инструментов-портфеля).
-Also defined for the entire portfolio are [notification parameters](params-description.md#параметры-уведомлений) (Notifications).
+One of the instruments in the portfolio must be marked with the [Is first](params-description.md#is-first) flag; this instrument will be referred to as the main instrument or the first leg of the portfolio. Instruments in the portfolio not marked with the [Is first](params-description.md#is-first) flag will be referred to as the second leg of the portfolio. Each robot's portfolio has parameters that apply to the entire portfolio; these are called [portfolio parameters](params-description.md#p).
+ In addition, there are parameters set individually for each instrument in the portfolio; these are called [instrument-specific portfolio parameters](params-description.md#portfolio-instrument-parameters).
+Also defined for the entire portfolio are [notification parameters](params-description.md#notification-parameters) (Notifications).
 
-There are several additional parameters set for each instrument on every transaction connection ([instrument position parameters](params-description.md#параметры-позиций-по-инструментам) and [currency position parameters](params-description.md#параметры-позиций-по-валютам)).
+There are several additional parameters set for each instrument on every transaction connection ([instrument position parameters](params-description.md#instrument-positions) and [currency position parameters](params-description.md#currency-positions)).
 Parameters are divided into editable ones (i.e., actual settings) and display-only or calculated ones (e.g., financial result).
 
 For greater flexibility, certain portfolio and instrument parameters can be defined as formulas written in the [ C++ programming language](c-api.md#c).
