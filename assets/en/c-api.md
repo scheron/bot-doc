@@ -128,7 +128,7 @@ Methods of `security`:
 | int trading_status()<Anchor hide :ids="['trading-status-check']" />            | Trading status of the instrument on the exchange (bitmask, possible flags: [TRADING_CAN_PLACE](#__trading_can_place__), [TRADING_CAN_CANCEL](#__trading_can_cancel__), [example](#__sec_status_check__)). |
 | int conn_online()<Anchor hide :ids="['market-data-check']" />               | Market data connection status in the robot (bitmask, possible flags: [MARKET_DATA_BESTS_ONLINE](#__market_data_bests_online__), [MARKET_DATA_OB_ONLINE](#__market_data_ob_online__), [example](#__sec_status_check__)). |
 | double min_step()                | Minimum price tick size.                                                    |
-| double lot_round()               | Number of financial instruments in a standard lot.                          |
+| double lot_round()               | The volume rounding value when placing an order (for example, for an instrument, the minimum order volume is 10. This is lot_round. If you place 1, it will be rounded to 10, resulting in 0. If you place 25, it will also be rounded to 10, resulting in 20, and so on. Not all connections have this option) |
 | double lot_size()                | Multiplier for converting fractional volumes to integers.                   |
 | double funding_rate()            | Funding rate.                                                               |
 | long long funding_time()         | Time of the next funding, in epoch format.                                  |
