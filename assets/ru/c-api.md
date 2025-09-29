@@ -104,7 +104,7 @@ if (t.tick())
 | int trading_status()<Anchor hide :ids="['trading-status-check']" />            | статус торгуемости финансового инструмента на бирже (битовая маска, возможные взведенные биты [TRADING_CAN_PLACE](#__trading_can_place__) и [TRADING_CAN_CANCEL](#__trading_can_cancel__), [пример](#__sec_status_check__)) |
 | int conn_online()<Anchor hide :ids="['market-data-check']" />               | стауст активности маркет-дата подключения в роботе (битовая маска, возможные взведенные биты [MARKET_DATA_BESTS_ONLINE](#__market_data_bests_online__) и [MARKET_DATA_OB_ONLINE](#__market_data_ob_online__), [пример](#__sec_status_check__)) |
 | double min_step()               | минимальный шаг цены                             |
-| double lot_round()              | количество ценных финансовых инструментов в одном стандартном лоте |
+| double lot_round()              | значение округления объёма при выставлении заявки (к примеру, для инструмента минимальный объём выставления - 10. Это и есть lot_round. Хотите выставить 1 - округление будет до 10, в итоге получаем 0. Хотите выставить 25, округление будет также до 10, в итоге получаем 20 и так далее. Присутствует не во всех подключениях) |
 | double lot_size()               | множитель для конвертации дробных объемов в целые |
 | double funding_rate()           | ставка фондирования                              |
 | long long funding_time()        | время следующего фондирования в формате epoch    |
