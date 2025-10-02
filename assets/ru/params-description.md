@@ -456,7 +456,7 @@ $$Sell=\sum_{i}
 
 Формулы расчета `Price_s` и `Price_b` для двух финансовых инструментов:
 
-$$Price\_s=\left(Lim\_sell-offer_2
+$$Price\_s=\left(Lim\_sell+offer_2
 \begin{cases}+,& Ratio\_sign_2=+\\
         \times,& Ratio\_sign_2=\times\end{cases}
 ratio_2\right)

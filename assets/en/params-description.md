@@ -492,7 +492,7 @@ Non-editable parameter.
 
 Formulas for calculating `Price_s` and `Price_b` for two financial instruments:
 
-$$Price\_s=\left(Lim\_sell-ask_2
+$$Price\_s=\left(Lim\_sell+ask_2
 \begin{cases}+,& Ratio\_sign_2=+\\
         \times,& Ratio\_sign_2=\times\end{cases}
 ratio_2\right)
