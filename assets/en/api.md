@@ -6499,6 +6499,7 @@ Payload:
 | >> sec_type | y | number | sec_type |  |
 | >> sec_board | y | string |  |  |
 | >> sec_code | y | string |  |  |
+| >> available_margin_coins | y | string |  |  |
 | > portfolios | y | string |  | List of portfolio names |
 | >> [] | y | array |  | List of portfolios with specified SecKey in securities list |
 | > formulas | y | object |  | Formulas |
@@ -6516,7 +6517,7 @@ Example:
 	"data":{
 		"r_id":"1",
 		"key":"OKF_ADA_USDT_SWAP",
-		"new_sec":{"sec_key_subscr":"BTC-USDT-SWAP", "sec_key":"OKF_BTC_USDT_SWAP", "sec_type":67108864, "sec_code":"BTC-USDT-SWAP", "sec_board":""},
+		"new_sec":{"sec_key_subscr":"BTC-USDT-SWAP", "sec_key":"OKF_BTC_USDT_SWAP", "sec_type":67108864, "sec_code":"BTC-USDT-SWAP", "sec_board":"", "available_margin_coins":""},
 		"portfolios":["test3","replace"],
 		"formulas":[
 			{"p_id":"replace", "sec":"", "field":"ext_field1_", "pos":27},
