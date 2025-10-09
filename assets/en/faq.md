@@ -109,6 +109,12 @@ ignore-section-number: true
     **If the error occurs when placing orders for non-Is first instruments:**
     
     It is likely that the first-leg order is being filled in small portions, and after each such trade, hedging orders are being placed for second-leg instruments. Pay attention to the [Overlay](params-description.md#p.overlay)parameter, which allows placing hedging orders not after every single first-leg trade, thus reducing order frequency.
+
+	*Important!**
+
+	Our flood control system doesn't provide 100% protection against real flooding due to the time difference with the exchange. Initially, the time is synchronized, but a difference occurs, at a minimum, between when the order is sent to the exchange and when the exchange finally receives it. There is a lag. Consequently, the windows in which the number of transactions is counted differ slightly, which can lead to flooding. Therefore, it is necessary to pay special attention to the "Anti Spam" settings and the robot logs that report such errors.
+
+	Information about fees for erroneous Flood Control transactions can be found on the Moscow Exchange [website](https://www.moex.com/a3792).
     
     </details>
 ---
