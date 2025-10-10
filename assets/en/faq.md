@@ -112,7 +112,7 @@ ignore-section-number: true
 
 	*Important!**
 
-	Our flood control system doesn't provide 100% protection against real flooding due to the time difference with the exchange. Initially, the time is synchronized, but a difference occurs, at a minimum, between when the order is sent to the exchange and when the exchange finally receives it. There is a lag. Consequently, the windows in which the number of transactions is counted differ slightly, which can lead to flooding. Therefore, it is necessary to pay special attention to the "Anti Spam" settings and the robot logs that report such errors.
+	Our flood control system doesn't provide 100% protection against real flooding due to the time difference with the exchange. The time is initially synchronized, but the order takes a certain amount of time to reach the exchange, which is what causes the difference. There is a lag. Consequently, the windows in which the number of transactions is counted differ slightly, which can lead to flooding. Therefore, it is necessary to pay special attention to the "Anti Spam" settings and the robot logs that report such errors.
 
 	Information about fees for erroneous Flood Control transactions can be found on the Moscow Exchange [website](https://www.moex.com/a3792).
     
@@ -256,7 +256,7 @@ ignore-section-number: true
 
 ---
 - <details>
-	<summary><i>The robot placed an order at prices different from those set for the portfolio. Why did this happen? How can I fix it? <Anchor :ids="['faq.wrong_price']" /></i></summary>
+	<summary><i>When using order book trading, the actual spread is worse than the calculated spread, even though there are no stops. <Anchor :ids="['faq.wrong_price']" /></i></summary>
 
 	You need to check the [Calc price OB](params-description.md#s.ob_c_p_t) and [Trading price OB](params-description.md#s.ob_t_p_t) parameters. This situation may occur due to differences in the specified values ​​for this parameter.
 
