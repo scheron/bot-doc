@@ -433,7 +433,7 @@ Example:
 ```
 </details>    
 
-### Get List of Available Portfolios with "Save History" Enabled <Anchor :ids="['get-portfolios-history']" />
+### Get List of Available Portfolios with “Save History” Enabled <Anchor :ids="['get-portfolios-history']" />
 
 <details>
 <summary>Subscription</summary>
@@ -1873,7 +1873,7 @@ Example:
 ```
 </details>    
 
-### Flatten Portfolio "To Market"
+### Flatten Portfolio “To Market”
 
 Flatten the portfolio "to market" — re-submit all active orders at market price and hedge any unhedged positions.
 
@@ -13049,7 +13049,7 @@ Example:
 ```
 </details>    
 
-### Request Available "sec_type" List
+### Request Available “sec_type” List
 
 Retrieve the list of available sec_type values
 
