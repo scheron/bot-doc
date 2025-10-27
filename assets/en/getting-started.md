@@ -120,6 +120,7 @@ This button should be used ONLY IN EXTREME CASES, when trading is disabled for t
 
 - **Export portfolio \ Import portfolio** <Anchor :ids="['portfolio_actions.export_portfolio', 'portfolio_actions.import_portfolio']" />  - exports selected portfolios from the robot to your computer as `.ini` files, or imports portfolios into the robot.
 
+  **Important!** The portfolio settings file, in addition to user-defined parameters, also contains exchange information about trading instruments. Therefore, when editing this file manually (via a text editor), any information not related to the user-defined parameters must remain unchanged.
 
 ## Charts
 
