@@ -2364,6 +2364,8 @@ Example:
 
 ## Portfolio Field Change History <Anchor :ids="['portfolio-history']"/>
 
+On the website, these methods are used to display information in the [Portfolios historical chart](interface.md#portfolios_historical_chart) widget and can only be used if history saving is enabled for a specific portfolio.
+
 In this section, a field value `v` equal to `-9007199254740992` (i.e. `-(1 << 53)`)  is treated as "missing value" and will not be displayed in the web interface or on charts.
 
 ### Subscribe to Individual Portfolio Fields
@@ -6586,7 +6588,7 @@ Example:
 ```
 </details>    
 
-## Market Data
+## Market Data connections
 
 ### Subscribe to Robot Market Data Connection Updates
 
@@ -9715,7 +9717,7 @@ Example:
 ```
 </details>    
 
-## Frontend
+## Templates
 
 ### Request Object Template ID <Anchor :ids="['get_template_id']"/>
 
