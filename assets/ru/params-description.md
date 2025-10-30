@@ -717,7 +717,7 @@ secs - список инструментов портфеля.
 
 ### Ratio type <Anchor :ids="['s.ratio_type']" />
 
-Позволяет настроить использование константного значения `Ratio` или результат вычисления `Ratio formula` при расчёте значений [Sell](params-description.md#p.sell) и [Buy](params-description.md#p.buy).
+Позволяет настроить использование константного значения `Ratio` или результат вычисления `Ratio formula` при расчёте значений [Sell](params-description.md#p.sell) и [Buy](params-description.md#p.buy). При выборе `Ratio formula` рекомендуется использовать так же флаг [Custom trade](params-description.md#p.custom_trade) и задавать формулу для расчёта раздвижки [Trade forula](params-description.md#p.trade_formula), в противном случае раздвижка в виджетах [Finres for today](interface.md#finres_for_today) и [Finres history](interface.md#finres_history) будет посчитана не по ценам сделок, а по текущим рыночным ценам.
 
 ### Ratio buy formula <Anchor :ids="['s.ratio_b_formula']" />
 

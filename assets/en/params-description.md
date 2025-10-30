@@ -748,7 +748,7 @@ Take-profit level. Used when [Type](params-description.md#p.portfolio_type) is s
 
 ### Ratio type <Anchor :ids="['s.ratio_type']" />
 
-Allows configuring whether a constant `Ratio` value or the result of the `Ratio formula` is used in calculating [Sell](params-description.md#p.sell) and [Buy](params-description.md#p.buy) prices.
+Allows configuring whether a constant `Ratio` value or the result of the `Ratio formula` is used in calculating [Sell](params-description.md#p.sell) and [Buy](params-description.md#p.buy) prices. When selecting the `Ratio formula`, it is also recommended to use the [Custom trade](params-description.md#p.custom_trade) flag and set the formula for calculating the spread using the [Trade forula](params-description.md#p.trade_formula). Otherwise, the spread in the [Finres for today](interface.md#finres_for_today) and [Finres history](interface.md#finres_history) widgets will be calculated based on current market prices rather than actual trade prices.
 
 ### Ratio buy formula <Anchor :ids="['s.ratio_b_formula']" />
 
