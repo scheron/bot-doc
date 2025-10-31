@@ -354,7 +354,7 @@ $Pos=[\frac{Curpos_{first}}{Count_{first}}],$
 
 Where Curpos<sub>first</sub> and Count<sub>first</sub> - are the [Curpos](params-description.md#s.pos) and [Count](params-description.md#s.count) parameters for the portfolio instrument with the [Is first](params-description.md#s.is_first) flag set, rounded up or down depending on the value of the [n_perc_fill](params-description.md#p.n_perc_fill) parameter. The value is updated by the robot but can also be manually edited by the user.
 
-### Timetable <Anchor :ids="['p.use_tt', 'p.trading_days']" />
+### Timetable <Anchor :ids="['p.use_tt', 'p.trading_days', 'p.begin', 'p.end', 'p.a_sell', 'p.a_buy', 'p.auto_to0', 'p.auto_close', 'p.save_history', 'p.auto_to_market']" />
 
 Enable trading according to a schedule. The schedule consists of a list of weekdays specifying the days on which trading will be active, and a list of trading periods (the same for all trading days), each with its own set of parameters:
 
