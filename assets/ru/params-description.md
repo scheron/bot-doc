@@ -314,7 +314,7 @@ $Pos=[\frac{Curpos_{first}}{Count_{first}}],$
 
 где Curpos<sub>first</sub> и Count<sub>first</sub> - это параметры [Curpos](params-description.md#s.pos) и [Count](params-description.md#s.count) для инструмента портфеля с взведенным флагом [Is first](params-description.md#s.is_first), и округляется вверх или вниз в зависимости от значения параметра [n_perc_fill](params-description.md#p.n_perc_fill). Изменяется роботом, но может быть отредактирована пользователем вручную.
 
-### Timetable <Anchor :ids="['p.use_tt', 'p.trading_days']" />
+### Timetable <Anchor :ids="['p.use_tt', 'p.trading_days', 'p.begin', 'p.end', 'p.a_sell', 'p.a_buy', 'p.auto_to0', 'p.auto_close', 'p.save_history', 'p.auto_to_market']" />
 
 Использовать торговлю по расписанию. Расписание состоит из списка дней недели (с понедельника по воскресенье, параметр `TradingDays`), из которых неодходимо выбрать те дни, в которые будет осуществляться торговля, и списка торговых периодов (периоды одни и те же для всех торговых дней), для каждого из периодов задаются свои параметры:
 
