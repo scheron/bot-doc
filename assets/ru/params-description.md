@@ -474,7 +474,7 @@ ratio_1 + k_1$$
 
 Формулы расчета `Price_s` и `Price_b` для любого количества ног:
    
-$$Price\_s=\left(Lim\_sell_i-\sum_{i \neq isfirst}
+$$Price\_s=\left(Lim\_sell-\sum_{i \neq isfirst}
 \begin{cases}bid_i,& On\enspace buy_i=Buy\\
                   -offer_i,& On\enspace buy_i=Sell\end{cases} 
         \begin{cases}+,& Ratio\_sign_i=+\\
@@ -487,7 +487,7 @@ $$Price\_s=\left(Lim\_sell_i-\sum_{i \neq isfirst}
 	       \end{cases} 
                  ratio\_s_{isfirst} - k_{isfirst}$$
 
-$$Price\_b=\left(Lim\_buy_i-\sum_{i \neq isfirst}
+$$Price\_b=\left(Lim\_buy-\sum_{i \neq isfirst}
 \begin{cases}-bid_i,& On\enspace buy_i=Sell\\
                      offer_i,& On\enspace buy_i=Buy\end{cases} 
         \begin{cases}+,& Ratio\_sign_i=+\\
