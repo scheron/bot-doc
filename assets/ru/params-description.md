@@ -314,7 +314,7 @@ $Pos=[\frac{Curpos_{first}}{Count_{first}}],$
 
 где Curpos<sub>first</sub> и Count<sub>first</sub> - это параметры [Curpos](params-description.md#s.pos) и [Count](params-description.md#s.count) для инструмента портфеля с взведенным флагом [Is first](params-description.md#s.is_first), и округляется вверх или вниз в зависимости от значения параметра [n_perc_fill](params-description.md#p.n_perc_fill). Изменяется роботом, но может быть отредактирована пользователем вручную.
 
-### Timetable <Anchor :ids="['p.use_tt', 'p.trading_days']" />
+### Timetable <Anchor :ids="['p.use_tt', 'p.trading_days', 'p.begin', 'p.end', 'p.a_sell', 'p.a_buy', 'p.auto_to0', 'p.auto_close', 'p.save_history', 'p.auto_to_market']" />
 
 Использовать торговлю по расписанию. Расписание состоит из списка дней недели (с понедельника по воскресенье, параметр `TradingDays`), из которых неодходимо выбрать те дни, в которые будет осуществляться торговля, и списка торговых периодов (периоды одни и те же для всех торговых дней), для каждого из периодов задаются свои параметры:
 
@@ -474,7 +474,7 @@ ratio_1 + k_1$$
 
 Формулы расчета `Price_s` и `Price_b` для любого количества ног:
    
-$$Price\_s=\left(Lim\_sell_i-\sum_{i \neq isfirst}
+$$Price\_s=\left(Lim\_sell-\sum_{i \neq isfirst}
 \begin{cases}bid_i,& On\enspace buy_i=Buy\\
                   -offer_i,& On\enspace buy_i=Sell\end{cases} 
         \begin{cases}+,& Ratio\_sign_i=+\\
@@ -487,7 +487,7 @@ $$Price\_s=\left(Lim\_sell_i-\sum_{i \neq isfirst}
 	       \end{cases} 
                  ratio\_s_{isfirst} - k_{isfirst}$$
 
-$$Price\_b=\left(Lim\_buy_i-\sum_{i \neq isfirst}
+$$Price\_b=\left(Lim\_buy-\sum_{i \neq isfirst}
 \begin{cases}-bid_i,& On\enspace buy_i=Sell\\
                      offer_i,& On\enspace buy_i=Buy\end{cases} 
         \begin{cases}+,& Ratio\_sign_i=+\\
@@ -717,7 +717,7 @@ secs - список инструментов портфеля.
 
 ### Ratio type <Anchor :ids="['s.ratio_type']" />
 
-Позволяет настроить использование константного значения `Ratio` или результат вычисления `Ratio formula` при расчёте значений [Sell](params-description.md#p.sell) и [Buy](params-description.md#p.buy).
+Позволяет настроить использование константного значения `Ratio` или результат вычисления `Ratio formula` при расчёте значений [Sell](params-description.md#p.sell) и [Buy](params-description.md#p.buy). При выборе `Ratio formula` рекомендуется использовать так же флаг [Custom trade](params-description.md#p.custom_trade) и задавать формулу для расчёта раздвижки [Trade forula](params-description.md#p.trade_formula), в противном случае раздвижка в виджетах [Finres for today](interface.md#finres_for_today) и [Finres history](interface.md#finres_history) будет посчитана не по ценам сделок, а по текущим рыночным ценам.
 
 ### Ratio buy formula <Anchor :ids="['s.ratio_b_formula']" />
 

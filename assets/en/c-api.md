@@ -741,7 +741,7 @@ If `schedule` is set, it represents a list of non-overlapping time intervals. Ea
 | Constructor                                | Description                                                                 |
 |--------------------------------------------|-----------------------------------------------------------------------------|
 | schedule()                                 | Creates an empty schedule.                                                  |
-| schedule(std::vector&lt;interval&gt; sch)  | Creates a schedule initialized with a list of non-overlapping intervals sorted in ascending order. If intervals overlap or are unsorted, a `std::invalid_argument` exception is thrown. |
+| schedule(const std::vector&lt;interval&gt;& sch)  | Creates a schedule initialized with a list of non-overlapping intervals sorted in ascending order. If intervals overlap or are unsorted, a `std::invalid_argument` exception is thrown. |
 | schedule(const schedule& sch)              | Copy constructor.                                                           |
 
 **Methods of `schedule`:**
@@ -784,8 +784,8 @@ where:
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | SMA()                              | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| SMA(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| SMA(schedule sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
+| SMA(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| SMA(const schedule& sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 
@@ -825,8 +825,8 @@ where:
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | EMA()                              | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| EMA(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| EMA(schedule sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
+| EMA(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| EMA(const schedule& sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 
@@ -866,8 +866,8 @@ where:
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | Max()                              | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| Max(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| Max(schedule sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
+| Max(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| Max(const schedule& sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 
@@ -906,8 +906,8 @@ where:
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | Min()                              | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| Min(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| Min(schedule sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
+| Min(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| Min(const schedule& sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 
@@ -947,8 +947,8 @@ where:
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | Var()                              | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| Var(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| Var(schedule sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
+| Var(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| Var(const schedule& sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 
@@ -988,8 +988,8 @@ where:
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | StdDev()                           | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| StdDev(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| StdDev(schedule sch)               | Creates an object with a schedule and portfolio `TradingDays`.               |
+| StdDev(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| StdDev(const schedule& sch)               | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 
@@ -1035,8 +1035,8 @@ where:
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | BB()                               | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| BB(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| BB(schedule sch)                   | Creates an object with a schedule and portfolio `TradingDays`.               |
+| BB(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| BB(const schedule& sch)                   | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 
@@ -1100,8 +1100,8 @@ $L_{t} = \begin{cases}
 | Constructor                        | Description                                                                 |
 |------------------------------------|-----------------------------------------------------------------------------|
 | RSI()                              | Creates an object with an empty schedule and portfolio `TradingDays`.        |
-| RSI(std::vector&lt;interval&gt; sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
-| RSI(schedule sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
+| RSI(const std::vector&lt;interval&gt;& sch) | Creates an object with a schedule and portfolio `TradingDays`.               |
+| RSI(const schedule& sch)                  | Creates an object with a schedule and portfolio `TradingDays`.               |
 
 ---
 

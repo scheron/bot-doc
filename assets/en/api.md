@@ -433,7 +433,7 @@ Example:
 ```
 </details>    
 
-### Get List of Available Portfolios with "Save History" Enabled <Anchor :ids="['get-portfolios-history']" />
+### Get List of Available Portfolios with “Save History” Enabled <Anchor :ids="['get-portfolios-history']" />
 
 <details>
 <summary>Subscription</summary>
@@ -528,7 +528,7 @@ Example:
 
 ### Add Portfolio
 
-Add a portfolio to the bot
+Add a portfolio to the bot. It's important to understand that some of the fields specified when creating a portfolio are not user settings, but rather contain exchange-related or service information. The correct values for these parameters can be obtained using other API requests, such as the [request for a list of financial instruments](api.md#get_securities). The API allows you to add a portfolio with inconsistent data in terms of information about exchange instruments. Successfully adding a portfolio does NOT guarantee that all fields are specified correctly, or at least consistently. The API user is solely responsible for the correctness of the parameter values ​​specified.
 
 <details>
 <summary>Request</summary>
@@ -1873,7 +1873,7 @@ Example:
 ```
 </details>    
 
-### Flatten Portfolio "To Market"
+### Flatten Portfolio “To Market”
 
 Flatten the portfolio "to market" — re-submit all active orders at market price and hedge any unhedged positions.
 
@@ -2363,6 +2363,8 @@ Example:
 </details>    
 
 ## Portfolio Field Change History <Anchor :ids="['portfolio-history']"/>
+
+On the website, these methods are used to display information in the [Portfolios historical chart](interface.md#portfolios_historical_chart) widget and can only be used if history saving is enabled for a specific portfolio.
 
 In this section, a field value `v` equal to `-9007199254740992` (i.e. `-(1 << 53)`)  is treated as "missing value" and will not be displayed in the web interface or on charts.
 
@@ -6081,7 +6083,7 @@ Example:
 
 ## Financial Instruments
 
-### Request List of Financial Instruments
+### Request List of Financial Instruments <Anchor :ids="['get_securities']"/>
 
 Retrieve the list of financial instruments available in this bot
 
@@ -6586,7 +6588,7 @@ Example:
 ```
 </details>    
 
-## Market Data
+## Market Data connections
 
 ### Subscribe to Robot Market Data Connection Updates
 
@@ -9715,7 +9717,7 @@ Example:
 ```
 </details>    
 
-## Frontend
+## Templates
 
 ### Request Object Template ID <Anchor :ids="['get_template_id']"/>
 
@@ -13049,7 +13051,7 @@ Example:
 ```
 </details>    
 
-### Request Available "sec_type" List
+### Request Available “sec_type” List
 
 Retrieve the list of available sec_type values
 

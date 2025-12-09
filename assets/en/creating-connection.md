@@ -1233,6 +1233,10 @@ The client account name for JUST2TRADE.
 
 Password for the trading FIX connection; may be the same as the JUST2TRADE account password.
 
+### Client code <Anchor :ids="['tc.J2T.client_code']" />
+
+Client code is used when adding order. Most often, the value is a numeric identifier contained in the client`s login. Since the value of this field does not affect connection authentication, you should try adding order to verify that this field is set correctly.
+
 ### Use SSL/TLS <Anchor :ids="['tc.J2T.secure']" />
 
 A flag indicating whether SSL/TLS encryption should be used. Information about whether encryption is enabled for a given login is provided by the broker.
