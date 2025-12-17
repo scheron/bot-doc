@@ -1213,6 +1213,8 @@ The IP address from which the connection to the exchange will be established. Th
 
 The robot supports only FIX connectivity to the broker JUST2TRADE.
 
+Due to the specifics of this connection, full setup is only possible after contacting technical support.
+
 ### Name <Anchor :ids="['tc.J2T.name']" />
 
 A field for setting the connection name. This value is set for convenience, to make it easier to identify the connection in the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`.
