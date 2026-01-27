@@ -6,6 +6,22 @@ ignore-section-number: true
 
 # История изменений
 
+## 2026-01-27
+
+- Добавлена возможность добавлять IP-адреса в [белый список](getting-started.md#ip_wl) для подключения к нашей платформе.
+
+## 2026-01-16
+
+- Отключена проверка статусов бумаг для подключения [SPB](creating-connection.md#spb).
+
+## 2026-01-14
+
+- В подключении [EXANTE](creating-connection.md#exante) добавлены [коды типов инструментов](creating-connection.md#tc.EXANTE.cfi_codes).
+
+## 2025-10-21
+
+- Изменена логика рассчёта [Сount](params-description.md#s.count) для [Ctrader](creating-connection.md#ctrader).
+
 ## 2025-09-26
 
 - Добавлен [дневной лимит виртуальных сделок](params-description.md#virt_tr_daily_limit), совершенных роботом.
