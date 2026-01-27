@@ -1,4 +1,4 @@
----
+--
 title: 11. WebSocket API
 section: 11
 ---
@@ -152,6 +152,7 @@ Payload:
 | > roles | y | array | user_role | Array of available user roles |
 | >> [] | y | string | user_role | Available user role |
 | > can_hide_notifs | y | boolean |  | User can hide notifications "gnerated" by another user |
+| > ip | y | string |  | Connection source IP |
 | > just_registered | n | boolean |  | User was just registered |
 
 Example:
@@ -163,6 +164,7 @@ Example:
 	{
 		"e":"test@test.com",
 		"lang":"en",
+		"ip":"127.0.0.1",
 		"active_role":"trader",
 		"roles":["demo", "trader"]
 	},
@@ -14473,6 +14475,7 @@ Payload:
 | > enable_api | y | boolean |  | Enable API flag |
 | > enable_2fa | y | boolean |  | Enable 2FA flag |
 | > tgr | y | number |  | Telegram ID |
+| > wl_ips | y | array |  | List of white list IPs as list of strings (empty list means all IPs are allowed) |
 | > hide_not_my_notifs | y | boolean |  | Hide notifications "generated" by another user |
 
 Example:
@@ -14480,7 +14483,7 @@ Example:
 ```json
 {
   "type": "user.subscribe",
-  "data": { "tgr": 214020169, "enable_api": true, "api_key": "******", "enable_2fa": false },
+  "data": { "tgr": 214020169, "enable_api": true, "api_key": "******", "enable_2fa": false, "wl_ips":[] },
   "r": "s",
   "eid": "q0",
   "ts": 1694072105955648388
@@ -14504,6 +14507,7 @@ Payload:
 | > enable_api | n | boolean |  | Enable API flag |
 | > enable_2fa | n | boolean |  | Enable 2FA flag |
 | > tgr | n | number |  | Telegram ID |
+| > wl_ips | n | array |  | List of white list IPs as list of strings (empty list means all IPs are allowed) |
 | > hide_not_my_notifs | n | boolean |  | Hide notifications "generated" by another user |
 
 Example:
@@ -14649,6 +14653,7 @@ Payload:
 | > api_key | n | string |  | API key |
 | > enable_api | n | boolean |  | Enable API flag |
 | > tgr | n | number |  | Telegram ID |
+| > wl_ips | n | array |  | List of white list IPs as list of strings (empty list means all IPs are allowed) |
 | > hide_not_my_notifs | n | boolean |  | Hide notifications "generated" by another user |
 | > 2fa | n | string_6 |  | 2FA token for API key operations confirmation |
 
@@ -14678,6 +14683,7 @@ Payload:
 | > api_key | n | string |  | API key |
 | > enable_api | n | boolean |  | Enable API flag |
 | > tgr | n | number |  | Telegram ID |
+| > wl_ips | n | array |  | List of white list IPs as list of strings (empty list means all IPs are allowed) |
 | > hide_not_my_notifs | n | boolean |  | Hide notifications "generated" by another user |
 
 Example:
@@ -14920,4 +14926,4 @@ Example:
 | symbol_find_state | number | Integer value, enum: 0 — unknown, 1 — searching, 2 — found, 3 — expired, 4 — error |
 | tgr_notification | number | 1 — TGR_ORDER (Order rejection errors leading to trading suspension),<br> 2 — TGR_ERROR (Errors from logging in formulas), <br> 4 — TGR_NOTIFICATION (Notifications from the algorithm) |
 | log_level | number | 0 — LEVEL_DEBUG, Green (typically indicates user-initiated edits or modifications to the robot) <br> 1 — LEVEL_INFO, Blue <br> 2 — LEVEL_WARNING, Yellow <br> 3 — LEVEL_ERROR, Red (Indicates an order add or cancel error; always logged by the algorithm) <br> 4 — LEVEL_CRITICAL, Red (the robot received incorrect JSON data, the operation is unavailable, or the API key has expired) <br> 5 — LEVEL_ORDER, Red (indicates an order add error that results in trading suspension; this message is sent to Telegram) <br> 7 — LEVEL_NOTIFICATION, Light green (notifications from the algorithm; sent to Telegram) <br> 10 — LEVEL_SHOW_OK, Green (message always appears as a popup notification) <br> 11 — LEVEL_SHOW_ERR, Red (message always appears as a popup notification) <br> 12 — LEVEL_SHOW_WARN, Yellow (message always appears as a popup notification) |
-| err_code | number | Integer value, enum: <br> 1 — Already authorized, <br> 2 — Authorization error or email not verified, <br> 3 — Not authorized, <br> 4 — Wrong message parameters, <br> 5 — There is no "{role}" in user roles, <br> 6 — Unexpected message type or bad message format, <br> 7 — Duplicate subscription eid, <br> 8 — User not found, <br> 9 — Robot "{r_id}" was not found, <br> 10 — Portfolio "{p_id}" was not found in robot "{r_id}", <br> 11 — Can not connect to robot "{r_id}", <br> 12 — Can not add portfolio, "{p_id}" already exists in robot "{r_id}", <br> 13 — Can not perform operation on disabled portfolio "{p_id}”, <br> 14 — Quantity should be positive, <br> 15 — Wrong command, <br> 16 — Not provided, <br> 17 — Service is overloaded, <br> 18 — Internal error, <br> 19 — Can not restart robot while it is disconnected or if it is trading <br> 20 — Robot "{r_id}" is not exist, <br> 21 — Wrong connection parameters, <br> 22 — Robot "{r_id}" already exists, <br> 23 — Robot "{r_id}" is locked, try again later, <br> 24 — Company "{c_id}" was not found, <br> 26 — Can not perform operation on connected robot "{r_id}”, <br> 27 — 2FA is already enabled, <br> 28 — 2FA is already disabled, <br> 29 — Too many 2FA attempts, try again in {timeout} seconds, <br> 30 — Wrong 2FA key, <br> 31 — Too many active 2FA fingerprints. Please use one of your active sessions to manage and remove old sessions. You can find these settings in Settings->Security, <br> 32 — 2FA secret was not generated or already expired, <br> 33 — API key sessions limit exceeded, <br> 555 — Permission denied, <br> 666 — Operation timeout, <br> 777 — Other error from robot |
+| err_code | number | Integer value, enum: <br> 1 — Already authorized, <br> 2 — Authorization error or email not verified, <br> 3 — Not authorized, <br> 4 — Wrong message parameters, <br> 5 — There is no "{role}" in user roles, <br> 6 — Unexpected message type or bad message format, <br> 7 — Duplicate subscription eid, <br> 8 — User not found, <br> 9 — Robot "{r_id}" was not found, <br> 10 — Portfolio "{p_id}" was not found in robot "{r_id}", <br> 11 — Can not connect to robot "{r_id}", <br> 12 — Can not add portfolio, "{p_id}" already exists in robot "{r_id}", <br> 13 — Can not perform operation on disabled portfolio "{p_id}”, <br> 14 — Quantity should be positive, <br> 15 — Wrong command, <br> 16 — Not provided, <br> 17 — Service is overloaded, <br> 18 — Internal error, <br> 19 — Can not restart robot while it is disconnected or if it is trading <br> 20 — Robot "{r_id}" is not exist, <br> 21 — Wrong connection parameters, <br> 22 — Robot "{r_id}" already exists, <br> 23 — Robot "{r_id}" is locked, try again later, <br> 24 — Company "{c_id}" was not found, <br> 26 — Can not perform operation on connected robot "{r_id}”, <br> 27 — 2FA is already enabled, <br> 28 — 2FA is already disabled, <br> 29 — Too many 2FA attempts, try again in {timeout} seconds, <br> 30 — Wrong 2FA key, <br> 31 — Too many active 2FA fingerprints. Please use one of your active sessions to manage and remove old sessions. You can find these settings in Settings->Security, <br> 32 — 2FA secret was not generated or already expired, <br> 33 — API key sessions limit exceeded, <br> 36 — There is no "{ip}" in user white list IPs, <br> 37 — Bad IP "{ip}" format, <br> 555 — Permission denied, <br> 666 — Operation timeout, <br> 777 — Other error from robot |
