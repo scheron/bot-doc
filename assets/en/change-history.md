@@ -6,6 +6,22 @@ ignore-section-number: true
 
 # Change Log
 
+## 2026-01-27
+
+- Added the ability to add IP addresses to the [whitelist](getting-started.md#ip_wl) for connecting to our platform.
+
+## 2026-01-16
+
+- Disabled security status checking for the [SPB](creating-connection.md#spb) connection.
+
+## 2026-01-14
+
+- Added [instrument type codes](creating-connection.md#tc.EXANTE.cfi_codes) to the [EXANTE](creating-connection.md#exante) connection.
+
+## 2025-10-21
+
+- Changed the [Count](params-description.md#s.count) calculation logic for [Ctrader](creating-connection.md#ctrader).
+
 ## 2025-09-26
 
 - Added [daily limit of virtual trades](params-description.md#virt_tr_daily_limit) executed by the robot.
