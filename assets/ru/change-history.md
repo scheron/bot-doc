@@ -8,19 +8,19 @@ ignore-section-number: true
 
 ## 2026-01-27
 
-- Добавлена возможность добавлять IP-адреса в [белый список](getting-started.md#ip_wl) для подключения к нашей платформе.
+- Добавлена возможность ограничения доступа к платформе за счёт разрешения доступа только для ip-адресов из [белого списка](getting-started.md#ip_wl).
 
 ## 2026-01-16
 
-- Отключена проверка статусов бумаг для подключения [SPB](creating-connection.md#spb).
+- Отключена проверка статусов бумаг для подключения [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), [ITS](creating-connection.md#its).
 
 ## 2026-01-14
 
-- В подключении [EXANTE](creating-connection.md#exante) добавлены [коды типов инструментов](creating-connection.md#tc.EXANTE.cfi_codes).
+- В настройках подключения [EXANTE](creating-connection.md#exante) добавлено поле с [кодами типов инструментов](creating-connection.md#tc.EXANTE.cfi_codes).
 
 ## 2025-10-21
 
-- Изменена логика рассчёта [Сount](params-description.md#s.count) для [Ctrader](creating-connection.md#ctrader).
+- Внесены изменения в подключение [Ctrader](creating-connection.md#ctrader).
 
 ## 2025-09-26
 
