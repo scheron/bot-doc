@@ -199,7 +199,8 @@ To enhance user account security on the platform, two-factor authentication (2FA
 
 ## IP address whitelist. <Anchor :ids="['ip_wl']" />
 
-Access to the robot settings can be restricted by a list of trusted IP addresses.
+For greater security, you can restrict access to the platform from your login by specifying the IP addresses from which access is permitted.
+Logging in as your user from a different IP address will be impossible.
 
 ![Doc](@images/wl_ips.jpg)
 
@@ -209,7 +210,7 @@ You must define a list of IP addresses from which access is required, then enter
 
 When the menu opens, the IP address currently connected will be detected and you will be prompted to immediately add it to the list.
 
-If the list is empty, access is allowed to everyone. If at least one IP address is on the list, access is allowed only from that IP address.
+If the list is empty, access is permitted from any IP address. If at least one IP address is on the list, access is allowed only from that IP address.
 
 The list can contain up to 10 IP addresses.
 
