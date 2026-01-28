@@ -125,7 +125,7 @@ The value of this parameter is provided by the broker.
 
 #### Password <Anchor :ids="['tc.MOEX_FOND.password']" />
 
-**Important:** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about password changes can be found in the robot's log.
+**Important!** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about password changes can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -177,7 +177,7 @@ The value of this parameter is provided by the broker.
 
 #### Password <Anchor :ids="['tc.MOEX_FOND.TWIME.password']" />
 
-**Important:** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
+**Important!** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -260,7 +260,7 @@ The value of this parameter is provided by the broker.
 
 Password for this FIX connection. If not changed, use the default one shown in the input field.
 
-**Important:**  when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
+**Important!**  when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -314,7 +314,7 @@ The value of this parameter is provided by the broker.
 
 #### Password <Anchor :ids="['tc.MOEX_CURR.TWIME.password']" />
 
-**Important:** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
+**Important!** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -407,7 +407,7 @@ Order book stream. We recommend NOT enabling it simultaneously with the Top of b
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
-**Important:** This connection does not check security statuses when submitting orders. When portfolio trading is enabled, security status is not checked when the conditions for submitting an order are met. This may result in an order being submitted when the security is not trading. To prevent this, we recommend setting up a schedule for portfolios using this connection.
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
 
 #### Name <Anchor :ids="['tc.SPB.name']" />
 
@@ -464,14 +464,22 @@ The robot supports only FIX connections to the EXANTE broker. When adding a tran
 
 ### CFI codes <Anchor :ids="['tc.EXANTE.cfi_codes']" />
 
-Code types of instruments to be traded. By default, codes for all instruments except options are specified. The current list of code options can be found in the [EXANTE documentation](https://api.exante.eu/fix-api/specification/#tag/Instrument-Identification):
+The instrument list will be generated only for those instruments that match the specified codes. By default, codes for all instruments except options are specified. The current list of code options can be found in the [EXANTE documentation](https://api.exante.eu/fix-api/specification/#tag/Instrument-Identification):
+
 `MRCXXX` - Cash, FOREX;
+
 `EXXXXX` - Stocks;
+
 `EUXXXX` - Funds;
+
 `DBXXXX` - Bonds;
+
 `FXXXXX` - Futures;
+
 `FMXXXX` - Calendar spreads;
+
 `OCXXXX` - Call options;
+
 `OPXXXX` - Put options.
 
 ### Name <Anchor :ids="['tc.EXANTE.name']" />
@@ -735,7 +743,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 `binancefut_listen_top` - full-featured connection without the order book, providing only best bid and ask prices (`top of book`) with fast updates.
 
-**Important:**
+**Important!**
 
 - A "full-featured" connection means that enabling just this single stream is sufficient for the robot to operate properly.
 - It is strongly NOT recommended to enable both `top of book` and order book streams simultaneously in the same robot, as they are NOT synchronized and may cause various side effects (such as trading based on stale prices — where prices in the `top of book` stream differ from those in the order book). 
@@ -777,7 +785,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 `binancecm_listen_top` -  full-featured connection without the order book, providing only best bid and ask prices (`top of book`) with fast updates.
 
-**Important:**
+**Important!**
 
 - A "full-featured" connection means that enabling just this single stream is sufficient for the robot to operate properly.
 - It is strongly NOT recommended to enable both `top of book` and order book streams simultaneously in the same robot, as they are NOT synchronized and may cause various side effects (such as trading based on stale prices — where prices in the `top of book` stream differ from those in the order book). 
@@ -1100,7 +1108,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 The robot supports only FIX connections to the cTrader broker. When adding a transactional connection, two FIX connections are created: market data and transactional. Such a pair can be activated or deactivated only together — attempting to deactivate the market data connection will also deactivate the corresponding transactional connection, and vice versa.
 
-**Important:** Since the broker has instruments with fractional lot sizes, portfolios will be created with [Count](params-description.md#s.count) = 1e-8 for instruments with CTRADER. This applies to all instruments with fractional lot sizes. This is important to consider when setting up a portfolio, particularly when determining the value of the [Count](params-description.md#s.count) parameter. For example, if you enter 1 000 000 000 in the [Count](params-description.md#s.count) field (in this example, we're setting 1 portfolio unit), an order with a volume of 10 lots will be placed. The calculation is $1e-8 \times 1 000 000 000 = 10$. If we want to place an order with a volume of 1 lot, we can enter 100 000 000 $(1e-8 \times 100 000 000 = 1)$.
+**Important!** The lot size is not provided in the Ctrader FIX API, so the robot does not offer the ability to trade in instrument units; trading is performed in lots. For convenience, you can also switch to trading in lots in the Ctrader terminal itself.
 
 ### Name <Anchor :ids="['tc.CTRADER.name']" />
 
@@ -1152,6 +1160,8 @@ Order book stream. We recommend NOT enabling it simultaneously with the Top of b
 ### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
+
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
 
 #### Name <Anchor :ids="['tc.IMEX.name']" />
 
@@ -1213,6 +1223,8 @@ Order book feed. We recommend NOT enabling it simultaneously with the Top of Boo
 
 Please make sure you ordered a binary login, not a fixed one. Multiple simultaneous connections cannot be added to a single login.
 
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
+
 #### Name <Anchor :ids="['tc.ITS.name']" />
 
 A field for specifying the connection name. This value is provided for convenience, to make it easier to navigate the list of transaction connections. Allowed characters: `_ a-z A-Z 0-9`.
@@ -1268,6 +1280,8 @@ Order book feed. We recommend NOT enabling it simultaneously with the Top of Boo
 ### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
 
 Please make sure you ordered a binary login, not a fixed one. Multiple simultaneous connections cannot be added to a single login.
+
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
 
 #### Name <Anchor :ids="['tc.OREX.name']" />
 
