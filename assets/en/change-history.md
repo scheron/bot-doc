@@ -8,19 +8,19 @@ ignore-section-number: true
 
 ## 2026-01-27
 
-- Added the ability to add IP addresses to the [whitelist](getting-started.md#ip_wl) for connecting to our platform.
+- Added the ability to restrict access to the platform by allowing access only to IP addresses from the [whitelist](getting-started.md#ip_wl).
 
 ## 2026-01-16
 
-- Disabled security status checking for the [SPB](creating-connection.md#spb) connection.
+- Security status checking has been disabled for the [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), and [ITS](creating-connection.md#its) connections.
 
 ## 2026-01-14
 
-- Added [instrument type codes](creating-connection.md#tc.EXANTE.cfi_codes) to the [EXANTE](creating-connection.md#exante) connection.
+- A field with [instrument type codes](creating-connection.md#exante) has been added to the [EXANTE](creating-connection.md#exante) connection settings.
 
 ## 2025-10-21
 
-- Changed the [Count](params-description.md#s.count) calculation logic for [Ctrader](creating-connection.md#ctrader).
+- Changes have been made to the [Ctrader](creating-connection.md#ctrader) connection.
 
 ## 2025-09-26
 
