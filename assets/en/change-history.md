@@ -12,7 +12,7 @@ ignore-section-number: true
 
 ## 2026-01-16
 
-- Security status checking has been disabled for the [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), and [ITS](creating-connection.md#its) connections.
+- Disabled checking of security statuses for the next connections: [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), and [ITS](creating-connection.md#its) connections.
 
 ## 2026-01-14
 
