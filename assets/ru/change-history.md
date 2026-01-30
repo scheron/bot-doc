@@ -12,7 +12,7 @@ ignore-section-number: true
 
 ## 2026-01-16
 
-- Отключена проверка статусов бумаг для подключения [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), [ITS](creating-connection.md#its).
+- Отключена проверка статусов бумаг для следующих подключений: [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), [ITS](creating-connection.md#its).
 
 ## 2026-01-14
 
