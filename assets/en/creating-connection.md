@@ -464,7 +464,7 @@ The robot supports only FIX connections to the EXANTE broker. When adding a tran
 
 ### CFI codes <Anchor :ids="['tc.EXANTE.cfi_codes']" />
 
-The instrument list will be generated only for those instruments that match the specified codes. By default, codes for all instruments except options are specified. The current list of code options can be found in the [EXANTE documentation](https://api.exante.eu/fix-api/specification/#tag/Instrument-Identification):
+The instrument list will be generated only from those instruments that match the specified codes. By default, codes for all instruments except options are specified. The current list of code options can be found in the [EXANTE documentation](https://api.exante.eu/fix-api/specification/#tag/Instrument-Identification):
 
 `MRCXXX` - Cash, FOREX;
 
@@ -1356,10 +1356,6 @@ A flag indicating whether SSL/TLS encryption should be used. Information about w
 ### Bind IP <Anchor :ids="['tc.J2T.bind_ip']" />
 
 To clarify the IP address, please contact support. The address specified in this field should not be provided to the exchange as the server address.
-
-## SPIMEX
-
-Description is under development
 
 ## LMAX
 
