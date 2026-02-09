@@ -52,7 +52,16 @@ export default {
 
   methods: {
     formatHash(hash) {
-      return hash?.replace('#', '') || '';
+      if (!hash) return '';
+      const decoded = decodeURIComponent(hash.replace(/^#+/, ''));
+      return decoded;
+    },
+
+    findMatchingId(hash) {
+      const normalizedHash = this.formatHash(hash).toLowerCase();
+      if (!normalizedHash) return null;
+      
+      return this.ids.find(id => id.toLowerCase() === normalizedHash);
     },
 
     setupObserver() {
@@ -165,7 +174,8 @@ export default {
     },
 
     handleRouteChange(hash = this.$route.hash) {
-      if (!this.ids.includes(this.formatHash(hash))) return;
+      const matchingId = this.findMatchingId(hash);
+      if (!matchingId) return;
       
       this.initialScrollDone = false;
       
@@ -192,9 +202,9 @@ export default {
 
     setTimeout(() => {
       if (window.location.hash) {
-        const hash = this.formatHash(window.location.hash);
+        const matchingId = this.findMatchingId(window.location.hash);
 
-        if (this.ids.includes(hash)) {
+        if (matchingId) {
           this.initialScrollDone = false;
           this.openDetails();
           this.setupObserver();
