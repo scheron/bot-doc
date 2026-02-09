@@ -6,6 +6,22 @@ ignore-section-number: true
 
 # История изменений
 
+## 2026-01-27
+
+- Добавлена возможность ограничения доступа к платформе за счёт разрешения доступа только для ip-адресов из [белого списка](getting-started.md#ip_wl).
+
+## 2026-01-16
+
+- Отключена проверка статусов инструментов для следующих подключений: [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), [ITS](creating-connection.md#its).
+
+## 2026-01-14
+
+- В настройках подключения [EXANTE](creating-connection.md#exante) добавлено поле с [кодами типов инструментов](creating-connection.md#tc.EXANTE.cfi_codes).
+
+## 2025-10-21
+
+- Внесены изменения в подключение [Ctrader](creating-connection.md#ctrader).
+
 ## 2025-09-26
 
 - Добавлен [дневной лимит виртуальных сделок](params-description.md#virt_tr_daily_limit), совершенных роботом.

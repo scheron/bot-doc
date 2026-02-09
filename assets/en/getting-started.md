@@ -197,10 +197,23 @@ To enhance user account security on the platform, two-factor authentication (2FA
 
 **It is strongly recommended to set up two-factor authentication to enhance the security of your account.**
 
+## IP address whitelist. <Anchor :ids="['ip_wl']" />
 
+For greater security, you can restrict access to the platform from your login by specifying the IP addresses from which access is permitted.
+Logging in as your user from a different IP address will be impossible.
 
+![Doc](@images/wl_ips.jpg)
 
+This setting is located in the user menu, then the `Settings` section, and then `Security`.
 
+You must define a list of IP addresses from which access is required, then enter them in the `Enter IP address` field and click `Add`.
 
+When the menu opens, the IP address currently connected will be detected and you will be prompted to immediately add it to the list.
 
+If the list is empty, access is permitted from any IP address. If at least one IP address is on the list, access is allowed only from that IP address.
 
+The list can contain up to 10 IP addresses.
+
+After adding all the required IP addresses, save the changes by clicking the `Apply Changes` button.
+
+When applying an address list, all connections from a user not on the white list will be closed.

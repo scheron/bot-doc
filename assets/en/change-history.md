@@ -6,6 +6,22 @@ ignore-section-number: true
 
 # Change Log
 
+## 2026-01-27
+
+- Added the ability to restrict access to the platform by allowing access only to IP addresses from the [whitelist](getting-started.md#ip_wl).
+
+## 2026-01-16
+
+- Disabled checking of security statuses for the next connections: [SPB](creating-connection.md#spb), [OREX](creating-connection.md#orex), [IMEX](creating-connection.md#imex), and [ITS](creating-connection.md#its) connections.
+
+## 2026-01-14
+
+- A field with [instrument type codes](creating-connection.md#exante) has been added to the [EXANTE](creating-connection.md#exante) connection settings.
+
+## 2025-10-21
+
+- Changes have been made to the [Ctrader](creating-connection.md#ctrader) connection.
+
 ## 2025-09-26
 
 - Added [daily limit of virtual trades](params-description.md#virt_tr_daily_limit) executed by the robot.

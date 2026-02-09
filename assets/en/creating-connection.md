@@ -125,7 +125,7 @@ The value of this parameter is provided by the broker.
 
 #### Password <Anchor :ids="['tc.MOEX_FOND.password']" />
 
-**Important:** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about password changes can be found in the robot's log.
+**Important!** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about password changes can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -177,7 +177,7 @@ The value of this parameter is provided by the broker.
 
 #### Password <Anchor :ids="['tc.MOEX_FOND.TWIME.password']" />
 
-**Important:** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
+**Important!** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -260,7 +260,7 @@ The value of this parameter is provided by the broker.
 
 Password for this FIX connection. If not changed, use the default one shown in the input field.
 
-**Important:**  when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
+**Important!**  when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -314,7 +314,7 @@ The value of this parameter is provided by the broker.
 
 #### Password <Anchor :ids="['tc.MOEX_CURR.TWIME.password']" />
 
-**Important:** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
+**Important!** when creating a new connection, if the password does not meet certain criteria, the robot may automatically change the password. Information about the password change can be found in the robot's log.
 The current connection password can be viewed in the Trade connections widget when editing the connection: Trade connections settings (gear icon)-> Actions->Edit.
 
 For transactional connections to the equity and currency markets of Moscow Exchange, the robot automatically changes the password no more than once per month. Notification about password change can be found in the robot's log.
@@ -407,6 +407,8 @@ Order book stream. We recommend NOT enabling it simultaneously with the Top of b
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
+
 #### Name <Anchor :ids="['tc.SPB.name']" />
 
 A field for specifying the connection name. This value is set for convenience, to make it easier to identify the connection within the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`.
@@ -456,37 +458,29 @@ Used when multiple robots need to trade through the same transactional connectio
 
 This value must match the name of the shared memory segment used for message exchange. Clarify with support service.
 
-## ALOR OPEN API MOEX
-
-### Name <Anchor :ids="['tc.ALORMOEX.name']" />
-
-A field for specifying the connection name. This value is set for convenience, to make it easier to identify the connection within the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`
-
-### Refresh token <Anchor :ids="['tc.ALORMOEX.refresh_token_part']" />
-
-Token for API access.
-
-### Trading account(s) <Anchor :ids="['tc.ALORMOEX.client_code']" />
-
-Client's trading account
-
-## ALOR OPEN API SPB
-
-### Name <Anchor :ids="['tc.ALORSPB.name']" />
-
-A field for specifying the connection name. This value is set for convenience, to make it easier to identify the connection within the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`
-
-### Refresh token  <Anchor :ids="['tc.ALORSPB.refresh_token_part']" />
-
-Token for API access.
-
-### Trading account(s) <Anchor :ids="['tc.ALORSPB.client_code']" />
-
-Client's trading account
-
 ## EXANTE
 
 The robot supports only FIX connections to the EXANTE broker. When adding a transactional connection, two FIX connections are created: market data and transactional. Such a pair of connections can be activated or deactivated only together; that is, attempting to deactivate the market data connection will also deactivate the corresponding transactional connection, and vice versa. Since EXANTE broker can provide market data from a large number of exchanges, the [Exchange filter](creating-connection.md#exchange-filter) field—specifying the list of required exchanges—is mandatory. It is strongly recommended to include only those exchanges whose instruments you actually plan to use.
+
+### CFI codes <Anchor :ids="['tc.EXANTE.cfi_codes']" />
+
+The instrument list will be generated only from those instruments that match the specified codes. By default, codes for all instruments except options are specified. The current list of code options can be found in the [EXANTE documentation](https://api.exante.eu/fix-api/specification/#tag/Instrument-Identification):
+
+`MRCXXX` - Cash, FOREX;
+
+`EXXXXX` - Stocks;
+
+`EUXXXX` - Funds;
+
+`DBXXXX` - Bonds;
+
+`FXXXXX` - Futures;
+
+`FMXXXX` - Calendar spreads;
+
+`OCXXXX` - Call options;
+
+`OPXXXX` - Put options.
 
 ### Name <Anchor :ids="['tc.EXANTE.name']" />
 
@@ -749,7 +743,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 `binancefut_listen_top` - full-featured connection without the order book, providing only best bid and ask prices (`top of book`) with fast updates.
 
-**Important:**
+**Important!**
 
 - A "full-featured" connection means that enabling just this single stream is sufficient for the robot to operate properly.
 - It is strongly NOT recommended to enable both `top of book` and order book streams simultaneously in the same robot, as they are NOT synchronized and may cause various side effects (such as trading based on stale prices — where prices in the `top of book` stream differ from those in the order book). 
@@ -791,7 +785,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 `binancecm_listen_top` -  full-featured connection without the order book, providing only best bid and ask prices (`top of book`) with fast updates.
 
-**Important:**
+**Important!**
 
 - A "full-featured" connection means that enabling just this single stream is sufficient for the robot to operate properly.
 - It is strongly NOT recommended to enable both `top of book` and order book streams simultaneously in the same robot, as they are NOT synchronized and may cause various side effects (such as trading based on stale prices — where prices in the `top of book` stream differ from those in the order book). 
@@ -1114,6 +1108,8 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 The robot supports only FIX connections to the cTrader broker. When adding a transactional connection, two FIX connections are created: market data and transactional. Such a pair can be activated or deactivated only together — attempting to deactivate the market data connection will also deactivate the corresponding transactional connection, and vice versa.
 
+**Important!** The lot size is not provided in the Ctrader FIX API, so the robot does not offer the ability to trade in instrument units; trading is performed in lots. For convenience, you can also switch to trading in lots in the Ctrader terminal itself.
+
 ### Name <Anchor :ids="['tc.CTRADER.name']" />
 
 A field for specifying the connection name. This value is set for convenience, to make it easier to identify the connection within the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`.
@@ -1165,6 +1161,8 @@ Order book stream. We recommend NOT enabling it simultaneously with the Top of b
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
+
 #### Name <Anchor :ids="['tc.IMEX.name']" />
 
 A field for specifying the connection name. This value is set for convenience, to make it easier to identify the connection within the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`.
@@ -1185,10 +1183,6 @@ Trading account, taken from the exchange agreement. Multiple accounts can be add
 
 Participant identifier; defaults to 0. If this value does not work, clarify with the exchange.
 
-#### IMEX comment <Anchor :ids="['tc.IMEX.comment']" />
-
-Text comment added to every order submitted via this connection.
-
 #### Client ID <Anchor :ids="['tc.IMEX.client_id']" />
 
 Client code identifier, taken from the exchange agreement.
@@ -1206,6 +1200,122 @@ Used for routing orders to the appropriate liquidity pool; the correct value sho
 Client comment for orders.
 
 #### Bind IP <Anchor :ids="['tc.IMEX.bind_ip']" />
+
+The IP address from which the connection to the exchange will be established. The IP address must be specified in the agreement.
+
+## ITS
+
+### Market data (binary protocol)
+
+#### Definitions
+
+Financial instrument definition stream. For the connection to work, the Enable status must be set for this stream. In addition to instrument definitions, it also includes their trading statuses and price limits.
+
+#### Top of book
+
+Best buy and sell price stream. We recommend NOT enabling it simultaneously with the Orderbook stream.
+
+#### Orderbook
+
+Order book feed. We recommend NOT enabling it simultaneously with the Top of Book feed.
+
+### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
+
+Please make sure you ordered a binary login, not a fixed one. Multiple simultaneous connections cannot be added to a single login.
+
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
+
+#### Name <Anchor :ids="['tc.ITS.name']" />
+
+A field for specifying the connection name. This value is provided for convenience, to make it easier to navigate the list of transaction connections. Allowed characters: `_ a-z A-Z 0-9`.
+
+#### Login <Anchor :ids="['tc.ITS.login']" />
+
+The login for accessing the exchange is taken from the agreement with the exchange.
+
+#### Password <Anchor :ids="['tc.ITS.password']" />
+
+The password for accessing the exchange is taken from the agreement with the exchange.
+
+#### Trading account(s) <Anchor :ids="['tc.ITS.account']" />
+
+The trading account is taken from the agreement with the exchange. Multiple accounts can be added, separated by commas.
+
+#### Member ID <Anchor :ids="['tc.ITS.member_id']" />
+
+The trading participant ID is 0 by default. If it doesn’t work, you need to check with the exchange.
+
+#### Comment <Anchor :ids="['tc.ITS.comment']" />
+
+A text comment added to each request submitted by this connection.
+
+#### Client ID <Anchor :ids="['tc.ITS.client_id']" />
+
+Client code identifier, taken from the agreement with the exchange.
+
+#### Market ID <Anchor :ids="['tc.ITS.market_id']" />
+
+Used to route orders to the desired liquidity pool; the required value should be verified with the exchange.
+
+#### Bind IP <Anchor :ids="['tc.ITS.bind_ip']" />
+
+The IP address from which the connection to the exchange will be established. The IP address must be specified in the agreement.
+
+## OREX
+
+### Market data (binary protocol)
+
+#### Definitions
+
+Financial instrument definition stream. For the connection to work, the Enable status must be set for this stream. In addition to instrument definitions, it also includes their trading statuses and price limits.
+
+#### Top of book
+
+Best buy and sell price stream. We recommend NOT enabling it simultaneously with the Orderbook stream.
+
+#### Orderbook
+
+Order book feed. We recommend NOT enabling it simultaneously with the Top of Book feed.
+
+### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
+
+Please make sure you ordered a binary login, not a fixed one. Multiple simultaneous connections cannot be added to a single login.
+
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
+
+#### Name <Anchor :ids="['tc.OREX.name']" />
+
+A field for specifying the connection name. This value is provided for convenience, to make it easier to navigate the list of transaction connections. Allowed characters: `_ a-z A-Z 0-9`.
+
+#### Login <Anchor :ids="['tc.OREX.login']" />
+
+The login for accessing the exchange is taken from the agreement with the exchange.
+
+#### Password <Anchor :ids="['tc.OREX.password']" />
+
+The password for accessing the exchange is taken from the agreement with the exchange.
+
+#### Trading account(s) <Anchor :ids="['tc.OREX.account']" />
+
+The trading account is taken from the agreement with the exchange. Multiple accounts can be added, separated by commas.
+
+#### Member ID <Anchor :ids="['tc.OREX.member_id']" />
+
+The trading participant ID is 0 by default. If it doesn’t work, you need to check with the exchange.
+
+#### Comment <Anchor :ids="['tc.OREX.comment']" />
+
+A text comment added to each request submitted by this connection.
+
+#### Client ID <Anchor :ids="['tc.OREX.client_id']" />
+
+Client code identifier, taken from the agreement with the exchange.
+
+#### Market ID <Anchor :ids="['tc.OREX.market_id']" />
+
+Used to route orders to the desired liquidity pool; the required value should be verified with the exchange.
+
+#### Bind IP <Anchor :ids="['tc.OREX.bind_ip']" />
 
 The IP address from which the connection to the exchange will be established. The IP address must be specified in the agreement.
 
@@ -1246,10 +1356,6 @@ A flag indicating whether SSL/TLS encryption should be used. Information about w
 ### Bind IP <Anchor :ids="['tc.J2T.bind_ip']" />
 
 To clarify the IP address, please contact support. The address specified in this field should not be provided to the exchange as the server address.
-
-## SPIMEX
-
-Description is under development
 
 ## LMAX
 
