@@ -3668,6 +3668,8 @@ Payload:
 | >>> price | y | number |  | Price |
 | >>> buy_sell | y | number | direction | Direction |
 | >>> quantity | y | number |  | Integer quantity in number of portfolios |
+| >>> sb | y | number |  | Original `Sell`/`Buy` price |
+| >>> lim_sb | y | number |  | Original `Lim_Sell`/`Lim_Buy` price |
 | >>> virt | y | number |  | Is virtual row (1 — virtual, 0 — not virtual) |
 | >>> trs | y | array |  | Trades |
 | >>>> sk | y | string |  | SecKey |
@@ -3788,6 +3790,8 @@ Payload:
 | >>> price | y | number |  | Price |
 | >>> buy_sell | y | number | direction | Direction |
 | >>> quantity | y | number |  | Integer quantity in number of portfolios |
+| >>> sb | y | number |  | Original `Sell`/`Buy` price |
+| >>> lim_sb | y | number |  | Original `Lim_Sell`/`Lim_Buy` price |
 | >>> virt | y | number |  | Is virtual row (1 — virtual, 0 — not virtual) |
 | >>> trs | y | array |  | Trades |
 | >>>> sk | y | string |  | SecKey |
@@ -4058,6 +4062,8 @@ Payload:
 | >>> price | y | number |  | Price |
 | >>> buy_sell | y | number | direction | Direction |
 | >>> quantity | y | number |  | Integer quantity in number of portfolios |
+| >>> sb | y | number |  | Original `Sell`/`Buy` price |
+| >>> lim_sb | y | number |  | Original `Lim_Sell`/`Lim_Buy` price |
 | >>> virt | y | number |  | Is virtual row (1 — virtual, 0 — not virtual) |
 | >>> trs | y | array |  | Trades |
 | >>>> sk | y | string |  | SecKey |
@@ -4243,6 +4249,8 @@ Payload:
 | >>> price | y | number |  | Price |
 | >>> buy_sell | y | number | direction | Direction |
 | >>> quantity | y | number |  | Integer quantity in number of portfolios |
+| >>> sb | y | number |  | Original `Sell`/`Buy` price |
+| >>> lim_sb | y | number |  | Original `Lim_Sell`/`Lim_Buy` price |
 | >>> virt | y | number |  | Is virtual row (1 — virtual, 0 — not virtual) |
 | >>> trs | y | array |  | Trades |
 | >>>> sk | y | string |  | SecKey |
