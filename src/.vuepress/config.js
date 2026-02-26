@@ -38,7 +38,7 @@ module.exports = {
     }
   },
   themeConfig: {
-    logo: '/images/vkg_logo.svg',
+    logo: '/images/vkg_logo_en.svg',
     search: false,
     locales: {
       '/': {
@@ -141,7 +141,7 @@ module.exports = {
             link: '/en/docs/introduction'
           }
         ],
-        logo: '/images/vkg_logo.svg',
+        logo: '/images/vkg_logo_en.svg',
         repo: '',
         editLinks: false,
         docsDir: 'en/docs',

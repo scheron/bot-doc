@@ -16,5 +16,5 @@ features:
   details: Описание методов API для управления портфелями и роботами
   link: /docs/api.html
 
-footer: ФК Викинг | Copyright © 2010-2025
+footer: ФК Викинг | Copyright © 2010-2026
 ---

@@ -16,5 +16,5 @@ features:
   details: Description of API methods for managing portfolios and robots
   link: /en/docs/api.html
 
-footer: FC Viking | Copyright © 2010-2025
+footer: FC Viking | Copyright © 2010-2026
 ---
