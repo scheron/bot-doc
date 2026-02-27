@@ -6,6 +6,10 @@ ignore-section-number: true
 
 # Change Log
 
+## 2026-02-27
+
+- Changes have been made to the creation of [API keys](creating-connection.md#BINANCE.ws_id) for connecting [BINANCE](crearing-connection.md#BINANCE)
+
 ## 2026-01-27
 
 - Added the ability to restrict access to the platform by allowing access only to IP addresses from the [whitelist](getting-started.md#ip_wl).

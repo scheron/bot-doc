@@ -6,6 +6,10 @@ ignore-section-number: true
 
 # История изменений
 
+## 2026-02-27
+
+- Внесены изменения по созданию [API-ключей](creating-connection.md#BINANCE.ws_id) для подключения [BINANCE](crearing-connection.md#BINANCE)
+
 ## 2026-01-27
 
 - Добавлена возможность ограничения доступа к платформе за счёт разрешения доступа только для ip-адресов из [белого списка](getting-started.md#ip_wl).
