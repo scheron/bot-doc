@@ -8,7 +8,7 @@ ignore-section-number: true
 
 ## 2026-02-27
 
-- Changes have been made to the creation of [API keys](creating-connection.md#BINANCE.ws_id) for connecting [BINANCE](crearing-connection.md#BINANCE)
+- Updated the mechanism for creating [API keys](creating-connection.md#BINANCE.ws_id) to connect to [BINANCE](creating-connection.md#BINANCE)
 
 ## 2026-01-27
 
