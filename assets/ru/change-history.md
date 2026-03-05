@@ -6,9 +6,13 @@ ignore-section-number: true
 
 # История изменений
 
+## 2026-03-05
+
+
+
 ## 2026-02-27
 
-- Изменен механизм создания [API-ключей](creating-connection.md#BINANCE.ws_id) для подключения к [BINANCE](creating-connection.md#BINANCE)
+- Внесены измененеия в разделе описания [API-ключей](creating-connection.md#tc.BINANCE.ws_id) для подключения к [BINANCE](creating-connection.md#BINANCE)
 
 ## 2026-01-27
 
