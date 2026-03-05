@@ -8,7 +8,7 @@ ignore-section-number: true
 
 ## 2026-03-05
 
-- Поле `Buy/Sell` переименовано в `Direction`. Добавлены поля `Sell/Buy` и `Lim_S/Lim_B` в виджетах [Finres history](interface.md#finres_history) и [Finres for today](interface.md#finres_for_today).
+- Добавлены поля `Sell/Buy` и `Lim_S/Lim_B` в виджетах [Finres history](interface.md#finres_history) и [Finres for today](interface.md#finres_for_today). Поле `Buy/Sell` также переименовано в `Direction` в обоих виджетах.
 
 ## 2026-02-27
 
