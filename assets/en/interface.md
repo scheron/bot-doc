@@ -157,7 +157,9 @@ The main table of the widget includes the following columns:
 - **Robot** - robot identifier;
 - **Portfolio** - portfolio name;
 - **Price** - spread value calculated based on trade prices. Due to the robot’s focus on maximum speed, specific exchange connection characteristics, and trade aggregation on certain platforms, instead of the actual trade price, the displayed value may represent the order price, average execution price for the order, or the worst price among trades executed under that order; 
-- **Buy/Sell** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Direction** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Sell/Buy** - the calculated buy/sell price (if using the clicker, the fields remain empty);
+- **Lim_S/Lim_B** - the signal buy/sell price (if using the clicker, the fields remain empty);
 - **Quantity** - number of portfolios bought or sold;
 - **SL** - flag indicating whether all second-leg orders were filled immediately or had to be re-quoted due to stop-loss or timer.
 
@@ -177,7 +179,9 @@ The main table of the widget includes the following columns:
 - **Robot** - robot identifier;
 - **Portfolio** - portfolio name;
 - **Price** - spread value calculated based on trade prices. Due to the robot’s focus on maximum speed, specific exchange connection characteristics, and trade aggregation on certain platforms, instead of the actual trade price, the displayed value may represent the order price, average execution price for the order, or the worst price among trades executed under that order; 
-- **Buy/Sell** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Direction** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Sell/Buy** - the calculated buy/sell price (if using the clicker, the fields remain empty);
+- **Lim_S/Lim_B** - the signal buy/sell price (if using the clicker, the fields remain empty);
 - **Quantity** - number of portfolios bought or sold;
 - **SL** - flag indicating whether all second-leg orders were filled immediately or had to be re-quoted due to stop-loss or timer.
 
