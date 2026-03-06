@@ -6,9 +6,13 @@ ignore-section-number: true
 
 # Change Log
 
+## 2026-03-05
+
+- The `Sell/Buy` and `Lim_S/Lim_B` fields have been added to the [Finres history](interface.md#finres_history) and [Finres for today](interface.md#finres_for_today) widgets. The `Buy/Sell` field has been renamed to `Direction` in both widgets.
+
 ## 2026-02-27
 
-- Updated the mechanism for creating [API keys](creating-connection.md#BINANCE.ws_id) to connect to [BINANCE](creating-connection.md#BINANCE)
+- Changes have been made to the description of [API keys](creating-connection.md#tc.BINANCE.ws_id) for connecting to [BINANCE](creating-connection.md#BINANCE)
 
 ## 2026-01-27
 

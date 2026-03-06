@@ -6,9 +6,13 @@ ignore-section-number: true
 
 # История изменений
 
+## 2026-03-05
+
+- Добавлены поля `Sell/Buy` и `Lim_S/Lim_B` в виджетах [Finres history](interface.md#finres_history) и [Finres for today](interface.md#finres_for_today). Поле `Buy/Sell` также переименовано в `Direction` в обоих виджетах.
+
 ## 2026-02-27
 
-- Изменен механизм создания [API-ключей](creating-connection.md#BINANCE.ws_id) для подключения к [BINANCE](creating-connection.md#BINANCE)
+- Внесены измененеия в разделе описания [API-ключей](creating-connection.md#tc.BINANCE.ws_id) для подключения к [BINANCE](creating-connection.md#BINANCE)
 
 ## 2026-01-27
 

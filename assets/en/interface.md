@@ -157,7 +157,9 @@ The main table of the widget includes the following columns:
 - **Robot** - robot identifier;
 - **Portfolio** - portfolio name;
 - **Price** - spread value calculated based on trade prices. Due to the robot’s focus on maximum speed, specific exchange connection characteristics, and trade aggregation on certain platforms, instead of the actual trade price, the displayed value may represent the order price, average execution price for the order, or the worst price among trades executed under that order; 
-- **Buy/Sell** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Direction** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Sell/Buy** - the calculated sell/buy price at the time of placing an order for the [Is first](params-description.md#s.is_first) financial instrument. The value is entered according to the order direction. When using the clicker, the fields are left empty;
+- **Lim_S/Lim_B** - the signal sell/buy price at the time of placing an order for the [Is first](params-description.md#s.is_first) financial instrument. The value is entered according to the order direction. When using the clicker, the fields are left empty;
 - **Quantity** - number of portfolios bought or sold;
 - **SL** - flag indicating whether all second-leg orders were filled immediately or had to be re-quoted due to stop-loss or timer.
 
@@ -177,7 +179,9 @@ The main table of the widget includes the following columns:
 - **Robot** - robot identifier;
 - **Portfolio** - portfolio name;
 - **Price** - spread value calculated based on trade prices. Due to the robot’s focus on maximum speed, specific exchange connection characteristics, and trade aggregation on certain platforms, instead of the actual trade price, the displayed value may represent the order price, average execution price for the order, or the worst price among trades executed under that order; 
-- **Buy/Sell** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Direction** -  trading direction for the portfolio (same as the order direction on the first-leg instrument): `Buy` or `Sell`;
+- **Sell/Buy** - the calculated sell/buy price at the time of placing an order for the [Is first](params-description.md#s.is_first) financial instrument. The value is entered according to the order direction. When using the clicker, the fields are left empty;
+- **Lim_S/Lim_B** - the signal sell/buy price at the time of placing an order for the [Is first](params-description.md#s.is_first) financial instrument. The value is entered according to the order direction. When using the clicker, the fields are left empty;
 - **Quantity** - number of portfolios bought or sold;
 - **SL** - flag indicating whether all second-leg orders were filled immediately or had to be re-quoted due to stop-loss or timer.
 
