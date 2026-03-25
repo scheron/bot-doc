@@ -528,8 +528,8 @@ Methods of `coin_item`:
 | Function                                                                                         | Description                                                                 |
 |-------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | long long nanosec_date_time()                                                                   | Returns the current epoch time in nanoseconds in UTC time zone                              |
-| struct tm global_tm()                                                                           | Returns the current global time.                                            |
-| day_time get_day_time()                                                                         | Returns the current time of day.                                            |
+| struct tm global_tm()                                                                           | Returns the current local time on the server.                                            |
+| day_time get_day_time()                                                                         | Returns the current local time of day on the server.                                            |
 | void log_info(const std::string& msg) <Anchor hide :ids="['cpp-debug-functions']" />            | Sends a log message with level INFO.                                        |
 | void log_warn(const std::string& msg)                                                           | Sends a log message with level WARNING.                                     |
 | void log_error(const std::string& msg)                                                          | Sends a log message with level ERROR.                                       |
