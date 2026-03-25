@@ -697,7 +697,7 @@ Indicates that your account is a margin account. If enabling this flag, ensure y
 
 ### API Key <Anchor :ids="['tc.BINANCE.ws_id']" />
 
-Public API key for accessing the exchange API. Created in the user account on the exchange website together with the corresponding secret key. Located in account settings under API Management. The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
+Public API key for accessing the exchange API. Created together with the corresponding secret key. Located in account settings under API Management. The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
 
 - <details>
     <summary><i>How to generate an Ed25519 key pair for sending API requests to Binance<Anchor :ids="['creating-connection.api-key']" /></i></summary>
@@ -731,24 +731,27 @@ Public API key for accessing the exchange API. Created in the user account on th
 
     ![Alt text](@images/binance_6.png)
 
-    On Viking, use the middle part of the keys. For example, for the `API Key` field.
-  
-    Initial key::
-    ```
-    -----BEGIN PUBLIC KEY-----
-    MC6BNQAlBQYDK2VwBCIEIEDygO0EhhUR3kn+Dlwe5aZFxIkLaNDZggxey2bszX/y
-    -----END PUBLIC KEY-----
-    ```
-   What to use:
-    `MC6BNQAlBQYDK2VwBCIEIEDygO0EhhUR3kn+Dlwe5aZFxIkLaNDZggxey2bszX/y`
-  
-  Similarly, for `Secret` use the middle part from `PRIVATE KEY`
+    Once the key is added, a field with key settings and the `API key` itself will appear. The value from this field must be specified in the corresponding `API key` field when connecting to the Viking platform.
+
+    ![Alt text](@images/binance_7.png)
 
     </details>
 
 ### Secret <Anchor :ids="['tc.BINANCE.ws_secret_part']" />
 
-Secret API key for accessing the exchange API. Created in the user account on the exchange website together with the corresponding public key. Located in account settings under API Management. The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
+A secret key for accessing the exchange API. Created along with the corresponding [public key]('creating-connection.md#api-key').
+
+On the Viking platform, the middle part of the key is used for the `Secret` field. For example:
+
+Original key:
+
+    -----BEGIN PRIVATE KEY-----
+    MC4CAQAwBQYDK2VwBCIEIEjyvxn/KlnDFV5vneMEALsP7ZedYXCEbg5hL+utUfcZ
+    -----END PRIVATE KEY-----
+    
+Use:
+
+    MC4CAQAwBQYDK2VwBCIEIEjyvxn/KlnDFV5vneMEALsP7ZedYXCEbg5hL+utUfcZ
 
 ### Bind IP <Anchor :ids="['tc.BINANCE.bind_ip']" />
 
