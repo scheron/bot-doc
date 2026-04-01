@@ -1162,6 +1162,8 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 The robot supports only FIX connections to the cTrader broker. When adding a transactional connection, two FIX connections are created: market data and transactional. Such a pair can be activated or deactivated only together — attempting to deactivate the market data connection will also deactivate the corresponding transactional connection, and vice versa.
 
+Only one connection to Ctrader is allowed within a single robot, as different brokers may have different IDs for instruments, which can cause errors when placing orders.
+
 **Important!** The lot size is not provided in the Ctrader FIX API, so the robot does not offer the ability to trade in instrument units; trading is performed in lots. For convenience, you can also switch to trading in lots in the Ctrader terminal itself.
 
 ### Name <Anchor :ids="['tc.CTRADER.name']" />
