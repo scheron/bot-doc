@@ -683,6 +683,48 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 Connection to Binance exchange's Spot market in either Spot or Margin mode. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connection](getting-started.md#connection-setup). Transactional connection parameters are described below.
 
+To connect, you need to create the `Ed25519` key pair using the utility.
+
+The PUBLIC KEY must be specified on Binance itself when adding the key, and you will receive a ready-made [API key](creating-connection.md#tc.BINANCE.ws_id) value.
+
+The PRIVATE KEY must be specified on our platform in the [Secret](creating-connection.md#tc.BINANCE.ws_secret_part) field.
+
+<details>
+    <summary><i>How to generate an Ed25519 key pair for sending API requests to Binance<Anchor :ids="['creating-connection.api-key']" /></i></summary>
+Go to the official asymmetric key generator website to download and install the latest version: https://github.com/binance/asymmetric-key-generator/releases 
+      
+   ![Alt text](@images/binance_1.png)
+
+Launch the app, and you'll be able to select the key type to generate. Select `Ed25519`.
+
+![Alt text](@images/binance_2.png)
+
+   Create new private and public key pairs `Ed25519`. You can also paste an existing private key `Ed25519` into the text field, and the app will automatically generate a corresponding public key `Ed25519`.
+
+Next, you need to register a key on Binance.
+
+Log in to your Binance account and go to `Profile` - `API Management`. Click `Create API`.
+
+![Alt text](@images/binance_3.png)
+
+Select `Self-Generated` and click `Next`.
+
+![Alt text](@images/binance_4.png)
+
+Copy the public key `Ed25519`, generated using the asymmetric key generator and paste it into the registration field.
+
+![Alt text](@images/binance_5.png)
+
+Enter a name for your API key. Then click `Next` and complete two-factor authentication.
+
+![Alt text](@images/binance_6.png)
+
+Once the key is added, a field with key settings and the `API key` itself will appear. The value from this field must be specified in the corresponding `API key` field when connecting to the Viking platform.
+
+![Alt text](@images/binance_7.png)
+
+</details>
+
 ### Name <Anchor :ids="['tc.BINANCE.name']" />
 
 A field for specifying the connection name. This value is set for convenience, to make it easier to identify the connection within the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`
@@ -697,58 +739,23 @@ Indicates that your account is a margin account. If enabling this flag, ensure y
 
 ### API Key <Anchor :ids="['tc.BINANCE.ws_id']" />
 
-Public API key for accessing the exchange API. Created in the user account on the exchange website together with the corresponding secret key. Located in account settings under API Management. The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
-
-- <details>
-    <summary><i>How to generate an Ed25519 key pair for sending API requests to Binance<Anchor :ids="['creating-connection.api-key']" /></i></summary>
-    Go to the official asymmetric key generator website to download and install the latest version: https://github.com/binance/asymmetric-key-generator/releases 
-      
-   ![Alt text](@images/binance_1.png)
-
-    Launch the app, and you'll be able to select the key type to generate. Select `Ed25519`.
-
-    ![Alt text](@images/binance_2.png)
-
-   Create new private and public key pairs `Ed25519`. You can also paste an existing private key `Ed25519` into the text field, and the app will automatically generate a corresponding public key `Ed25519`.
-
-    Copy the keys or save the `Ed25519` keys to the files `Private_key.txt` и `Public_key.txt`.
-
-    Next, you need to register a key on Binance.
-
-    Log in to your Binance account and go to `Profile` - `API Management`. Click `Create API`.
-
-    ![Alt text](@images/binance_3.png)
-
-    Select `Self-Generated` and click `Next`.
-
-    ![Alt text](@images/binance_4.png)
-
-    Copy the public key `Ed25519`, generated using the asymmetric key generator and paste it into the registration field.
-
-     ![Alt text](@images/binance_5.png)
-
-    Enter a name for your API key. Then click `Next` and complete two-factor authentication.
-
-    ![Alt text](@images/binance_6.png)
-
-    On Viking, use the middle part of the keys. For example, for the `API Key` field.
-  
-    Initial key::
-    ```
-    -----BEGIN PUBLIC KEY-----
-    MC6BNQAlBQYDK2VwBCIEIEDygO0EhhUR3kn+Dlwe5aZFxIkLaNDZggxey2bszX/y
-    -----END PUBLIC KEY-----
-    ```
-   What to use:
-    `MC6BNQAlBQYDK2VwBCIEIEDygO0EhhUR3kn+Dlwe5aZFxIkLaNDZggxey2bszX/y`
-  
-  Similarly, for `Secret` use the middle part from `PRIVATE KEY`
-
-    </details>
+API key ID for accessing the exchange API. Located in account settings under [API Management]('creating-connection.md#api-key'). The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
 
 ### Secret <Anchor :ids="['tc.BINANCE.ws_secret_part']" />
 
-Secret API key for accessing the exchange API. Created in the user account on the exchange website together with the corresponding public key. Located in account settings under API Management. The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
+A secret key for accessing the exchange API. Created along with the corresponding [public key]('creating-connection.md#api-key').
+
+On the Viking platform, the middle part of the key is used for the `Secret` field. For example:
+
+Original key:
+
+    -----BEGIN PRIVATE KEY-----
+    MC4CAQAwBQYDK2VwBCIEIEjyvxn/KlnDFV5vneMEALsP7ZedYXCEbg5hL+utUfcZ
+    -----END PRIVATE KEY-----
+    
+Use:
+
+    MC4CAQAwBQYDK2VwBCIEIEjyvxn/KlnDFV5vneMEALsP7ZedYXCEbg5hL+utUfcZ
 
 ### Bind IP <Anchor :ids="['tc.BINANCE.bind_ip']" />
 
@@ -1154,6 +1161,8 @@ If the agreement does not require connection from a fixed IP address, set the va
 ## CTRADER
 
 The robot supports only FIX connections to the cTrader broker. When adding a transactional connection, two FIX connections are created: market data and transactional. Such a pair can be activated or deactivated only together — attempting to deactivate the market data connection will also deactivate the corresponding transactional connection, and vice versa.
+
+Only one connection to Ctrader is allowed within a single robot, as different brokers may have different IDs for instruments, which can cause errors when placing orders.
 
 **Important!** The lot size is not provided in the Ctrader FIX API, so the robot does not offer the ability to trade in instrument units; trading is performed in lots. For convenience, you can also switch to trading in lots in the Ctrader terminal itself.
 

@@ -503,9 +503,9 @@ Meтоды `coin_item`:
 
 | Функция                                                                                            | Описание                                      |
 |----------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| long long nanosec_date_time()                                                                      | получить текущее время в epoch в наносекундах |
-| struct tm global_tm()                                                                              | получить текущее время                        |
-| day_time get_day_time()                                                                            | получить текущее время дня                    |
+| long long nanosec_date_time()                                                                      | получить текущее время в epoch в наносекундах, в часовом поясе UTC |
+| struct tm global_tm()                                                                              | получить текущее локальное время на сервере                       |
+| day_time get_day_time()                                                                            | получить текущее локальное время дня на сервере                   |
 | void log_info(const std::string& msg) <Anchor hide :ids="['cpp-debug-functions']" />                    | отправить сообщение с уровнем INFO в лог      |
 | void log_warn(const std::string& msg)                                                              | отправить сообщение с уровнем WARNING в лог   |
 | void log_error(const std::string& msg)                                                             | отправить сообщение с уровнем ERROR в лог     |
