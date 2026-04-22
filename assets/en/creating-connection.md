@@ -739,11 +739,11 @@ Indicates that your account is a margin account. If enabling this flag, ensure y
 
 ### API Key <Anchor :ids="['tc.BINANCE.ws_id']" />
 
-API key ID for accessing the exchange API. Located in account settings under [API Management]('creating-connection.md#api-key'). The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
+API key ID for accessing the exchange API. Located in account settings under [API Management]('creating-connection.md#creating-connection.api-key'). The following permissions should be enabled: "Read Info", "Enable Trading". For margin trading, the "Enable Margin" permission should also be enabled. The key must be new and not used anywhere else previously.
 
 ### Secret <Anchor :ids="['tc.BINANCE.ws_secret_part']" />
 
-A secret key for accessing the exchange API. Created along with the corresponding [public key]('creating-connection.md#api-key').
+A secret key for accessing the exchange API. Created along with the corresponding [public key]('creating-connection.md#creating-connection.api-key').
 
 On the Viking platform, the middle part of the key is used for the `Secret` field. For example:
 
@@ -1120,7 +1120,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BYBIT
 
-Connection to Bybit exchange markets: Inverse Perpetual, USDT Perpetual, and Inverse Futures. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
+Connection to Bybit exchange markets: Inverse Perpetual, USDT Perpetual, and Inverse Futures. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. The account must be in `One-Way mode`. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BYBIT.name']" />
 
