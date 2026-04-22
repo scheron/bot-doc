@@ -44,6 +44,8 @@ The robot can be configured either to place second-leg orders after every first-
 
 All orders placed by the robot are limit quote orders on all supported exchanges.
 
+It is highly recommended not to manually remove orders submitted by a robot from the terminal, except in cases where the order is "stuck" in the robot, that is, when for some reason the robot no longer tracks this order.
+
 ## Brief Description of the Interface
 
 The main interface page consists of a set of table-widgets located in the dropdown menu `Widgets`. All widgets can be opened and closed in any quantity and order, except for the `Robot logs` widget, which is always open and only one instance is allowed. 
