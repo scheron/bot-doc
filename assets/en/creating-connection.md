@@ -1120,7 +1120,7 @@ If the agreement does not require connection from a fixed IP address, set the va
 
 ## BYBIT
 
-Connection to Bybit exchange markets: Inverse Perpetual, USDT Perpetual, and Inverse Futures. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
+Connection to Bybit exchange markets: Inverse Perpetual, USDT Perpetual, and Inverse Futures. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. The account must be in `One-Way mode`. Transactional connection parameters are described below.
 
 ### Name <Anchor :ids="['tc.BYBIT.name']" />
 
