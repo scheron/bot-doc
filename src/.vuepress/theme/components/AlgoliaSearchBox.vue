@@ -15,6 +15,11 @@
       @keyup.down="onDown"
       @keydown.esc="close"
     >
+    <div v-if="!focused && !query" class="search-hotkeys-wrapper" @click="$refs.input.focus()">
+    <kbd class="search-hotkey">{{ isMac ? '⌘' : 'Ctrl' }}</kbd>
+    <kbd class="search-hotkey">K</kbd>
+    </div>
+
     <ul
       v-if="showSuggestions"
       class="suggestions"
@@ -74,7 +79,8 @@ export default {
       hits: [],
       query: '',
       refineQuery: null,
-      searchInstance: null
+      searchInstance: null,
+      isMac: false
     }
   },
 
@@ -201,6 +207,7 @@ export default {
       ])
 
       this.searchInstance.start()
+      this.isMac = navigator.platform.toUpperCase().includes('MAC')
       document.addEventListener('keydown', this.onHotkey)
     },
 
@@ -323,9 +330,9 @@ export default {
     unfocus () { this.focusIndex = -1 },
 
     onHotkey (event) {
-      if (event.srcElement === document.body && ['s', '/'].includes(event.key)) {
-        this.$refs.input.focus()
+      if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
         event.preventDefault()
+        this.$refs.input.focus()
       }
     }
   }
@@ -358,6 +365,32 @@ export default {
       cursor auto
       border-color $accentColor
       width 20rem
+
+  .search-hotkeys-wrapper
+    position absolute
+    right 0.5rem
+    top 50%
+    transform translateY(-50%)
+    display inline-flex
+    align-items center
+    gap 0.25rem
+    cursor pointer
+
+  .search-hotkey
+    font-size 0.65rem
+    font-family inherit
+    color lighten($textColor, 50%)
+    background #f1f3f5
+    border 1px solid darken($borderColor, 5%)
+    border-radius 3px
+    height 1.3rem
+    padding 0 0.35rem
+    display inline-flex
+    align-items center
+    justify-content center
+    cursor pointer
+    pointer-events auto
+    white-space nowrap
 
   .suggestions
     background #fff
