@@ -12,7 +12,7 @@ Please note that not all parameters specified during trade connection setup are 
 
 ### TWIME и FIFO TWIME
 
-The robot supports connections via the TWIME protocol in both standard TWIME and FIFO TWIME modes. However, using FIFO TWIME requires additional network infrastructure. If you plan to use FIFO TWIME, please notify support in advance. They will deploy the robot on a server where infrastructure-level access to FIFO TWIME is available.
+The robot supports connections via the TWIME protocol in both standard TWIME and FIFO TWIME modes. However, using FIFO TWIME requires additional network infrastructure. If you plan to use FIFO TWIME, please [notify support](help@fkviking.ru) in advance. They will deploy the robot on a server where infrastructure-level access to FIFO TWIME is available.
 
 When creating the connection, the choice between TWIME and FIFO TWIME is made by selecting the appropriate [TWIME server](creating-connection.md#tc.MOEX_FUT_OPT.twime_server) address.
 
@@ -161,7 +161,7 @@ The IP address from which the connection to the exchange will be established. Th
 
 ### TWIME и FIFO TWIME
 
-TWIME is a binary protocol, a faster alternative to the FIX protocol. The robot supports connections via the TWIME protocol in both TWIME and FIFO TWIME variants. However, using FIFO TWIME requires additional network infrastructure, so if you plan to use FIFO TWIME, please notify support staff in advance—they will place the robot on a server where such connectivity is supported at the infrastructure level. When creating a connection, the choice between TWIME and FIFO TWIME is made by selecting the appropriate [TWIME server](creating-connection.md#tc.MOEX_FOND.TWIME.twime_server) address to connect to.
+TWIME is a binary protocol, a faster alternative to the FIX protocol. The robot supports connections via the TWIME protocol in both TWIME and FIFO TWIME variants. However, using FIFO TWIME requires additional network infrastructure, so if you plan to use FIFO TWIME, please [notify support staff](help@fkviking.ru) in advance—they will place the robot on a server where such connectivity is supported at the infrastructure level. When creating a connection, the choice between TWIME and FIFO TWIME is made by selecting the appropriate [TWIME server](creating-connection.md#tc.MOEX_FOND.TWIME.twime_server) address to connect to.
 
 #### Name <Anchor :ids="['tc.MOEX_FOND.TWIME.name']" />
 
@@ -298,7 +298,7 @@ The IP address from which the connection to the exchange will be established. Th
 
 ### TWIME и FIFO TWIME
 
-TWIME is a binary protocol, a faster alternative to the FIX protocol. The robot supports connections via the TWIME protocol in both TWIME and FIFO TWIME variants. However, using FIFO TWIME requires additional network infrastructure, so if you plan to use FIFO TWIME, please notify support staff in advance—they will place the robot on a server where such connectivity is supported at the infrastructure level. When creating a connection, the choice between TWIME and FIFO TWIME is made by selecting the appropriate [TWIME server](creating-connection.md#tc.MOEX_CURR.TWIME.twime_server) address to conncet to.
+TWIME is a binary protocol, a faster alternative to the FIX protocol. The robot supports connections via the TWIME protocol in both TWIME and FIFO TWIME variants. However, using FIFO TWIME requires additional network infrastructure, so if you plan to use FIFO TWIME, please [notify support staff](help@fkviking.ru) in advance—they will place the robot on a server where such connectivity is supported at the infrastructure level. When creating a connection, the choice between TWIME and FIFO TWIME is made by selecting the appropriate [TWIME server](creating-connection.md#tc.MOEX_CURR.TWIME.twime_server) address to conncet to.
 
 #### Name <Anchor :ids="['tc.MOEX_CURR.TWIME.name']" />
 
@@ -452,11 +452,11 @@ The IP address from which the connection to the exchange will be established. Th
 
 ### Proxy connection to the transactional gateway using binary protocol
 
-Used when multiple robots need to trade through the same transactional connection (i.e., under a single login). Configured by support staff using parameters provided by the user. Parameters are the same as for [Binary Trading connection](creating-connection.md#binary-protocol-gateway).
+Used when multiple robots need to trade through the same transactional connection (i.e., under a single login). Configured by [support staff](help@fkviking.ru) using parameters provided by the user. Parameters are the same as for [Binary Trading connection](creating-connection.md#binary-protocol-gateway).
 
 #### Name
 
-This value must match the name of the shared memory segment used for message exchange. Clarify with support service.
+This value must match the name of the shared memory segment used for message exchange. You should clarify this value with [support service](help@fkviking.ru).
 
 ## EXANTE
 
