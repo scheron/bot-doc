@@ -337,7 +337,7 @@ Example: `Limits timer` = 10 sec, `Percent` = 60. Consider a 10-second time wind
 
 ### Percent <Anchor :ids="['p.percent']" />
 
-The percentage of [Limits timer](params-description.md#p.timer) after which the shift occurs. If the trading signal persists for the specified percentage of the [Limits timer](params-description.md#p.timer) duration, then [Lim_sell/Lim_buy](params-description.md#p.lim_s) are moved by [K](params-description.md#p.k) , regardless of whether any trades occurred on the Is [Is first](params-description.md#s.is_first) financial instrument.
+The percentage of [Limits timer](params-description.md#p.timer) after which the shift occurs. If the trading signal persists for the specified percentage of the [Limits timer](params-description.md#p.timer) duration, then [Lim_sell/Lim_buy](params-description.md#p.lim_s) are moved by [K](params-description.md#p.k) , regardless of whether any trades occurred on the Is [Is first](params-description.md#s.is_first) financial instrument. The timer stops when [Percent](params-description.md#p.percent) > 100%.
 
 ### Always timer <Anchor :ids="['p.always_limits_timer']" />
 
