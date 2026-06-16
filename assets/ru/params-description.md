@@ -298,7 +298,7 @@ First delta = 20. Вы котируете на продажу объёмом 100
 
 ### Percent <Anchor :ids="['p.percent']" />
 
-Процент от [Limits timer](params-description.md#p.timer) после которого происходит сдвиг. Если сигнал на торговлю продержался указанный процент времени от значения [Limits timer](params-description.md#p.timer), то [Lim_sell/Lim_buy](params-description.md#p.lim_s)) передвигаются на [K](params-description.md#p.k), не смотря на отсутствие сделок по [Is first](params-description.md#s.is_first) финансовому инструменту.
+Процент от [Limits timer](params-description.md#p.timer) после которого происходит сдвиг. Если сигнал на торговлю продержался указанный процент времени от значения [Limits timer](params-description.md#p.timer), то [Lim_sell/Lim_buy](params-description.md#p.lim_s)) передвигаются на [K](params-description.md#p.k), не смотря на отсутствие сделок по [Is first](params-description.md#s.is_first) финансовому инструменту. Таймер выключается при значении [Percent](params-description.md#p.percent) > 100%.
 
 
 ### Always timer <Anchor :ids="['p.always_limits_timer']" />
