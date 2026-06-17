@@ -878,7 +878,7 @@ You should [contact support](help@fkviking.ru) to clarify bind IP. The IP addres
 
 ## OKX
 
-Connection to OKX exchange platforms: SPOT, SWAP, FUTURES, OPTION, in cross, isolated, and cash modes. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below.
+Connection to OKX exchange platforms: SPOT, SWAP, FUTURES, OPTION, in cross, isolated, and cash modes. The robot supports only Websocket and REST API connections. Market data connection is activated as described in the [Setting up connections](getting-started.md#connection-setup) chapter. Transactional connection parameters are described below. You need to go to the personal account settings on the exchange's website and select "One-way-mode" in the "Position mode" section.
 
 ### Name <Anchor :ids="['tc.OKEX.name']" />
 
@@ -894,7 +894,7 @@ Public API key for accessing the exchange API. Created in the user account on th
 
 ### Secret Key <Anchor :ids="['tc.OKEX.ws_secret_part']" />
 
-Secret API key for accessing the exchange API. Created in the user account on the exchange website together with the corresponding public key. Located in account settings under the API section. Permissions for reading and trading must be enabled. The "Order placement mode" field must be set to "Net". The key must be new and not used anywhere else previously.
+Secret API key for accessing the exchange API. It is created in the user account on the exchange website together with the corresponding public key. It is located in account settings under the API section. Permissions for reading and trading must be enabled. The key must be new and not used anywhere else previously.
 
 ### Password <Anchor :ids="['tc.OKEX.passphrase']" />
 
