@@ -331,13 +331,13 @@ From the earlier example, where [Lim_buy](params-description.md#p.lim_b) = 105, 
 
 ### Limits timer <Anchor :ids="['p.timer']" />
 
-Timer duration (set in seconds) after which both [Lim_sell](params-description.md#p.lim_s) and [Lim_buy](params-description.md#p.lim_b) are shifted by the value of [K](params-description.md#p.k). The timer starts when trading is enabled and a buy or sell signal occurs, but trading is blocked because the robot has already reached the maximum position (according to [v_min/v_max](params-description.md#p.v_min)). The timer stops when [Percent](params-description.md#p.percent) > 100%.
+Timer duration (set in seconds) after which both [Lim_sell](params-description.md#p.lim_s) and [Lim_buy](params-description.md#p.lim_b) are shifted by the value of [K](params-description.md#p.k). The timer starts when trading is enabled and a buy or sell signal occurs, but trading is blocked because the robot has already reached the maximum position (according to [v_min/v_max](params-description.md#p.v_min)). The shift by timer can be disabled by setting the [Percent](params-description.md#p.percent) value to > 100%. 
 
 Example: `Limits timer` = 10 sec, `Percent` = 60. Consider a 10-second time window: suppose the signal was present for 2 sec, then absent for 3 sec, present again for 4 sec, and absent for 1 sec. Over 10 seconds, the signal was active for a total of 6 seconds, which is ≥ 60% of 10 seconds — thus, the condition is met and the shift is applied.
 
 ### Percent <Anchor :ids="['p.percent']" />
 
-The percentage of [Limits timer](params-description.md#p.timer) after which the shift occurs. If the trading signal persists for the specified percentage of the [Limits timer](params-description.md#p.timer) duration, then [Lim_sell/Lim_buy](params-description.md#p.lim_s) are moved by [K](params-description.md#p.k) , regardless of whether any trades occurred on the Is [Is first](params-description.md#s.is_first) financial instrument. The timer stops when [Percent](params-description.md#p.percent) > 100%.
+The percentage of [Limits timer](params-description.md#p.timer) after which the shift occurs. If the trading signal persists for the specified percentage of the [Limits timer](params-description.md#p.timer) duration, then [Lim_sell/Lim_buy](params-description.md#p.lim_s) are moved by [K](params-description.md#p.k) , regardless of whether any trades occurred on the Is [Is first](params-description.md#s.is_first) financial instrument. The shift by timer can be disabled by setting the [Percent](params-description.md#p.percent) value to > 100%. 
 
 ### Always timer <Anchor :ids="['p.always_limits_timer']" />
 
