@@ -291,14 +291,14 @@ First delta = 20. Вы котируете на продажу объёмом 100
 
 ### Limits timer <Anchor :ids="['p.timer']" />
 
-Время таймера (задается в секундах) по истечению которого происходит сдвиг обоих параметров [Lim_sell](params-description.md#p.lim_s) и [Lim_buy](params-description.md#p.lim_b) на значение [K](params-description.md#p.k). Таймер включается если торговля включена и проходит сигнал на покупку или продажу, но торговля запрещена из-за того, что робот уже набрал максимальную позицию (по [v_min/v_max](params-description.md#p.v_min)). Таймер выключается при значении [Percent](params-description.md#p.percent) > 100%.
+Время таймера (задается в секундах) по истечению которого происходит сдвиг обоих параметров [Lim_sell](params-description.md#p.lim_s) и [Lim_buy](params-description.md#p.lim_b) на значение [K](params-description.md#p.k). Таймер включается если торговля включена и проходит сигнал на покупку или продажу, но торговля запрещена из-за того, что робот уже набрал максимальную позицию (по [v_min/v_max](params-description.md#p.v_min)). Сдвиг по таймеру можно отключить, задав значение [Percent](params-description.md#p.percent) > 100%.
 
 Пример: значения `Limits timer` = 10 сек, `Percent` = 60. Возьмем временное окно 10 сек: допустим, сигнал был 2 сек, потом на 3 сек пропал, потом 4 сек был и снова на 1 сек пропал. За 10 сек сигнал был суммарно 6 сек, что больше или равно 60% от 10 сек, следовательно условие выполнено, сдвиг выполняется.
 
 
 ### Percent <Anchor :ids="['p.percent']" />
 
-Процент от [Limits timer](params-description.md#p.timer) после которого происходит сдвиг. Если сигнал на торговлю продержался указанный процент времени от значения [Limits timer](params-description.md#p.timer), то [Lim_sell/Lim_buy](params-description.md#p.lim_s)) передвигаются на [K](params-description.md#p.k), не смотря на отсутствие сделок по [Is first](params-description.md#s.is_first) финансовому инструменту.
+Процент от [Limits timer](params-description.md#p.timer) после которого происходит сдвиг. Если сигнал на торговлю продержался указанный процент времени от значения [Limits timer](params-description.md#p.timer), то [Lim_sell/Lim_buy](params-description.md#p.lim_s)) передвигаются на [K](params-description.md#p.k), не смотря на отсутствие сделок по [Is first](params-description.md#s.is_first) финансовому инструменту. Сдвиг по таймеру можно отключить, задав значение [Percent](params-description.md#p.percent) > 100%.
 
 
 ### Always timer <Anchor :ids="['p.always_limits_timer']" />

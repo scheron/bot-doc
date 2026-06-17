@@ -112,7 +112,7 @@ This button should be used ONLY IN EXTREME CASES, when trading is disabled for t
 
 - **Remove** <Anchor :ids="['portfolio_actions.remove_portfolio']" /> - deletes the selected portfolios.
 
-- **Clone portfolio** <Anchor :ids="['portfolio_actions.clone_portfolio']" /> - creates a clone of the selected portfolio.
+- **Clone portfolio** <Anchor :ids="['portfolio_actions.clone_portfolio']" /> - creates a clone of the selected portfolio. The button clones the selected portfolio in the robot that contains the original portfolio being cloned. To transfer portfolios between different robots, we recommend you use [Export portfolio \ Import portfolio](portfolio_actions.disable_portfolio).
 
     **Important!**  When cloning a portfolio, values that exist only as variables within formula code—including indicators and their states—are not copied.
     
