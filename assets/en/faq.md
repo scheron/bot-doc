@@ -289,11 +289,11 @@ ignore-section-number: true
 
     You should open the portfolio settings, select the instrument you want to replace, and click the "Replace" button.
 
-    ![how_replace_button_looks](/00-img/replace_01.png)
+    ![how_replace_button_looks](@images/replace_01.png)
 
     In the window that opens, you should select the new instrument from the top table. There are two tabs below: you should use the first one to select the portfolios where the instrument should be replaced, and the second one to select the formulas.
 
-    ![where_to_change_the_instrument_in_all_portfolios_and_formulas](/00-img/replace_02.png)
+    ![where_to_change_the_instrument_in_all_portfolios_and_formulas](@images/replace_02.png)
 
     You should click the "Apply" button to save the changes.
 
