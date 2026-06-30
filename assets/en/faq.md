@@ -282,3 +282,19 @@ ignore-section-number: true
     In other words, you're buying at a price that's clearly higher than the price you used in your calculations.
 
     </details>
+
+ ---    
+ - <details>
+    <summary><i>How do I replace an instrument in the portfolio and in formulas?<Anchor :ids="['faq.replace']" /></i></summary>
+
+    You should open the portfolio settings, select the instrument you want to replace, and click the "Replace" button.
+
+    ![how_replace_button_looks](@images/replace_01.png)
+
+    In the window that opens, you should select the new instrument from the top table. There are two tabs below: you should use the first one to select the portfolios where the instrument should be replaced, and the second one to select the formulas.
+
+    ![where_to_change_the_instrument_in_all_portfolios_and_formulas](@images/replace_02.png)
+
+    You should click the "Apply" button to save the changes.
+
+ </details>
