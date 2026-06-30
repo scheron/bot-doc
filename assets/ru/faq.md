@@ -301,4 +301,4 @@ ignore-section-number: true
 
   Нажимаем кнопку Apply, чтобы изменения сохранились. 
 
-      </details>
+  </details>
