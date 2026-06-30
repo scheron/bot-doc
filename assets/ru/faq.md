@@ -293,11 +293,11 @@ ignore-section-number: true
 
     Открываем настройки портфеля, выбираем инструмент, требующий замены, жмём на кнопку "Replace".
   
-  ![how_replace_button_looks](/00-img/replace_01.png)
+  ![how_replace_button_looks](@images/replace_01.png)
 
   В открывшемся окне в верхней таблице выбираем новый инструмент. Ниже есть две вкладки. На первой выбираем в каких портфелях заменить инструмент, в другой - в каких формулах.
 
-  ![where_to_change_the_instrument_in_all_portfolios_and_formulas](/00-img/replace_02.png)
+  ![where_to_change_the_instrument_in_all_portfolios_and_formulas](@images/replace_02.png)
 
   Нажимаем кнопку Apply, чтобы изменения сохранились. 
 
