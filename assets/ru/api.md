@@ -14928,8 +14928,8 @@ Example:
 | portfolio_id | [string, string] | Pair of strings, first element is a robot ID, second element is a portfolio name |
 | sec_type | number | Integer value, security exchange/connection type. Value should be received in template |
 | stream_status | number | Integer value, enum: 0 — disconnected, 1 — connecting, 2 — connected, 3 — unknown, 4 — closed by time |
-| trading_status | number | Integer value, enum: 0 — not trading, 2 —trading, 3 — unknown |
-| process_status | number | Integer value, enum: 0 — not running, 2 —running, 3 — unknown |
+| trading_status | number | Integer value, enum: 0 — not trading, 2 — trading, 3 — unknown |
+| process_status | number | Integer value, enum: 0 — not running, 2 — running, 3 — unknown |
 | direction | number | Integer value, enum: 1 — buy, 2 — sell |
 | symbol_find_state | number | Integer value, enum: 0 — unknown, 1 — searching, 2 — found, 3 — expired, 4 — error |
 | tgr_notification | number | 1 — TGR_ORDER (ошибки выставления заявки с выключением торговли),<br> 2 — TGR_ERROR (это ошибки из логирования в формулах), <br> 4 — TGR_NOTIFICATION (уведомления из алгоритма) |
