@@ -997,7 +997,7 @@ If any condition listed below is TRUE, then such settings are NOT valid:
 
 4) For the first leg, [On_by](params-description.md#s.on_buy) = Sell;
 
-5) An empty value is selected for [Сlient code](params-description.md#s.client_code) and [Count](params-description.md#s.count) is not 0;
+5) An empty value is selected for [Client code](params-description.md#s.client_code) and [Count](params-description.md#s.count) is not 0;
 
 ### The following portfolio parameters are prohibited from being changed when the portfolio is trading or has active orders
 
