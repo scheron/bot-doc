@@ -12,7 +12,7 @@ ignore-section-number: true
 
 ## 2026-02-27
 
-- Внесены измененеия в разделе описания [API-ключей](creating-connection.md#tc.BINANCE.ws_id) для подключения к [BINANCE](creating-connection.md#BINANCE)
+- Внесены изменения в разделе описания [API-ключей](creating-connection.md#tc.BINANCE.ws_id) для подключения к [BINANCE](creating-connection.md#BINANCE)
 
 ## 2026-01-27
 
@@ -37,13 +37,13 @@ ignore-section-number: true
 ## 2025-09-22
 
 - Во всех [уведомлениях](params-description.md#notifications-params) знак сравнения изменен на строгий (теперь везде "строго больше");
-- Для всех [уведомлениий](params-description.md#notifications-params) добавлена возможность остановить торговлю.
+- Для всех [уведомлений](params-description.md#notifications-params) добавлена возможность остановить торговлю.
 
 ## 2025-07-22
 
 - Добавлен нередактируемый параметр портфеля [Is trading](params-description.md#p.is_trading);
 - Добавлен новый статус торговых и маркет-дата подключений "отключено по времени";
-- В связи с предыдущим пунктом обновлено описание интерфейсов виджетов [Robots table](interface.md#robots_table), [Data connections](interface.md#data_connections), [Trade connections](interface.mdtrade_connections).
+- В связи с предыдущим пунктом обновлено описание интерфейсов виджетов [Robots table](interface.md#robots_table), [Data connections](interface.md#data_connections), [Trade connections](interface.md#trade_connections).
 
 ## 2025-07-15
 
@@ -69,7 +69,7 @@ ignore-section-number: true
 
 ## 2025-05-29
 
-- Добавлена информация о том что все строки в [C++ интерфейсе](c-api.md) и в [WebSocket API](api.md) должны являться валидными `UTF-8` строками, а все лимиты на длины строк указаны в байтах;
+- Добавлена информация о том, что все строки в [C++ интерфейсе](c-api.md) и в [WebSocket API](api.md) должны являться валидными `UTF-8` строками, а все лимиты на длины строк указаны в байтах;
 - В описание C++ интерфейса добавлен [рекомендуемый способ отладки пользовательских формул](c-api.md#cpp-debug);
 - В описание C++ интерфейса добавлены [рекомендации по фильтрации биржевых данных](c-api.md#md-filter).
 
@@ -152,7 +152,7 @@ ignore-section-number: true
 - Из C++ интерфейса удален метод `extra()` объекта портфеля;
 - Из C++ интерфейса удалена структура `dict_double`;
 - Из WebSocket API удалено поле портфеля `__extra`;
-- В C++ интерфейс для объекта [портфеля](c-api.md#portfolio-field-access) добавлены методы `uf0(), ..., uf19()` и методы `set_uf0(), ..., set_uf19()` для получения и изменения "пользователских полей";
+- В C++ интерфейс для объекта [портфеля](c-api.md#portfolio-field-access) добавлены методы `uf0(), ..., uf19()` и методы `set_uf0(), ..., set_uf19()` для получения и изменения "пользовательских полей";
 - В C++ интерфейс добавлена структура `user_value`;
 - В C++ API добавлена возможность итерирования по финансовым инструментам портфеля (методы объекта [портфеля](c-api.md#portfolio-field-access) `restart_sec_iter()`, `has_next_sec()`, `next_sec()`);
 - В WebSocket API добавлены поля портфеля `uf0, ..., uf19`.
