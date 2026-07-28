@@ -8252,7 +8252,7 @@ Payload:
 
 | Key[=value] | Required | JSON type | Internal type | Description |
 | --- | --- | --- | --- | --- |
-| type = trans_conn.get_all | y | string |  | Operation type |
+| type = trans_conn.subscribe | y | string |  | Operation type |
 | eid | y | string | string_36 | External user id that will be received in response |
 | ts | y | number | epoch_nsec | Response time in nano seconds |
 | r = e | y | string | request_result | Request result |
@@ -8264,7 +8264,7 @@ Example:
 
 ```json
 {
-	"type":"trans_conn.get_all",
+	"type":"trans_conn.subscribe",
 	"data":
 	{
 		"msg":"Permission denied",
