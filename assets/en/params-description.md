@@ -697,11 +697,11 @@ Stop-loss value; when reached, the order (if not yet filled) must be canceled an
 
 ### TE <Anchor :ids="['s.te']" />
 
-Parameter responsible for enabling/disabling timer-based re-quoting. Orders re-quoted due to timer will subsequently be re-quoted according to a specific [algorithm](algorithm-comments.md#sl_timer).
+Parameter responsible for enabling/disabling timer-based re‑entering. Orders re‑entered due to [timer](params-description.md#s.timer) will subsequently be re‑entered according to the specific [algorithm](algorithm-comments.md#sl_timer).
 
 ### Timer <Anchor :ids="['s.timer']" />
 
-Defines the time interval after which an unfilled order should be canceled and resubmitted at the current market price.
+Defines the time interval after which an unfilled order should be canceled and resubmitted at the current market price. A negative value cannot be selected for this parameter. If set to 0, the order will be re‑priced to the current market price and re‑entered immediately after it is rejected. The timer is enabled via [TE](params-description.md#s.te) parameter.
 
 ### Percent of quantity <Anchor :ids="['s.percent_of_quantity']" />
 
