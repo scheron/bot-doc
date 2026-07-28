@@ -83,7 +83,7 @@ The main table in the widget includes the following columns:
 - **Portfolio** -  portfolio name;
 - **Message** - message text;
 
-### Robots table <Anchor :ids="['robots_table']" />
+### Robots <Anchor :ids="['robots_table']" />
 
 A widget displaying a list of available robots along with reference information about them. For example, this widget shows how many days remain until license expiration or how many trading connections can be created in a specific robot. It also displays the local server time for the server on which the robot is running—this time should be used as a reference when setting schedules.
 
