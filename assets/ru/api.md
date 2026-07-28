@@ -4396,7 +4396,7 @@ Payload:
 
 | Key[=value] | Required | JSON type | Internal type | Description |
 | --- | --- | --- | --- | --- |
-| type = portfolio_fin_res.calc_acg | y | string |  | Operation type |
+| type = portfolio_fin_res.calc_avg | y | string |  | Operation type |
 | eid | y | string | string_36 | External user id that will be received in response |
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
@@ -5364,6 +5364,7 @@ Payload:
 | eid | y | string | string_36 | External user id that will be received in response |
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
+| > p_id | y | string |  | Portfolio name |
 
 Example:
 
@@ -7951,7 +7952,7 @@ Payload:
 
 | Key[=value] | Required | JSON type | Internal type | Description |
 | --- | --- | --- | --- | --- |
-| type = trans_conn.get | y | string |  | Operation type |
+| type = trans_conn.get_used_secs | y | string |  | Operation type |
 | eid | y | string | string_36 | External user id that will be received in response |
 | data | y | object |  |  |
 | > r_id | y | string |  | Robot ID |
@@ -9877,7 +9878,7 @@ Example:
 
 ```json
 {
-	"type":"get_templateby_id",
+	"type":"get_template_by_id",
 	"data":
 	{
       "template": {
