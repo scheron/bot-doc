@@ -73,7 +73,7 @@ The website uses a user role system. Different widgets may be available dependin
 
 ### Robot logs <Anchor :ids="['robot_logs']" />
 
-This widget displays important log entries from all robots accessible to the user. Logs in this widget accumulate starting from the last page reload. Not all log messages are shown—only those requiring attention, such as errors and warnings. This widget cannot be hidden. It is intended for real-time display of critical messages; due to a limited number of stored messages, for searching or reviewing older logs, please use the [Robot logs history](interface.md#robot_logs_history) widget. The widget is always present as a single instance. According to the system update of June 22, 2025, the retention period for historical data is 6 months.
+This widget displays important log entries from all robots accessible to the user. Logs in this widget accumulate starting from the last page reload. Not all log messages are shown—only those requiring attention, such as errors and warnings. This widget cannot be hidden. It is intended for real-time display of critical messages; due to a limited number of stored messages, for searching or reviewing older logs, please use the [Robot logs history](interface.md#robot_logs_history) widget. The widget is always present as a single instance. 
 
 The main table in the widget includes the following columns:
 
