@@ -133,7 +133,7 @@ A widget displaying a table of portfolios. This is essentially the main widget u
 
 ### Robot logs history <Anchor :ids="['robot_logs_history']" />
 
-A widget displaying logs for a specific robot over a defined time period (up to 100,000 entries). Log filtering by keywords is supported; for example, you can use a portfolio name or trading connection name as a keyword. This widget includes all log entries accessible to the user. Exporting the table contents to a file is supported. According to the system update of June 22, 2025, the retention period for historical data is 6 months.
+A widget displaying logs for a specific robot over a defined time period. It displays a maximum of 100,000 entries at a time. Therefore, if you need to view log history over a long period, you should split that period into several shorter periods when querying data in this widget. Log filtering by keywords is supported; for example, you can use a portfolio name or trading connection name as a keyword. This widget includes all log entries accessible to the user. Exporting the table contents to a file is supported. According to the system update of June 22, 2025, the retention period for historical data is 6 months.
 
 The main table of the widget includes the following columns:
 
