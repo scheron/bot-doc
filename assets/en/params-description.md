@@ -139,14 +139,13 @@ If the position mismatch exceeds the [Overlay](params-description.md#p.overlay) 
 
 ### Only maker <Anchor :ids="['p.maker']" />
 
-For quoting mode ([Quote](params-description.md#p.quote)), places orders for the [Is first](params-description.md#s.is_first) instrument with the `maker only` flag (cancel if the order would act as a taker), provided the exchange supports this order type.
+Changes the quoting order flag (i.e., when the [Quote](params-description.md#p.quote) mode is enabled). Orders for the [Is first](params-description.md#s.is_first) instrument will be placed with the post‑only flag (i.e., cancel if the order would be a taker), provided that the exchange supports this order type. The [Quote](params-description.md#p.quote) mode must first be selected and applied using the **Apply** button to make the [Only maker](params-description.md#p.maker) flag available.
 
-**Important!**  
-When using this parameter, it is strongly recommended to also enable [Simply first](params-description.md#p.simply_first) to avoid an excessive number of rejected transactions (e.g., when an order unintentionally crosses the book). Otherwise, frequent rejections may trigger exchange sanctions.
+**Important!** If you use this parameter, you will most likely need to set the [Simply first](params-description.md#p.simply_first) flag to avoid an excessive number of rejected transactions (in cases where an order placement attempt fails because it hits the opposite side of the book), which could ultimately result in sanctions from the exchange.
 
 ### Simply first <Anchor :ids="['p.simply_first']" />
 
-When enabled, if [Price_s/Price_b](params-description.md#p.price_s) fall into a wide spread or move to the opposite side of the order book, first-leg orders will always be placed no deeper than one price step into the spread (i.e., at the best available price in the order book).  
+The [Quote](params-description.md#p.quote) mode must first be selected and applied using the Apply button to make the [Simply first](params-description.md#p.simply_first) flag available. When enabled, if [Price_s/Price_b](params-description.md#p.price_s) fall into a wide spread or move to the opposite side of the order book, first-leg orders will always be placed no deeper than one price step into the spread (i.e., at the best available price in the order book).  
 
 Additionally, during quoting, this condition is maintained dynamically as the order book updates. For example:  
 - If another order is placed ahead of the robot’s order.  
@@ -681,11 +680,30 @@ Indicates whether the financial instrument is the primary (main) instrument of t
 
 ### k <Anchor :ids="['s.k']" />
 
-Sets the size of artificial slippage (offset from the market price): when buying, the order price is `ask` + `k`;  when selling, the order price is `bid`−`k`, where `bid` and `ask` – are the best bid and ask prices, respectively).
+Sets the amount of artificial slippage, defining by how many ticks the price may deviate to the worse side from the specified price. Applied when:
+- placing orders according to the algorithm for the first and second legs;
+- and also when placing orders using the [Sell/Buy](params-description.md#p.buy_portfolio) buttons.
+
+The `k` parameter is applied as follows:
+1. When placing the first leg according to the algorithm, this slippage is already taken into account when calculating the [price_s/price_b](params-description.md#p.price_s) price.
+2. When placing the second leg according to the algorithm, this slippage is applied from the market price or from the price found in the order book (depending on the [Type price](params-description.md#p.price_type) parameter settings).
+3. When placing orders via the [Sell/Buy](params-description.md#p.buy_portfolio) buttons, this slippage is used for instruments of both legs. The slippage is applied from the market price, i.e., when buying, the placement price is `offer + k`; when selling, the placement price is `bid − k`, where `bid` and `offer` are the best bid and ask prices, respectively.
+
+**Important!** The value of this parameter is not taken into account when calculating the spread. That is, with a positive `k` value, the spread may end up worse than calculated even without repositioning due to stop‑loss or timer.
+
+**Important!** All order placements in the bot use slippage `k` or [k_sl](params-description.md#s.k_sl), except for the **Place order** button and the **Pos leveling** mode of the [Trade connections positions](interface.md#trade_connections_positions) widget. In these two cases, no slippage from the price specified by the user is used.
 
 ### k_sl <Anchor :ids="['s.k_sl']" />
 
-Analogous to the `k`, parameter, but used only when re-quoting orders triggered by [SLE](params-description.md#s.sle) and [TE](params-description.md#s.te).  Sets the size of artificial slippage (offset from market price): for a buy order, the placement price is `ask` + `k_sl`; for a sell order, the placement price is `bid`−`k_sl`, where `bid` and `ask` – are the best bid and ask prices, respectively.
+Similar to parameter `k`, but used only:
+1. during order repositioning due to [SLE](params-description.md#s.sle) and [TE](params-description.md#s.te);
+2. and also in situations treated as equivalent:
+    - when using the [to_market](params-description.md#p.to_market) button,
+    - when using the `close` and `to_market` flags in the [Timetable](params-description.md#p.use_tt).
+
+Defines the amount of artificial slippage, namely an offset from the market price, i.e., for a buy order, the placement price is `offer` + `k_sl`; for a sell order, the placement price is `bid` − `k_sl`, where `bid` and `offer` are the best bid and ask prices, respectively. The displayed prices (e.g., in the **Portfolios table** widget) for [Price_s/Price_b](params-description.md#p.price_s) already include the `k_sl` parameter. The `k_sl` coefficient is used for all placements except for placements via the **Place order** button. If **Type price: Orderbook** is selected for calculations on the second leg, the portfolio instrument parameters [Calc price OB](params-description.md#s.ob_c_p_t) and [Trading price OB](params-description.md#s.ob_t_p_t) are used. The `k` or `k_sl` coefficients are applied after the calculation taking these parameters into account.
+
+**Important!** All order placements in the bot use slippage [k](params-description.md#s.k) or `k_sl`, except for the **Place order** button and the **Pos leveling** mode of the [Trade connections positions](interface.md#trade_connections_positions) widget. In these two cases, no slippage from the price specified by the user is used.
 
 ### SLE <Anchor :ids="['s.sle']" />
 
@@ -697,11 +715,11 @@ Stop-loss value; when reached, the order (if not yet filled) must be canceled an
 
 ### TE <Anchor :ids="['s.te']" />
 
-Parameter responsible for enabling/disabling timer-based re-quoting. Orders re-quoted due to timer will subsequently be re-quoted according to a specific [algorithm](algorithm-comments.md#sl_timer).
+Parameter responsible for enabling/disabling timer-based re‑entering. Orders re‑entered due to [timer](params-description.md#s.timer) will subsequently be re‑entered according to the specific [algorithm](algorithm-comments.md#sl_timer).
 
 ### Timer <Anchor :ids="['s.timer']" />
 
-Defines the time interval after which an unfilled order should be canceled and resubmitted at the current market price.
+Defines the time interval after which an unfilled order should be canceled and resubmitted at the current market price. A negative value cannot be selected for this parameter. If set to 0, the order will be re‑priced to the current market price and re‑entered immediately after it is rejected. The timer is enabled via [TE](params-description.md#s.te) parameter.
 
 ### Percent of quantity <Anchor :ids="['s.percent_of_quantity']" />
 

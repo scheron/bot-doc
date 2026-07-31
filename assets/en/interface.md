@@ -73,7 +73,7 @@ The website uses a user role system. Different widgets may be available dependin
 
 ### Robot logs <Anchor :ids="['robot_logs']" />
 
-This widget displays important log entries from all robots accessible to the user. Logs in this widget accumulate starting from the last page reload. Not all log messages are shown—only those requiring attention, such as errors and warnings. This widget cannot be hidden. It is intended for real-time display of critical messages; due to a limited number of stored messages, for searching or reviewing older logs, please use the [Robot logs history](interface.md#robot_logs_history) widget. The widget is always present as a single instance. According to the system update of June 22, 2025, the retention period for historical data is 6 months.
+This widget displays important log entries from all robots accessible to the user. Logs in this widget accumulate starting from the last page reload. Not all log messages are shown—only those requiring attention, such as errors and warnings. This widget cannot be hidden. It is intended for real-time display of critical messages; due to a limited number of stored messages, for searching or reviewing older logs, please use the [Robot logs history](interface.md#robot_logs_history) widget. The widget is always present as a single instance. 
 
 The main table in the widget includes the following columns:
 
@@ -83,7 +83,7 @@ The main table in the widget includes the following columns:
 - **Portfolio** -  portfolio name;
 - **Message** - message text;
 
-### Robots table <Anchor :ids="['robots_table']" />
+### Robots <Anchor :ids="['robots_table']" />
 
 A widget displaying a list of available robots along with reference information about them. For example, this widget shows how many days remain until license expiration or how many trading connections can be created in a specific robot. It also displays the local server time for the server on which the robot is running—this time should be used as a reference when setting schedules.
 
@@ -133,7 +133,7 @@ A widget displaying a table of portfolios. This is essentially the main widget u
 
 ### Robot logs history <Anchor :ids="['robot_logs_history']" />
 
-A widget displaying logs for a specific robot over a defined time period (up to 100,000 entries). Log filtering by keywords is supported; for example, you can use a portfolio name or trading connection name as a keyword. This widget includes all log entries accessible to the user. Exporting the table contents to a file is supported. According to the system update of June 22, 2025, the retention period for historical data is 6 months.
+A widget displaying logs for a specific robot over a defined time period. It displays a maximum of 100,000 entries at a time. Therefore, if you need to view log history over a long period, you should split that period into several shorter periods when querying data in this widget. Log filtering by keywords is supported; for example, you can use a portfolio name or trading connection name as a keyword. This widget includes all log entries accessible to the user. Exporting the table contents to a file is supported. According to the system update of June 22, 2025, the retention period for historical data is 6 months.
 
 The main table of the widget includes the following columns:
 
@@ -145,7 +145,7 @@ The main table of the widget includes the following columns:
 
 ### Finres for today <Anchor :ids="['finres_for_today']" />
 
-A widget displaying the latest spreads. It allows viewing all spreads for the robot or filtering by a specific portfolio. For a selected portfolio, it is also possible to calculate the average spread over a specified time interval. According to the system update of June 22, 2025, the historical data retention period is 6 months.
+A widget displaying the latest spreads. It allows viewing all spreads for the robot or filtering by a specific portfolio. For a selected portfolio, it is also possible to calculate the average spread over a specified time interval. If you need data for the last 6 months, you should search for it through the [Finres history widget](interface.md#finres_history).
 
 Spreads included in this widget are formed as follows: when a trade occurs on the first leg, the system attempts to place orders on the instruments of the second leg. The spread is formed and added to the table only after all second-leg orders have been filled or their re-quoting has failed. If second-leg orders were not placed (due to an order submission error or because hedging was not required according to portfolio settings), the spread is formed and added immediately—either upon receiving an order rejection or right after the first-leg trade if no second-leg order was needed. Since spreads are calculated based on trades, and only the first-leg instrument was traded, such spreads are referred to as "one-legged." For this reason, the number of "one-legged" spreads may increase when the [Overlay](params-description.md#p.overlay) parameter is set to a non-zero value. Trades from balancing orders placed on second-leg instruments do not generate spreads and are not included in this widget.
 
@@ -278,7 +278,7 @@ The widget is not available for all connections. Unsupported connections cannot 
 
 ### Deals for today <Anchor :ids="['deals_for_today']" />
 
-A widget displaying the most recent trades. It allows viewing all trades for the robot, or filtering by a specific portfolio or a specific financial instrument within a portfolio. This widget includes all trades executed by the robot, except those from orders placed via the [Trade connections positions](interface.md#trade_connections_positions) widget. Instrument positions in the portfolio are calculated using the same data source as this table. According to the system update of June 22, 2025, the historical data retention period is 6 months.
+A widget displaying the most recent trades. It allows viewing all trades for the robot, or filtering by a specific portfolio or a specific financial instrument within a portfolio. This widget includes all trades executed by the robot, except those from orders placed via the [Trade connections positions](interface.md#trade_connections_positions) widget. Instrument positions in the portfolio are calculated using the same data source as this table. If you need data for the last 6 months, you should search for it through the [Deals history widget](interface.md#deals_history).
 
 The main table of the widget includes the following columns:
 

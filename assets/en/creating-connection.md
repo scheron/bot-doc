@@ -407,7 +407,7 @@ Order book stream. We recommend NOT enabling it simultaneously with the Top of b
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
-**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
+**Important!** This exchange distributes instrument status information slowly. However, there are cases when it is necessary to place an order earlier to get ahead of other market participants; therefore, status checks for instruments have been disabled on this connection when placing orders. When trading on the portfolio is enabled and the conditions for placing an order are met, the instrument status check is not performed. This may result in an order being sent while the instrument is not trading. To avoid this, it is necessary to configure schedules for portfolios using this connection. You may deviate from non‑trading hours by no more than 4 minutes and 59 seconds to place orders earlier at the start of trading. During the rest of the non‑trading time, trading must be turned off.
 
 #### Name <Anchor :ids="['tc.SPB.name']" />
 
@@ -416,7 +416,6 @@ A field for specifying the connection name. This value is set for convenience, t
 #### Connection type <Anchor :ids="['tc.SPB.conn_type']" />
 
 Direct — a regular connection that connects directly to the exchange.
-Proxy — used to enable multiple robots to trade through a single connection.
 
 #### Login <Anchor :ids="['tc.SPB.login']" />
 
@@ -449,10 +448,6 @@ Client comment for orders.
 #### Bind IP <Anchor :ids="['tc.SPB.bind_ip']" />
 
 The IP address from which the connection to the exchange will be established. The IP address must be specified in the agreement.
-
-### Proxy connection to the transactional gateway using binary protocol
-
-Used when multiple robots need to trade through the same transactional connection (i.e., under a single login). Configured by [support staff](help@fkviking.ru) using parameters provided by the user. Parameters are the same as for [Binary Trading connection](creating-connection.md#binary-protocol-gateway).
 
 #### Name
 
@@ -1253,7 +1248,7 @@ Order book stream. We recommend NOT enabling it simultaneously with the Top of b
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
-**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is recommended to configure a schedule for portfolios using this connection.
+**Important!** Due to the slow distribution of instrument status information by the exchange, instrument status checking has been disabled for this connection when placing orders. When portfolio trading is enabled, instrument status checking is not performed when the conditions for placing an order are met. This may result in an order being submitted when the instrument is not trading. To prevent this, it is required to configure a schedule for portfolios using this connection.
 
 #### Name <Anchor :ids="['tc.IMEX.name']" />
 
