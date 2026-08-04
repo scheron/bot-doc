@@ -698,8 +698,8 @@ The `k` parameter is applied as follows:
 Similar to parameter `k`, but used only:
 1. during order repositioning due to [SLE](params-description.md#s.sle) and [TE](params-description.md#s.te);
 2. and also in situations treated as equivalent:
-    - when using the [to_market](params-description.md#p.to_market) button,
-    - when using the `close` and `to_market` flags in the [Timetable](params-description.md#p.use_tt).
+    - when using the [To market](params-description.md#p.to_market) button,
+    - when using the `Close` and `To market` flags in the [Timetable](params-description.md#p.use_tt).
 
 Defines the amount of artificial slippage, namely an offset from the market price, i.e., for a buy order, the placement price is `offer` + `k_sl`; for a sell order, the placement price is `bid` − `k_sl`, where `bid` and `offer` are the best bid and ask prices, respectively. The displayed prices (e.g., in the **Portfolios table** widget) for [Price_s/Price_b](params-description.md#p.price_s) already include the `k_sl` parameter. The `k_sl` coefficient is used for all placements except for placements via the **Place order** button. If **Type price: Orderbook** is selected for calculations on the second leg, the portfolio instrument parameters [Calc price OB](params-description.md#s.ob_c_p_t) and [Trading price OB](params-description.md#s.ob_t_p_t) are used. The `k` or `k_sl` coefficients are applied after the calculation taking these parameters into account.
 
