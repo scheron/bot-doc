@@ -719,7 +719,7 @@ Parameter responsible for enabling/disabling timer-based re‑entering. Orders r
 
 ### Timer <Anchor :ids="['s.timer']" />
 
-Defines the time interval after which an unfilled order should be canceled and resubmitted at the current market price. A negative value cannot be selected for this parameter. If set to 0, the order will be re‑priced to the current market price and re‑entered immediately after it is rejected. The timer is enabled via [TE](params-description.md#s.te) parameter.
+Defines the time interval after which an unfilled order should be canceled and resubmitted at the current market price. A negative value cannot be selected for this parameter. If set to 0, the order will be re‑priced to the current market price and re‑entered immediately after it is rejected. `Timer` is enabled via [TE](params-description.md#s.te) parameter.
 
 ### Percent of quantity <Anchor :ids="['s.percent_of_quantity']" />
 
