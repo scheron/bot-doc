@@ -655,13 +655,13 @@ secs - список инструментов портфеля.
 - а также при выставлении заявок с помощью кликеров [Sell/Buy](params-description.md#p.buy_portfolio).
 
 Параметр `k` применяется следующим образом:
-1. При выставлении первой ноги по алгоритму этот отступ уже учтен при расчёте цены [price_s/price_b](params-description.md#p.price_s). 
+1. При выставлении первой ноги по алгоритму этот отступ уже учтен при расчёте цены [Price_s/Price_b](params-description.md#p.price_s). 
 1. При выставлении второй ноги по алгоритму это отступ от рыночной цены или от цены, найденной в стакане (в зависимости от настроек параметра [Type price](params-description.md#p.price_type)). 
 1. При выставлении по кликерам [Sell/Buy](params-description.md#p.buy_portfolio) этот отступ используется для инструментов обеих ног, отступ откладывается от рыночной цены, т.е. при покупке цена выставления `offer + k`, при продаже цена выставления `bid−k`, где `bid` и `offer` – лучшие цены на покупку и продажу, соответственно.
 
 **Важно!** Значение этого параметра не учитывается при расчёте раздвижки. Т.е. при положительном значении `k` раздвижка может получиться хуже расчётной даже без переставления по стоп-лоссу или таймеру.
 
-**Важно!** Все выставления заявок в роботе используют отступ `k` или [k_sl](params-description.md#s.k_sl), кроме кликера `Place order` и режима `Pos leveling` виджета [Trade connections positions](interface.md#trade_connections_positions). В этих двух случаях никакие отступы от указанной пользователем цены не используются.
+**Важно!** Все выставления заявок в роботе используют отступ `k` или [k_sl](params-description.md#s.k_sl), кроме кликера [Place order](params-description.md#p.order_security) и режима `Pos leveling` виджета [Trade connections positions](interface.md#trade_connections_positions). В этих двух случаях никакие отступы от указанной пользователем цены не используются.
 
 ### k_sl <Anchor :ids="['s.k_sl']" />
 
@@ -671,9 +671,9 @@ secs - список инструментов портфеля.
    - при использовании кликера [to_market](params-description.md#p.to_market), 
    - при использовании флагов `close` и `to_market` в [Timetable](params-description.md#p.use_tt).
 
-Задает размер искусственного проскальзывания, а именно отступ от рыночной цены, т.е. для заявки на покупку цена выставления `offer` + `k_sl`, для заявки на продажу цена выставления `bid`−`k_sl`, где `bid` и `offer` – лучшие цены на покупку и продажу, соответственно. Отображаемые (например, в виджете `Portfolios table`) цены [Price_s/Price_b](params-description.md#p.price_s) уже содержат параметр `k_sl`. Коэффициент `k_sl` используется при любом выставлении, за исключением только выставления по кликеру `Place order`. В случае выбора `Type price: Orderbook` для расчетов по второй ноге задаются параметры инструментов портфеля [Calc price OB](params-description.md#s.ob_c_p_t) и [Trading price OB](params-description.md#s.ob_t_p_t). Коэффициенты `k` или `k_sl` действуют после расчета с учетом этих параметров.
+Задает размер искусственного проскальзывания, а именно отступ от рыночной цены, т.е. для заявки на покупку цена выставления `offer` + `k_sl`, для заявки на продажу цена выставления `bid`−`k_sl`, где `bid` и `offer` – лучшие цены на покупку и продажу, соответственно. Отображаемые (например, в виджете [Portfolios table](interface.md#portfolios_table)) цены [Price_s/Price_b](params-description.md#p.price_s) уже содержат параметр `k_sl`. Коэффициент `k_sl` используется при любом выставлении, за исключением только выставления по кликеру [Place order](params-description.md#p.order_security)`. В случае выбора `Type price: Orderbook` для расчетов по второй ноге задаются параметры инструментов портфеля [Calc price OB](params-description.md#s.ob_c_p_t) и [Trading price OB](params-description.md#s.ob_t_p_t). Коэффициенты `k` или `k_sl` действуют после расчета с учетом этих параметров.
 
-**Важно!** Все выставления заявок в роботе используют отступ [k](params-description.md#s.k) или `k_sl`, кроме кликера `Place order` и режима `Pos leveling` виджета [Trade connections positions](interface.md#trade_connections_positions). В этих двух случаях никакие отступы от указанной пользователем цены не используются.
+**Важно!** Все выставления заявок в роботе используют отступ [k](params-description.md#s.k) или `k_sl`, кроме кликера [Place order](params-description.md#p.order_security) и режима `Pos leveling` виджета [Trade connections positions](interface.md#trade_connections_positions). В этих двух случаях никакие отступы от указанной пользователем цены не используются.
 
 ### SLE <Anchor :ids="['s.sle']" />
 
