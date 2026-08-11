@@ -449,10 +449,6 @@ Client comment for orders.
 
 The IP address from which the connection to the exchange will be established. The IP address must be specified in the agreement.
 
-#### Name
-
-This value must match the name of the shared memory segment used for message exchange. You should clarify this value with [support service](help@fkviking.ru).
-
 ## EXANTE
 
 The robot supports only FIX connections to the EXANTE broker. When adding a transactional connection, two FIX connections are created: market data and transactional. Such a pair of connections can be activated or deactivated only together; that is, attempting to deactivate the market data connection will also deactivate the corresponding transactional connection, and vice versa. Since EXANTE broker can provide market data from a large number of exchanges, the [Exchange filter](creating-connection.md#exchange-filter) field—specifying the list of required exchanges—is mandatory. It is strongly recommended to include only those exchanges whose instruments you actually plan to use.
