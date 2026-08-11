@@ -685,13 +685,13 @@ Sets the amount of artificial slippage, defining by how many ticks the price may
 - and also when placing orders using the [Sell/Buy](params-description.md#p.buy_portfolio) buttons.
 
 The `k` parameter is applied as follows:
-1. When placing the first leg according to the algorithm, this slippage is already taken into account when calculating the [price_s/price_b](params-description.md#p.price_s) price.
+1. When placing the first leg according to the algorithm, this slippage is already taken into account when calculating the [Price_s/Price_b](params-description.md#p.price_s) price.
 2. When placing the second leg according to the algorithm, this slippage is applied from the market price or from the price found in the order book (depending on the [Type price](params-description.md#p.price_type) parameter settings).
 3. When placing orders via the [Sell/Buy](params-description.md#p.buy_portfolio) buttons, this slippage is used for instruments of both legs. The slippage is applied from the market price, i.e., when buying, the placement price is `offer + k`; when selling, the placement price is `bid − k`, where `bid` and `offer` are the best bid and ask prices, respectively.
 
 **Important!** The value of this parameter is not taken into account when calculating the spread. That is, with a positive `k` value, the spread may end up worse than calculated even without repositioning due to stop‑loss or timer.
 
-**Important!** All order placements in the bot use slippage `k` or [k_sl](params-description.md#s.k_sl), except for the **Place order** button and the **Pos leveling** mode of the [Trade connections positions](interface.md#trade_connections_positions) widget. In these two cases, no slippage from the price specified by the user is used.
+**Important!** All order placements in the bot use slippage `k` or [k_sl](params-description.md#s.k_sl), except for the [Place order](params-description.md#p.order_security) button and the `Pos leveling` mode of the [Trade connections positions](interface.md#trade_connections_positions) widget. In these two cases, no slippage from the price specified by the user is used.
 
 ### k_sl <Anchor :ids="['s.k_sl']" />
 
@@ -701,9 +701,9 @@ Similar to parameter `k`, but used only:
     - when using the [To market](params-description.md#p.to_market) button,
     - when using the `Close` and `To market` flags in the [Timetable](params-description.md#p.use_tt).
 
-Defines the amount of artificial slippage, namely an offset from the market price, i.e., for a buy order, the placement price is `offer` + `k_sl`; for a sell order, the placement price is `bid` − `k_sl`, where `bid` and `offer` are the best bid and ask prices, respectively. The displayed prices (e.g., in the **Portfolios table** widget) for [Price_s/Price_b](params-description.md#p.price_s) already include the `k_sl` parameter. The `k_sl` coefficient is used for all placements except for placements via the **Place order** button. If **Type price: Orderbook** is selected for calculations on the second leg, the portfolio instrument parameters [Calc price OB](params-description.md#s.ob_c_p_t) and [Trading price OB](params-description.md#s.ob_t_p_t) are used. The `k` or `k_sl` coefficients are applied after the calculation taking these parameters into account.
+Defines the amount of artificial slippage, namely an offset from the market price, i.e., for a buy order, the placement price is `offer` + `k_sl`; for a sell order, the placement price is `bid` − `k_sl`, where `bid` and `offer` are the best bid and ask prices, respectively. The displayed prices (e.g., in [Portfolios table](interface.md#portfolios_table) widget) for [Price_s/Price_b](params-description.md#p.price_s) already include the `k_sl` parameter. The `k_sl` coefficient is used for all placements except for placements via the [Place order](params-description.md#p.order_security) button. If `Type price: Orderbook` is selected for calculations on the second leg, the portfolio instrument parameters [Calc price OB](params-description.md#s.ob_c_p_t) and [Trading price OB](params-description.md#s.ob_t_p_t) are used. The `k` or `k_sl` coefficients are applied after the calculation taking these parameters into account.
 
-**Important!** All order placements in the bot use slippage [k](params-description.md#s.k) or `k_sl`, except for the **Place order** button and the **Pos leveling** mode of the [Trade connections positions](interface.md#trade_connections_positions) widget. In these two cases, no slippage from the price specified by the user is used.
+**Important!** All order placements in the bot use slippage [k](params-description.md#s.k) or `k_sl`, except for the [Place order](params-description.md#p.order_security) button and the `Pos leveling` mode of the [Trade connections positions](interface.md#trade_connections_positions) widget. In these two cases, no slippage from the price specified by the user is used.
 
 ### SLE <Anchor :ids="['s.sle']" />
 
