@@ -6,6 +6,12 @@ ignore-section-number: true
 
 # История изменений
 
+
+## 2026-08-04
+
+- В C++ интерфейс добавлена функция [`void log_show(const std::string&)`](c-api.md#cpp-log-show)
+- В C++ интерфейс добавлена [возможность сохранения и загрузки значений индикаторов при перезапуске робота](c-api.html#sokhranenie-znachenii-indikatorov-mezhdu-perezapuskami-robota)
+
 ## 2026-03-05
 
 - Добавлены поля `Sell/Buy` и `Lim_S/Lim_B` в виджетах [Finres history](interface.md#finres_history) и [Finres for today](interface.md#finres_for_today). Поле `Buy/Sell` также переименовано в `Direction` в обоих виджетах.

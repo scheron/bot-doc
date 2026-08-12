@@ -78,7 +78,7 @@ ignore-section-number: true
     </details>
 ---
 - <details>
-    <summary><i>ПWhy is volume being placed multiple times at the same spread? My K parameter is non-zero.<Anchor :ids="['faq.limits_shifting']" /></i></summary>
+    <summary><i>Why is volume being placed multiple times at the same spread? My K parameter is non-zero.<Anchor :ids="['faq.limits_shifting']" /></i></summary>
 
     [Sell](params-description.md#p.sell) has become significantly greater than [Lim_Sell](params-description.md#p.lim_s), and as a result, when shifting by [K](params-description.md#p.k), the system is chasing the market price.
     Example: You want to sell at 100, K=1. At some point, the market price jumps to 105. You sell at 105, but according to the algorithm, the robot first sold at 100, then shifted by K and started selling at 101. It sold again at 105, then shifted again by K to 102, sold once more at 105, and so on. Thus, all these sales occur at the price of 105.
@@ -283,8 +283,8 @@ ignore-section-number: true
 
     </details>
 
- ---    
- - <details>
+---
+- <details>
     <summary><i>How do I replace an instrument in the portfolio and in formulas?<Anchor :ids="['faq.replace']" /></i></summary>
 
     You should open the portfolio settings, select the instrument you want to replace, and click the "Replace" button.
@@ -297,4 +297,4 @@ ignore-section-number: true
 
     You should click the "Apply" button to save the changes.
 
- </details>
+    </details>

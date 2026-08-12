@@ -668,8 +668,9 @@ secs - список инструментов портфеля.
 Аналог параметра `k`, но используется только:
 1. во время перестановок заявок по [SLE](params-description.md#s.sle) и [TE](params-description.md#s.te);
 2. а также в ситуациях, к ним приравненных: 
-   - при использовании кликера [to_market](params-description.md#p.to_market), 
-   - при использовании флагов `close` и `to_market` в [Timetable](params-description.md#p.use_tt).
+
+   - при использовании кликера [To market](params-description.md#p.to_market),
+   - при использовании флагов `Close` и `To market` в [Timetable](params-description.md#p.use_tt).
 
 Задает размер искусственного проскальзывания, а именно отступ от рыночной цены, т.е. для заявки на покупку цена выставления `offer` + `k_sl`, для заявки на продажу цена выставления `bid`−`k_sl`, где `bid` и `offer` – лучшие цены на покупку и продажу, соответственно. Отображаемые (например, в виджете [Portfolios table](interface.md#portfolios_table)) цены [Price_s/Price_b](params-description.md#p.price_s) уже содержат параметр `k_sl`. Коэффициент `k_sl` используется при любом выставлении, за исключением только выставления по кликеру [Place order](params-description.md#p.order_security)`. В случае выбора `Type price: Orderbook` для расчетов по второй ноге задаются параметры инструментов портфеля [Calc price OB](params-description.md#s.ob_c_p_t) и [Trading price OB](params-description.md#s.ob_t_p_t). Коэффициенты `k` или `k_sl` действуют после расчета с учетом этих параметров.
 
