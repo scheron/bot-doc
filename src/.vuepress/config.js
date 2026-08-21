@@ -151,6 +151,18 @@ module.exports = {
         .use(require('markdown-it-attrs'))
         .use(require('markdown-it-katex'))
         .use(require('markdown-it-anchor'))
+
+      const MAX_INDEXED_FENCE_BYTES = 25000
+      const renderFence = md.renderer.rules.fence
+      md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+        const html = renderFence
+          ? renderFence(tokens, idx, options, env, self)
+          : self.renderToken(tokens, idx, options)
+
+        return Buffer.byteLength(tokens[idx].content) > MAX_INDEXED_FENCE_BYTES
+          ? `<div class="no-index">${html}</div>`
+          : html
+      }
     }
   },
   /**
