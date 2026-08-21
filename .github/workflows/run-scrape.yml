@@ -1,19 +1,16 @@
 name: Run scrape site for search
 on:
-  workflow_run:
-    workflows: ["pages-build-deployment"]
-    types:
-      - completed
+  workflow_dispatch:
 jobs:
   run-scrape:
     runs-on: ubuntu-latest
     steps:
       - name: scrape site for Algolia search
+        env:
+          TRIGGER_TOKEN: ${{ secrets.TRIGGER_TOKEN }}
         run: |
-          curl -X POST \
-          -H "Authorization: token ${{ secrets.TRIGGER_TOKEN }}" \
+          curl --fail-with-body --silent --show-error -X POST \
+          -H "Authorization: token $TRIGGER_TOKEN" \
           -H "Accept: application/vnd.github+json" \
           "https://api.github.com/repos/fkviking/bot-doc-scrape/actions/workflows/main.yml/dispatches" \
           -d '{"ref":"master"}'
-        env:
-          TRIGGER_TOKEN: ${{ secrets.TRIGGER_TOKEN }}

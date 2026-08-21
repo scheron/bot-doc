@@ -1,7 +1,18 @@
 name: scrape
-on: push
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types:
+      - completed
+  workflow_dispatch:
+concurrency:
+  group: algolia-scrape
+  cancel-in-progress: false
 jobs:
   scrape:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: check out code 🛎
@@ -11,7 +22,12 @@ jobs:
           APPLICATION_ID: ${{ secrets.APPLICATION_ID }}
           API_KEY: ${{ secrets.API_KEY }}
         run: |
+          set -o pipefail
           docker run \
           -e APPLICATION_ID -e API_KEY \
           -e CONFIG="$(cat scribe.config.json)" \
-          algolia/docsearch-scraper:v1.6.0 
+          algolia/docsearch-scraper:v1.6.0 2>&1 | tee scrape.log
+          if grep -qE 'AlgoliaException|RequestException' scrape.log; then
+            echo "::error::Algolia rejected part of the records, the index is incomplete"
+            exit 1
+          fi
