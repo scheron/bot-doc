@@ -64,7 +64,7 @@ jobs:
           echo "base=$base" >> "$GITHUB_OUTPUT"
 
       - name: Translate changed documents
-        run: node scripts/translate-changed-docs.mjs --base "${{ steps.refs.outputs.base }}"
+        run: node scripts/translate-docs.mjs --base "${{ steps.refs.outputs.base }}"
 
       - name: Collect changed source documents
         id: docs

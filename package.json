@@ -15,6 +15,7 @@
     "reset-assets": "node scripts/reset-assets.js",
     "transliterate-assets": "node scripts/transliterate-assets.js",
     "validate-translations": "node scripts/validate-translations.mjs",
+    "translate": "node scripts/translate-docs.mjs",
     "dev": "yarn pre-process && vuepress dev src",
     "build": "yarn pre-process && vuepress build src"
   },

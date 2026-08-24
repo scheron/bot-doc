@@ -24,6 +24,22 @@ Two provider differences the module absorbs. The `openai` preset uses the Respon
 
 The workflow uses the built-in `GITHUB_TOKEN`; no personal access token is required.
 
+## Running it by hand
+
+The workflow translates what changed between two commits, but the same script covers one-off work such as filling in a document that has no English version yet.
+
+```bash
+yarn translate --base <git-ref> [--head <git-ref>]   # what the workflow runs
+yarn translate --files assets/ru/api.md              # translate one document in full
+yarn translate --all                                 # translate everything still missing
+```
+
+`--files` and `--all` translate a document from scratch and refuse to touch an English file that already exists. Add `--force` when you do want to replace one, and remember that this throws away any hand-editing it has received. `--all` reads the tracked file list, so a new document has to be committed before it is picked up.
+
+Add `--dry-run` to any of these to print the planned work without calling the model. The API key is only read when a translation actually runs, so a dry run needs no credentials.
+
+Only `--base` produces a minimal patch, because only that mode has a Russian diff to work from.
+
 ## Translation policy
 
 The editable model prompt is stored in `.github/prompts/translate-docs.md`. It contains the domain terminology and preservation rules separately from the translation script, so it can be reviewed and refined like the documentation itself.

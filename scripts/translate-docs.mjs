@@ -33,21 +33,58 @@ function isDocument(file) {
   return file.startsWith(`${SOURCE_ROOT}/`) && /\.mdx?$/i.test(file);
 }
 
+function allDocuments() {
+  return git(['ls-files', '-z', SOURCE_ROOT]).split('\0').filter(file => file && isDocument(file));
+}
+
+function normalizeDocumentPath(input) {
+  const relative = path.relative(ROOT, path.resolve(input)).split(path.sep).join('/');
+  if (!isDocument(relative)) fail(`${input} is not a Markdown document under ${SOURCE_ROOT}`);
+  if (!existsSync(path.join(ROOT, relative))) fail(`${input} does not exist`);
+  return relative;
+}
+
 function parseArgs() {
   const args = process.argv.slice(2);
   if (args.includes('--help')) {
-    console.log('Usage: node scripts/translate-changed-docs.mjs --base <git-ref> [--head <git-ref>]');
+    console.log([
+      'Translate Russian documentation into English.',
+      '',
+      'Modes:',
+      '  --base <git-ref> [--head <git-ref>]  translate what changed between two refs',
+      '  --files <path>...                    translate the given documents in full',
+      '  --all                                translate every document under assets/ru',
+      '',
+      'Options:',
+      '  --force    replace an English file that already exists (--files and --all only)',
+      '  --dry-run  report the planned work without calling the model',
+    ].join('\n'));
     process.exit(0);
   }
 
+  const flag = name => args.includes(name);
   const value = (name, fallback) => {
     const index = args.indexOf(name);
     return index === -1 ? fallback : args[index + 1];
   };
+  const list = name => {
+    const index = args.indexOf(name);
+    if (index === -1) return [];
+    const collected = [];
+    for (let i = index + 1; i < args.length && !args[i].startsWith('--'); i++) collected.push(args[i]);
+    return collected;
+  };
+
+  const options = { force: flag('--force'), dryRun: flag('--dry-run') };
+  const files = list('--files');
+
+  if (flag('--all')) return { ...options, mode: 'paths', paths: allDocuments() };
+  if (files.length) return { ...options, mode: 'paths', paths: files.map(normalizeDocumentPath) };
+  if (flag('--files')) fail('--files needs at least one path');
 
   const base = value('--base');
-  if (!base) fail('missing required --base <git-ref>');
-  return { base, head: value('--head', 'HEAD') };
+  if (!base) fail('pass one of --base <git-ref>, --files <path>..., or --all');
+  return { ...options, mode: 'range', base, head: value('--head', 'HEAD') };
 }
 
 function changedDocuments(base, head) {
@@ -172,8 +209,13 @@ async function translateModified(base, head, sourceFile, destination, diffPaths 
   return translation;
 }
 
-async function main() {
-  const { base, head } = parseArgs();
+function writeTranslation(destination, content) {
+  const absolute = path.join(ROOT, destination);
+  mkdirSync(path.dirname(absolute), { recursive: true });
+  writeFileSync(absolute, content, 'utf8');
+}
+
+async function processRange({ base, head, dryRun }) {
   const changes = changedDocuments(base, head);
   if (!changes.length) {
     console.log('No changed Russian Markdown/MDX documents.');
@@ -184,6 +226,7 @@ async function main() {
     const oldTarget = targetPath(change.oldPath);
     const newTarget = targetPath(change.newPath);
     console.log(`${change.status} ${change.oldPath}${change.oldPath === change.newPath ? '' : ` -> ${change.newPath}`}`);
+    if (dryRun) continue;
 
     if (change.status === 'D') {
       rmSync(path.join(ROOT, oldTarget), { force: true });
@@ -201,8 +244,7 @@ async function main() {
     }
 
     mkdirSync(path.dirname(path.join(ROOT, newTarget)), { recursive: true });
-    const destinationExists = existsSync(path.join(ROOT, newTarget));
-    const translated = destinationExists
+    const translated = existsSync(path.join(ROOT, newTarget))
       ? await translateModified(
           base,
           head,
@@ -211,8 +253,35 @@ async function main() {
           change.status === 'R' ? [change.oldPath, change.newPath] : [change.newPath],
         )
       : await translateAdded(change.newPath, newTarget);
-    writeFileSync(path.join(ROOT, newTarget), translated, 'utf8');
+    writeTranslation(newTarget, translated);
   }
+}
+
+async function processPaths({ paths, force, dryRun }) {
+  if (!paths.length) {
+    console.log('No Russian Markdown/MDX documents to translate.');
+    return;
+  }
+
+  for (const sourcePath of paths) {
+    const destination = targetPath(sourcePath);
+    const translated = existsSync(path.join(ROOT, destination));
+
+    if (translated && !force) {
+      console.log(`skip ${sourcePath} (${destination} exists, pass --force to replace it)`);
+      continue;
+    }
+
+    console.log(`${translated ? 'replace' : 'create'} ${destination} from ${sourcePath}`);
+    if (dryRun) continue;
+    writeTranslation(destination, await translateAdded(sourcePath, destination));
+  }
+}
+
+async function main() {
+  const options = parseArgs();
+  if (options.dryRun) console.log('dry run: no files are written and the model is not called');
+  await (options.mode === 'range' ? processRange(options) : processPaths(options));
 }
 
 await main();
