@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { transliterateLinks } = require('./helpers');
 
-const ASSETS_DIR = path.join(__dirname, '..', 'assets');
+const ASSETS_DIR = path.join(__dirname, '..', '..', 'assets');
 
 function processDirectory(directoryPath) {
   const files = fs.readdirSync(directoryPath);

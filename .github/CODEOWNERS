@@ -1,0 +1,17 @@
+# Review routing. The first matching line wins, so the more specific ones sit
+# lower. Owners are taken from who has actually maintained each area.
+
+# The documentation itself.
+/assets/                        @e-liverovskaya
+
+# Machine translations land here. They need the same eye as the Russian source,
+# because nobody else is going to notice a term drifting.
+/assets/en/                     @e-liverovskaya
+
+# Terminology. A change here silently changes every future translation, so it
+# should not be merged by whoever happens to be editing the pipeline that day.
+/.github/prompts/               @e-liverovskaya @scheron
+
+# The pipeline.
+/scripts/translation/           @scheron
+/.github/workflows/             @scheron
