@@ -14,7 +14,7 @@ section: 10
 
 Написание формул возможно как для всего портфеля, так и для каждого инструмента в отдельности.
 
-В первом случае будут отображены поля [Trade formula](params-description.md#p.trade_formula), [Extra field#1](params-description.md#p.ext_field1_) и [Extra field#2](params-description.md#p.ext_field2_).
+В первом случае будут отображены поля [Trade formula](params-description.md#p.trade_formula), [Shift formula](params-description.md#p.shift_formula), [Extra field#1](params-description.md#p.ext_field1_) и [Extra field#2](params-description.md#p.ext_field2_).
 Во втором [Count formula](params-description.md#s.count_formula), [Ratio buy formula](params-description.md#s.ratio_b_formula), [Ratio sell formula](params-description.md#s.ratio_s_formula).
 
 В редакторе формул существует возможность тестового выполнения выбранной формулы (кнопка `Test`, при этом в строку компиляции добавляется флаг `-DDEBUG`) и на момент вычисления формулы создаётся временная копия портфеля, НО если вы в формуле изменяете значения полей портфеля, и у вас существует портфель с тем же именем, то изменения применятся к этому портфелю. При нажатии на кнопку `Test` сначала происходит компиляция формулы, а потом ее вызов на текущих рыночных данных и текущих параметрах портфелей. Компиляция формулы и ее успешная работа на одном наборе данных не гарантируют успешное выполнение на других наборах данных. Задачей пользователя является предусмотреть корректную работу формулы при всех возможных значениях параметров портфелей и рыночных данных. Наиболее часто встречающиеся ошибки в формулах, приводящие в аварийному выключению робота, описаны [тут](#errors).
@@ -279,6 +279,7 @@ if (t.tick())
 | security_fields next_sec()                                  | получить следующий финансовый инструмент портфеля ([ пример итерации ](#__Example3__)), порядок финансовых инструментов при итерировании НЕ определен (он не зависит от порядка добавления финансового инструмента в портфель, настроек этих финансовых инструментов и т.п.) |
 | deal_item deal(const std::string& s)                        | получить сделку по финансовому инструменту c SecKey s (доступно только в Trade formula, т.е. на момент совершения сделки), если сделки по указанному финансовому инструменту в реальности не было, то `amount` и `price` будут равны нулю |
 | deal_item deal(const security_fields& sf)                   | получить сделку по финансовому инструменту sf (доступно только в Trade formula, т.е. на момент совершения сделки), если сделки по указанному финансовому инструменту в реальности не было, то `amount` и `price` будут равны нулю |
+| trade_item last_trade() <Anchor hide :ids="['__last_trade__']" />                                     | получить последнюю сделку по финансовым инструментам портфеля, если сделок не было, то `quantity` и `price` будут равны нулю |
 | struct security_fields security_field(const std::string& s) | получить финансовый инструмент данного портфеля с SecKey s                                                              |
 | struct security_fields security_field()                     | получить главный финансовый инструмент текущего портфеля                                                                |
 | std::map<std::string, double>& data()                       | словарь для сохранения пользовательских значений, НЕ будет сохранен при выключении робота                |
@@ -293,6 +294,8 @@ if (t.tick())
 | bool re_buy()                                               | получить "re_buy" портфеля                                                                               |
 | bool use_tt()                                               | получить "Use timetable" портфеля                                                                        |
 | int portfolio_type()                                        | получить "Type" портфеля                                                                                 |
+| int shift_mode()                                            | получить "Shift mode" портфеля                                                                                 |
+| int v_side()                                                | получить "v_side" портфеля                                                                                 |
 | long long v_in_l()                                          | получить "v_in_left" портфеля                                                                            |
 | long long v_in_r()                                          | получить "v_in_right" портфеля                                                                           |
 | long long v_out_l()                                         | получить "v_out_left" портфеля                                                                           |
@@ -303,6 +306,7 @@ if (t.tick())
 | double k1()                                                 | получить "K1" портфеля                                                                                   |
 | double k2()                                                 | получить "K2" портфеля                                                                                   |
 | double tp()                                                 | получить "TP" портфеля                                                                                   |
+| double x()                                                  | получить "X" портфеля                                                                                   |
 | bool equal_prices()                                         | получить "Equal prices" портфеля                                                                         |
 | bool always_limits_timer()                                  | получить "Always timer" портфеля                                                                         |
 | double lim_s()                                              | получить "Lim_Sell" портфеля                                                                             |
@@ -349,6 +353,7 @@ if (t.tick())
 | void set_re_buy(bool v)                                     | изменить "re_buy" портфеля на значение v                                                                 |
 | void set_use_tt(bool v)                                     | изменить "Use timetable" портфеля на значение v                                                          |
 | void set_portfolio_type(int v)                              | изменить "Type" портфеля на значение v                                                                   |
+| void set_v_side(int v)                                      | изменить "v_side" портфеля на значение v                                                                   |
 | void set_v_in_l(long long v)                                | изменить "v_in_left" портфеля на значение v                                                              |
 | void set_v_in_r(long long v)                                | изменить "v_in_right" портфеля на значение v                                                             |
 | void set_v_out_l(long long v)                               | изменить "v_out_left" портфеля на значение v                                                             |
@@ -359,6 +364,7 @@ if (t.tick())
 | void set_k1(double v)                                       | изменить "K1" портфеля на значение v                                                                     |
 | void set_k2(double v)                                       | изменить "K2" портфеля на значение v                                                                     |
 | void set_tp(double v)                                       | изменить "TP" портфеля на значение v                                                                     |
+| void set_x(double v)                                        | изменить "X" портфеля на значение v                                                                     |
 | void set_equal_prices(bool v)                               | изменить "Equal prices" портфеля на значение v                                                           |
 | void set_always_limits_timer(bool v)                        | изменить "Always timer" портфеля на значение v                                                           |
 | void set_lim_s(double v)                                    | изменить "Lim_Sell" портфеля на значение v                                                               |
@@ -407,6 +413,18 @@ static const sUF set_uf[] = {&portfolio::set_uf0, &portfolio::set_uf1, &portfoli
 | price    | double    | средневзвешенная цена сделки                 |
 | amount   | long long | суммарный объем сделки в лотах               |
 | dir      | int       | направление сделки: 1 - покупка, 2 - продажа |
+
+Поля `trade_item`:
+
+| Название | Тип       | Описание                                     |
+|----------|-----------|----------------------------------------------|
+| price    | double    | цена сделки                 |
+| quantity   | long long | суммарный объем сделки в лотах               |
+| dir      | int       | направление сделки: 1 - покупка, 2 - продажа |
+| is_first      | bool       | [Is first](params-description.md#s.is_first) финансового инструмента |
+| sec_key      | std::string       | [SecKey](params-description.md#s.sec_key) финансового инструмента |
+| tid      | long long       | внутренний уникальный идентификатор сделки |
+
 
 Конструкторы `user_value`:
 
@@ -1574,6 +1592,93 @@ log_show(indicators::get_indicator("okex", "SMA", "qwe").second.to_str());
 Удалить заданный индикатор, размещенный в `shared memory`:
 ```C
 return indicators::del_indicator("okex", "SMA", "qwe");
+```
+
+<Anchor hide :ids="['__shift_formula__']"/>
+## Примеры написания [Shift formula](params-description.md#p.shift_formula)
+
+[Shift mode](params-description.md#p.shift_mode) равный `Standard`
+
+```cpp
+portfolio p = get_portfolio();
+security_fields sf1 = get_security_fields();
+
+trade_item tr = p.last_trade();
+if (!tr.quantity) return 0;
+
+long long sf1_pos = sf1.pos();
+
+long long q0_buy = (sf1_pos >= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
+long long q0_sell = (sf1_pos <= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
+
+double v = ((tr.dir == BUY) ? q0_buy : q0_sell) * sf1.count();
+if (!v) return 0;
+
+double mult = tr.quantity / v;
+
+if (tr.dir == SELL)
+{
+    if (p.pos())
+    {
+        double k3 = (std::abs(p.lim_s() - p.lim_b()) - p.tp() - p.k()) * v / static_cast<double>(sf1_pos);
+        double k4 = (p.lim_s() - p.lim_b() >= 0) ? (k3 + p.k2()) : (-k3 + p.k2());
+        
+        p.set_lim_b(p.lim_b() + mult * ((sf1_pos > 0) ? k4 : p.k1()));
+        p.set_lim_s(p.lim_s() + mult * ((sf1_pos > 0) ? p.k2() : p.k()));
+    }
+    else
+    {
+        p.set_lim_b(p.lim_s() - p.tp());
+        p.set_lim_s(p.lim_s() + mult * p.k());
+    }
+}
+else
+{
+    if (p.pos())
+    {   
+        double k3 = (std::abs(p.lim_s() - p.lim_b()) - p.tp() - p.k()) * v / static_cast<double>(sf1_pos);
+        double k4 = (p.lim_s() - p.lim_b() >= 0) ? (-k3 + p.k2()) : (k3 + p.k2());
+        
+        p.set_lim_s(p.lim_s() - mult * ((sf1_pos < 0) ? k4 : p.k1()));
+        p.set_lim_b(p.lim_b() - mult * ((sf1_pos < 0) ? p.k2() : p.k()));
+    }
+    else
+    {
+        p.set_lim_s(p.lim_b() + p.tp());
+        p.set_lim_b(p.lim_b() - mult * p.k());
+    }
+}
+```
+
+[Shift mode](params-description.md#p.shift_mode) равный `Standard + X`
+
+```cpp
+portfolio p = get_portfolio();
+security_fields sf1 = get_security_fields();
+
+trade_item tr = p.last_trade();
+if (!tr.quantity) return 0;
+
+long long sf1_pos = sf1.pos();
+
+long long q0_buy = (sf1_pos >= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
+long long q0_sell = (sf1_pos <= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
+
+double v = ((tr.dir == BUY) ? q0_buy : q0_sell) * sf1.count();
+if (!v) return 0;
+
+double mult = tr.quantity / v;
+
+if (tr.dir == SELL)
+{
+    p.set_lim_b(p.lim_b() + mult * ((sf1_pos > 0) ? p.x() : p.k1()));
+    p.set_lim_s(p.lim_s() + mult * ((sf1_pos > 0) ? p.k2() : p.k()));
+}
+else
+{
+    p.set_lim_s(p.lim_s() - mult * ((sf1_pos < 0) ? p.x() : p.k1()));
+    p.set_lim_b(p.lim_b() - mult * ((sf1_pos < 0) ? p.k2() : p.k()));
+}
 ```
 
 ## Наиболее частые ошибки в формулах, приводящие к аварийному завершению работы робота <Anchor :ids="['errors']"/>

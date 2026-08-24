@@ -28,70 +28,7 @@ section: 8
 
 ## Правила перемещения Lim_Sell и Lim_Buy
 
-Сигнальные цены [Lim_Sell](params-description.md#p.lim_s) и [Lim_Buy](params-description.md#p.lim_s) перемещаются только при прохождении сделок по [Is first](params-description.md#s.is_first) финансовому инструменту портфеля кроме случая использования [Always timer](params-description.md#p.always_limits_timer).
-
-Правила перемещения сигнальных цен можно разделить на две части: произошла продажа по [Is first](params-description.md#s.is_first) финансовому инструменту и произошла покупка по [Is first](params-description.md#s.is_first) финансовому инструменту. Внутри каждой из этих частей алгоритм делится еще на две части: позиция портфеля до прохождения данной сделки была равна нулю и была не равна нулю.
-
-Введем следующие обозначения: `diffpos` - знаковое количество лотов в сделке по [Is first](params-description.md#s.is_first) финансовому инструменту, `V` - это [v_in_left](params-description.md#p.v_in_l) × [Count](params-description.md#s.count) или [v_out_left](params-description.md#p.v_out_l) × [Count](params-description.md#s.count) в зависимости от того открываем мы позицию или закрываем данной заявкой, [Count](params-description.md#s.count) - это `Count` [Is first](params-description.md#s.is_first) финансового инструмента, [Curpos](params-description.md#s.pos) - текущая позиция по [Is first](params-description.md#s.is_first) финансового инструмента портфеля (т.е. прошедшая только что сделка еще НЕ учтена), нижний индекс 0 - предыдущее значение параметра, 1 - новое значение параметра. В данных обозначениях алгоритм перемещения сигнальных цен примет вид:
-
-- если прошла продажа(соответственно в количестве `diffpos`):
-    
-    - если текущая позиция до момента совершения сделки была $curpos\neq 0$, то:
-
-        $k3=\left(|{Lim\_Sell_0- Lim\_Buy_0}|-TP-K\right)\times\frac{V}{curpos},$
-
-        $k4=
-  \begin{cases}k3+K2, &\text{if}\enspace Lim\_Sell_0-Lim\_Buy_0\geq 0\\
-              -k3+K2, &\text{if}\enspace Lim\_Sell_0-Lim\_Buy_0<0 
-  \end{cases},$ 
-
-        $Lim\_Buy_1= Lim\_Buy_0+\frac{|{diffpos}|}{V}\times 
-    \begin{cases} 
-       k4, &\text{if}\enspace curpos>0\\ 
-       K1, &\text{if}\enspace curpos<0 
-    \end{cases},$
-
-        $Lim\_Sell_1=Lim\_Sell_0+\frac{|{diffpos}|}{V}\times
-   \begin{cases} 
-     K2, &\text{if}\enspace curpos>0\\ 
-      K, &\text{if}\enspace curpos<0 
-   \end{cases},$
-
-    - если текущая позиция до момента совершения сделки была $curpos=0$, то:
-
-        $Lim\_Sell_1=Lim\_Sell_0+\frac{|{diffpos}|}{V}\times K,$
-
-        $Lim\_Buy_1=Lim\_Sell_0-TP,$
-
-- если прошла покупка (соответственно в количестве diffpos):
-
-    - если текущая позиция до момента совершения сделки была $curpos\neq 0$, то:
-
-        $k3=\left(|Lim\_Sell_0-Lim\_Buy_0|-TP-K\right)\times\frac{V}{curpos},$
-
-        $k4=
-  \begin{cases} 
-    -k3+K2, &\text{if}\enspace Lim\_Sell_0-Lim\_Buy_0\geq 0\\
-     k3+K2, &\text{if}\enspace Lim\_Sell_0-Lim\_Buy_0<0
-  \end{cases},$
-	
-        $Lim\_Sell_1=Lim\_Sell_0-\frac{|{diffpos}|}{V}\times 
-   \begin{cases} 
-     k4, &\text{if}\enspace curpos<0\\
-     K1, &\text{if}\enspace curpos>0 
-   \end{cases},$
-   	
-        $Lim\_Buy_1=Lim\_Buy_0-\frac{|{diffpos}|}{V}\times 
-   \begin{cases} 
-     K2, &\text{if}\enspace curpos<0\\
-      K, &\text{if}\enspace curpos>0 
-   \end{cases},$
-
-    - если текущая позиция до момента совершения сделки была $curpos=0$, то:
-	
-        $Lim\_Sell_1=Lim\_Buy_0+TP,$
-	
-        $Lim\_Buy_1=Lim\_Buy_0-\frac{|{diffpos}|}{V}\times K.$
+Зависят от значения параметра [Shift_mode](params-description.md#p.shift_mode).
 
 Также перемещение сигнальных цен происходит когда заявка не может быть выставлена из-за ограничений по [v_min](params-description.md#p.v_min), [v_max](params-description.md#p.v_max), [To0](params-description.md#p.to0). Если робот не может купить из-за ограничений по [v_max](params-description.md#p.v_max), то в соответствии с параметрами портфеля [Limits timer](params-description.md#p.timer) и [Percent](params-description.md#p.percent) цены [Lim_Sell](params-description.md#p.lim_s) и [Lim_Buy](params-description.md#p.lim_b) уменьшаются на величину параметра портфеля [K](params-description.md#p.k), если же робот не может продать из-за ограничений по [v_min](params-description.md#p.v_min), то в соответствии с параметрами портфеля [Limits timer](params-description.md#p.timer) и [Percent](params-description.md#p.percent) значения [Lim_Sell](params-description.md#p.lim_s) и [Lim_Buy](params-description.md#p.lim_b) увеличиваются на величину параметра портфеля [K](params-description.md#p.k).
 

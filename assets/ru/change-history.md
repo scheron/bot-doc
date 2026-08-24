@@ -7,6 +7,13 @@ ignore-section-number: true
 # История изменений
 
 
+## 2026-08-21
+
+- Добавлены параметры портфеля [Shift mode](params-description.md#p.shift_mode), [Shift formula](params-description.md#p.shift_formula), [X](params-description.md#p.x), [v_side](params-description.md#p.v_side),
+    отвечающие за новые алгоритмы подвижки цен [Lim_sell](params-description.md#p.lim_s) и [Lim_buy](params-description.md#p.lim_b);
+- В C++ интерфейс добавлены [методы портфеля](c-api.md#portfolio-field-access) для доступа и редактирования [Shift mode](params-description.md#p.shift_mode), [X](params-description.md#p.x), [v_side](params-description.md#p.v_side);
+- В C++ интерфейс добавлен метод [last_trade()](c-api.md#__last_trade__) для объекта портфеля.
+
 ## 2026-08-04
 
 - В C++ интерфейс добавлена функция [`void log_show(const std::string&)`](c-api.md#cpp-log-show)
