@@ -4,8 +4,7 @@ on:
   push:
     branches: [master]
     paths:
-      - 'assets/ru/**/*.md'
-      - 'assets/ru/**/*.mdx'
+      - 'assets/ru/**'
   workflow_dispatch:
     inputs:
       base_ref:
@@ -68,7 +67,8 @@ jobs:
         id: docs
         shell: bash
         run: |
-          git diff --name-only --diff-filter=ACMR "${{ steps.refs.outputs.base }}" HEAD -- 'assets/ru/**/*.md' 'assets/ru/**/*.mdx' > /tmp/changed-docs.txt
+          git diff --name-only --diff-filter=ACMR "${{ steps.refs.outputs.base }}" HEAD -- assets/ru \
+            | grep -iE '\.mdx?$' > /tmp/changed-docs.txt || true
           delimiter="DOCS_$(date +%s)_$RANDOM"
           echo "files<<$delimiter" >> "$GITHUB_OUTPUT"
           cat /tmp/changed-docs.txt >> "$GITHUB_OUTPUT"
