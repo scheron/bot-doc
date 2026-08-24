@@ -1,0 +1,112 @@
+name: Translate changed documentation
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'assets/ru/**/*.md'
+      - 'assets/ru/**/*.mdx'
+  workflow_dispatch:
+    inputs:
+      base_ref:
+        description: Git ref to compare with HEAD (defaults to HEAD^)
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: documentation-translation
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      OPENAI_TRANSLATION_MODEL: ${{ vars.OPENAI_TRANSLATION_MODEL || 'gpt-5-mini' }}
+      NODE_OPTIONS: --openssl-legacy-provider
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Determine comparison base
+        id: refs
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PUSH_BEFORE: ${{ github.event.before }}
+          MANUAL_BASE: ${{ inputs.base_ref }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_dispatch" && -n "$MANUAL_BASE" ]]; then
+            base="$MANUAL_BASE"
+          elif [[ "$EVENT_NAME" == "push" && ! "$PUSH_BEFORE" =~ ^0+$ ]]; then
+            base="$PUSH_BEFORE"
+          else
+            base="HEAD^"
+          fi
+          git rev-parse --verify "$base^{commit}"
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+
+      - name: Translate changed documents
+        run: node scripts/translate-changed-docs.mjs --base "${{ steps.refs.outputs.base }}"
+
+      - name: Collect changed source documents
+        id: docs
+        shell: bash
+        run: |
+          git diff --name-only --diff-filter=ACMR "${{ steps.refs.outputs.base }}" HEAD -- 'assets/ru/**/*.md' 'assets/ru/**/*.mdx' > /tmp/changed-docs.txt
+          delimiter="DOCS_$(date +%s)_$RANDOM"
+          echo "files<<$delimiter" >> "$GITHUB_OUTPUT"
+          cat /tmp/changed-docs.txt >> "$GITHUB_OUTPUT"
+          echo "$delimiter" >> "$GITHUB_OUTPUT"
+
+      - name: Validate frontmatter and local links
+        if: steps.docs.outputs.files != ''
+        env:
+          CHANGED_DOCS: ${{ steps.docs.outputs.files }}
+        run: node scripts/validate-translations.mjs $CHANGED_DOCS
+
+      - name: Build documentation site
+        run: yarn build
+
+      - name: Create translation pull request
+        id: create-pr
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ github.ref_name }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          if git diff --quiet -- assets/en; then
+            echo "No translation changes to propose."
+            exit 0
+          fi
+
+          branch="bot/docs-translation-$RUN_ID-$RUN_ATTEMPT"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add assets/en
+          git commit -m "docs(en): translate Russian documentation updates"
+          git push origin "$branch"
+          gh pr create \
+            --base "$BASE_BRANCH" \
+            --head "$branch" \
+            --title "docs(en): translate Russian documentation updates" \
+            --body "Automated English translation for Russian documentation changes in \`$SOURCE_SHA\`.\n\nThe workflow validated frontmatter, local Markdown links, and the VuePress production build. Please review terminology before merging."
