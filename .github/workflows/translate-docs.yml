@@ -2,7 +2,9 @@ name: Translate changed documentation
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+      - feat/translation-pipeline
     paths:
       - 'assets/ru/**'
   workflow_dispatch:
