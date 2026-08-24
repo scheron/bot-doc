@@ -108,9 +108,13 @@ jobs:
           git add assets/en
           git commit -m "docs(en): translate Russian documentation updates"
           git push origin "$branch"
+          body=$(printf '%s\n\n%s\n' \
+            "Automated English translation for Russian documentation changes in \`$SOURCE_SHA\`." \
+            "The workflow validated frontmatter, local Markdown links, and the VuePress production build. Please review terminology before merging.")
+
           gh pr create \
             --repo "$GITHUB_REPOSITORY" \
             --base "$BASE_BRANCH" \
             --head "$branch" \
             --title "docs(en): translate Russian documentation updates" \
-            --body "Automated English translation for Russian documentation changes in \`$SOURCE_SHA\`.\n\nThe workflow validated frontmatter, local Markdown links, and the VuePress production build. Please review terminology before merging."
+            --body "$body"
