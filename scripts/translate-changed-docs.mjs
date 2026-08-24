@@ -4,10 +4,11 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
+import {createTranslationProvider} from './lib/translation-provider.mjs';
+
 const ROOT = path.resolve(import.meta.dirname, '..');
 const SOURCE_ROOT = 'assets/ru';
 const TARGET_ROOT = 'assets/en';
-const API_URL = 'https://api.openai.com/v1/responses';
 const PROMPT_FILE = path.join(ROOT, '.github', 'prompts', 'translate-docs.md');
 const TRANSLATION_INSTRUCTIONS = readFileSync(PROMPT_FILE, 'utf8');
 
@@ -69,74 +70,40 @@ function changedDocuments(base, head) {
   return changes;
 }
 
-function responseText(response) {
-  for (const item of response.output ?? []) {
-    for (const content of item.content ?? []) {
-      if (content.type === 'output_text' && content.text) return content.text;
-    }
-  }
-  fail(`OpenAI response did not contain output_text (${response.id ?? 'unknown response'})`);
-}
+let provider;
+
+const TRANSLATION_SCHEMA = {
+  type: 'object',
+  properties: {
+    full_translation: {type: 'string'},
+    operations: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          find: {type: 'string'},
+          replace: {type: 'string'},
+        },
+        required: ['find', 'replace'],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ['full_translation', 'operations'],
+  additionalProperties: false,
+};
 
 async function askModel(payload) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) fail('OPENAI_API_KEY is not set');
-
-  const model = process.env.OPENAI_TRANSLATION_MODEL || 'gpt-5-mini';
-  let lastError;
-
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${apiKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model,
-          instructions: TRANSLATION_INSTRUCTIONS,
-          input: JSON.stringify(payload),
-          text: {
-            format: {
-              type: 'json_schema',
-              name: 'documentation_translation_patch',
-              strict: true,
-              schema: {
-                type: 'object',
-                properties: {
-                  full_translation: { type: 'string' },
-                  operations: {
-                    type: 'array',
-                    items: {
-                      type: 'object',
-                      properties: {
-                        find: { type: 'string' },
-                        replace: { type: 'string' },
-                      },
-                      required: ['find', 'replace'],
-                      additionalProperties: false,
-                    },
-                  },
-                },
-                required: ['full_translation', 'operations'],
-                additionalProperties: false,
-              },
-            },
-          },
-        }),
-      });
-
-      const body = await response.json();
-      if (!response.ok) throw new Error(`${response.status}: ${JSON.stringify(body.error ?? body)}`);
-      return JSON.parse(responseText(body));
-    } catch (error) {
-      lastError = error;
-      if (attempt < 3) await new Promise(resolve => setTimeout(resolve, attempt * 2000));
-    }
+  try {
+    provider ??= createTranslationProvider();
+    return await provider.complete({
+      instructions: TRANSLATION_INSTRUCTIONS,
+      payload,
+      schema: TRANSLATION_SCHEMA,
+    });
+  } catch (error) {
+    fail(error.message ?? String(error));
   }
-
-  fail(`OpenAI request failed after 3 attempts: ${lastError}`);
 }
 
 function applyOperations(document, operations, file) {

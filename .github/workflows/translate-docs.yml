@@ -23,8 +23,9 @@ jobs:
   translate:
     runs-on: ubuntu-latest
     env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      OPENAI_TRANSLATION_MODEL: ${{ vars.OPENAI_TRANSLATION_MODEL || 'gpt-5-mini' }}
+      TRANSLATION_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      TRANSLATION_PROVIDER: ${{ vars.TRANSLATION_PROVIDER || 'deepseek' }}
+      TRANSLATION_MODEL: ${{ vars.TRANSLATION_MODEL || 'deepseek-v4-flash' }}
       NODE_OPTIONS: --openssl-legacy-provider
 
     steps:

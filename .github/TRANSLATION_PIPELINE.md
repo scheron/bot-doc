@@ -4,8 +4,22 @@ Changes merged to `master` under `assets/ru/**/*.md` or `assets/ru/**/*.mdx` sta
 
 ## Repository setup
 
-1. Add an Actions secret named `OPENAI_API_KEY` in **Settings → Secrets and variables → Actions**.
-2. Optionally add the Actions variable `OPENAI_TRANSLATION_MODEL`. If omitted, the workflow uses `gpt-5-mini`.
+1. Add an Actions secret named `OPENAI_API_KEY` in **Settings → Secrets and variables → Actions**. It holds the key of whichever provider is configured below, not necessarily an OpenAI one.
+2. Optionally add the Actions variables `TRANSLATION_PROVIDER` and `TRANSLATION_MODEL`. If omitted, the workflow uses `deepseek` with `deepseek-v4-flash`.
+
+### Changing the provider
+
+`scripts/lib/translation-provider.mjs` holds every provider-specific detail, so switching vendors is configuration rather than code. Three presets ship with it:
+
+| `TRANSLATION_PROVIDER` | Endpoint | Default model |
+| --- | --- | --- |
+| `deepseek` (default) | `https://api.deepseek.com/chat/completions` | `deepseek-v4-flash` |
+| `openai` | `https://api.openai.com/v1/responses` | `gpt-5-mini` |
+| `compatible` | set `TRANSLATION_API_URL` yourself | set `TRANSLATION_MODEL` yourself |
+
+Use `compatible` for any other OpenAI-compatible vendor. `TRANSLATION_API_URL`, `TRANSLATION_MODEL`, `TRANSLATION_API_KEY` and `TRANSLATION_MAX_TOKENS` override any preset individually.
+
+Two provider differences the module absorbs. The `openai` preset uses the Responses API, which enforces the reply shape server-side with a strict JSON schema; `deepseek` and `compatible` speak Chat Completions, which only offers `json_object` mode, so the module appends the schema and a worked example to the system prompt instead. DeepSeek also enables thinking mode by default at `high` effort, which buys nothing for translation, so the preset sends `{"thinking": {"type": "disabled"}}`.
 3. In **Settings → Actions → General → Workflow permissions**, allow GitHub Actions to create and approve pull requests. The workflow itself requests only `contents: write` and `pull-requests: write`.
 
 The workflow uses the built-in `GITHUB_TOKEN`; no personal access token is required.
