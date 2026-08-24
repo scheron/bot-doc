@@ -106,6 +106,7 @@ jobs:
           git commit -m "docs(en): translate Russian documentation updates"
           git push origin "$branch"
           gh pr create \
+            --repo "$GITHUB_REPOSITORY" \
             --base "$BASE_BRANCH" \
             --head "$branch" \
             --title "docs(en): translate Russian documentation updates" \
