@@ -4,7 +4,7 @@ const matter = require('gray-matter');
 const {removeNumberingFromHeaders} = require('./helpers')
 
 
-const SOURCE_DIR = path.join(__dirname, '..', 'assets');
+const SOURCE_DIR = path.join(__dirname, '..', '..', 'assets');
 
 (() => {
 	const files = fs.readdirSync(SOURCE_DIR)
