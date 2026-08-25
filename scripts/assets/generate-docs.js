@@ -5,8 +5,8 @@ const {addNumberingToHeaders, addAnchorsToHeaders, transliterateLinks} = require
 
 const CONFIGS = {
 	ru: {
-		sourceDir: path.join(__dirname, '..', 'assets', 'ru'),
-		outputDir: path.join(__dirname, '..', 'src', 'docs'),
+		sourceDir: path.join(__dirname, '..', '..', 'assets', 'ru'),
+		outputDir: path.join(__dirname, '..', '..', 'src', 'docs'),
 		warnPlaceholder: `\
 [//]: # (====== АВТО-СГЕНЕРИРОВАННЫЙ ФАЙЛ ======)
 [//]: # (ЭТОТ ФАЙЛ БЫЛ АВТОМАТИЧЕСКИ СГЕНЕРИРОВАН. ЛЮБЫЕ ПРЯМЫЕ ИЗМЕНЕНИЯ МОГУТ БЫТЬ ПЕРЕЗАПИСАНЫ.)
@@ -15,8 +15,8 @@ const CONFIGS = {
 \n`
 	},
 	en: {
-		sourceDir: path.join(__dirname, '..', 'assets', 'en'),
-		outputDir: path.join(__dirname, '..', 'src', 'en', 'docs'),
+		sourceDir: path.join(__dirname, '..', '..', 'assets', 'en'),
+		outputDir: path.join(__dirname, '..', '..', 'src', 'en', 'docs'),
 		warnPlaceholder: `\
 [//]: # (====== AUTO-GENERATED FILE ======)
 [//]: # (THIS FILE WAS AUTOMATICALLY GENERATED. ANY DIRECT MODIFICATIONS MAY BE OVERWRITTEN.)
@@ -59,7 +59,7 @@ function generateDocs(sourceDir, outputDir, warnPlaceholder, language) {
 		fs.copyFileSync(sourcePath, outputPath);
 	});
 
-	const assetsDir = path.join(__dirname, '..', 'assets');
+	const assetsDir = path.join(__dirname, '..', '..', 'assets');
 	const imgSourceDir = path.join(assetsDir, '00-img');
 	const imgOutputDir = path.join(outputDir, '00-img');
 	
