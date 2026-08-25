@@ -6,6 +6,17 @@ ignore-section-number: true
 
 # Change Log
 
+2026-08-21
+
+Added portfolio parameters Shift mode, Shift formula, X, v_side, responsible for new price shift algorithms Lim_sell and Lim_buy;
+Added portfolio methods to the C++ API for accessing and editing Shift mode, X, v_side;
+Added deal() method to the portfolio object in the C++ API.
+
+## 2026-08-04
+
+- Added [`void log_show(const std::string&)`](c-api.md#cpp-log-show) function to the C++ API
+- Added [ability to save and load indicator values when restarting the robot](c-api.html#sokhranenie-znachenii-indikatorov-mezhdu-perezapuskami-robota) to the C++ API
+
 ## 2026-03-05
 
 - The `Sell/Buy` and `Lim_S/Lim_B` fields have been added to the [Finres history](interface.md#finres_history) and [Finres for today](interface.md#finres_for_today) widgets. The `Buy/Sell` field has been renamed to `Direction` in both widgets.
