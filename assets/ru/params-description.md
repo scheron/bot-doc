@@ -381,7 +381,7 @@ First delta = 20. Вы котируете на продажу объёмом 100
 - `v_right` - использовать [v_in_right](params-description.md#p.v_in_r) и [v_out_right](params-description.md#p.v_out_r) при подвижке [Lim_sell](params-description.md#p.lim_s) и [Lim_buy](params-description.md#p.lim_b)
 
 **Важно!** В режиме [Shift mode](params-description.md#p.shift_mode) равном `C++ formula` к имени параметра будет добавлена приписка `formula`, это означает что параметр не используется в алгоритме подвижки лимитов, но может быть использован в коде формул.
-На деле это один и тот же параметр, добавляется всего лишь приписка в названии.
+Приписка `formula` не создает новый параметр и не изменяет его значение - меняются только отображаемое имя и роль в алгоритме.
 
 #### K <Anchor :ids="['p.k']" />
 
@@ -393,7 +393,7 @@ First delta = 20. Вы котируете на продажу объёмом 100
 <iframe width="735" height="415" src="https://www.youtube.com/embed/2qUPvspTQq4" title="Описание параметра K" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Важно!** В режиме [Shift mode](params-description.md#p.shift_mode) равном `C++ formula` к имени параметра будет добавлена приписка `formula`, это означает что параметр не используется в алгоритме подвижки лимитов (кроме подвижки по [Limits timer](params-description.md#p.timer),
-[Percent](params-description.md#p.percent)), но может быть использован в коде формул. На деле это один и тот же параметр, добавляется всего лишь приписка в названии.
+[Percent](params-description.md#p.percent)), но может быть использован в коде формул. Приписка `formula` не создает новый параметр и не изменяет его значение - меняются только отображаемое имя и роль в алгоритме.
 
 #### ТР <Anchor :ids="['p.tp']" />
 
@@ -405,7 +405,7 @@ First delta = 20. Вы котируете на продажу объёмом 100
 <iframe width="735" height="415" src="https://www.youtube.com/embed/R2nuoUpGq9c" title="Описание параметра TP" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Важно!** В режиме [Shift mode](params-description.md#p.shift_mode) равном `C++ formula` к имени параметра будет добавлена приписка `formula`, это означает что параметр не используется в алгоритме подвижки лимитов, но может быть использован в коде формул.
-На деле это один и тот же параметр, добавляется всего лишь приписка в названии.
+Приписка `formula` не создает новый параметр и не изменяет его значение - меняются только отображаемое имя и роль в алгоритме.
 
 #### K1 <Anchor :ids="['p.k1']" />
 
@@ -417,7 +417,7 @@ First delta = 20. Вы котируете на продажу объёмом 100
 <iframe width="735" height="415" src="https://www.youtube.com/embed/nYSPQR2LFhE" title="Описание параметра K1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Важно!** В режиме [Shift mode](params-description.md#p.shift_mode) равном `C++ formula` к имени параметра будет добавлена приписка `formula`, это означает что параметр не используется в алгоритме подвижки лимитов, но может быть использован в коде формул.
-На деле это один и тот же параметр, добавляется всего лишь приписка в названии.
+Приписка `formula` не создает новый параметр и не изменяет его значение - меняются только отображаемое имя и роль в алгоритме.
 
 #### K2 <Anchor :ids="['p.k2']" />
 
@@ -430,14 +430,14 @@ First delta = 20. Вы котируете на продажу объёмом 100
 <iframe width="735" height="415" src="https://www.youtube.com/embed/9RbN893_eD0" title="Описание параметра K2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Важно!** В режиме [Shift mode](params-description.md#p.shift_mode) равном `C++ formula` к имени параметра будет добавлена приписка `formula`, это означает что параметр не используется в алгоритме подвижки лимитов, но может быть использован в коде формул.
-На деле это один и тот же параметр, добавляется всего лишь приписка в названии.
+Приписка `formula` не создает новый параметр и не изменяет его значение - меняются только отображаемое имя и роль в алгоритме.
 
 #### X <Anchor :ids="['p.x']" />
 
 Коэффициент сдвига цен [Lim_sell](params-description.md#p.lim_s) и [Lim_buy](params-description.md#p.lim_b), используется только в режиме [Shift mode](params-description.md#p.shift_mode) равном `Standard + X`, принцип работы описан выше.
 
 **Важно!** В режиме [Shift mode](params-description.md#p.shift_mode) равном `C++ formula` к имени параметра будет добавлена приписка `formula`, это означает что параметр не используется в алгоритме подвижки лимитов, но может быть использован в коде формул.
-На деле это один и тот же параметр, добавляется всего лишь приписка в названии.
+Приписка `formula` не создает новый параметр и не изменяет его значение - меняются только отображаемое имя и роль в алгоритме.
 
 ### Shift formula <Anchor :ids="['p.shift_formula']" />
 

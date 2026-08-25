@@ -279,7 +279,7 @@ if (t.tick())
 | security_fields next_sec()                                  | получить следующий финансовый инструмент портфеля ([ пример итерации ](#__Example3__)), порядок финансовых инструментов при итерировании НЕ определен (он не зависит от порядка добавления финансового инструмента в портфель, настроек этих финансовых инструментов и т.п.) |
 | deal_item deal(const std::string& s)                        | получить сделку по финансовому инструменту c SecKey s (доступно только в Trade formula, т.е. на момент совершения сделки), если сделки по указанному финансовому инструменту в реальности не было, то `amount` и `price` будут равны нулю |
 | deal_item deal(const security_fields& sf)                   | получить сделку по финансовому инструменту sf (доступно только в Trade formula, т.е. на момент совершения сделки), если сделки по указанному финансовому инструменту в реальности не было, то `amount` и `price` будут равны нулю |
-| trade_item last_trade() <Anchor hide :ids="['__last_trade__']" />                                     | получить последнюю сделку по финансовым инструментам портфеля, если сделок не было, то `quantity` и `price` будут равны нулю |
+| deal_item deal() <Anchor hide :ids="['__last_deal__']" />  | получить последнюю сделку по финансовым инструментам портфеля, если сделок не было, то `amount` и `price` будут равны нулю |
 | struct security_fields security_field(const std::string& s) | получить финансовый инструмент данного портфеля с SecKey s                                                              |
 | struct security_fields security_field()                     | получить главный финансовый инструмент текущего портфеля                                                                |
 | std::map<std::string, double>& data()                       | словарь для сохранения пользовательских значений, НЕ будет сохранен при выключении робота                |
@@ -413,18 +413,9 @@ static const sUF set_uf[] = {&portfolio::set_uf0, &portfolio::set_uf1, &portfoli
 | price    | double    | средневзвешенная цена сделки                 |
 | amount   | long long | суммарный объем сделки в лотах               |
 | dir      | int       | направление сделки: 1 - покупка, 2 - продажа |
-
-Поля `trade_item`:
-
-| Название | Тип       | Описание                                     |
-|----------|-----------|----------------------------------------------|
-| price    | double    | цена сделки                 |
-| quantity   | long long | суммарный объем сделки в лотах               |
-| dir      | int       | направление сделки: 1 - покупка, 2 - продажа |
 | is_first      | bool       | [Is first](params-description.md#s.is_first) финансового инструмента |
 | sec_key      | std::string       | [SecKey](params-description.md#s.sec_key) финансового инструмента |
-| tid      | long long       | внутренний уникальный идентификатор сделки |
-
+| did      | long long       | внутренний уникальный идентификатор сделки, отличен от `0` только для метода [deal()](c-api.md#__last_deal__) |
 
 Конструкторы `user_value`:
 
@@ -1603,20 +1594,20 @@ return indicators::del_indicator("okex", "SMA", "qwe");
 portfolio p = get_portfolio();
 security_fields sf1 = get_security_fields();
 
-trade_item tr = p.last_trade();
-if (!tr.quantity) return 0;
+deal_item d = p.deal();
+if (!d.amount) return 0;
 
 long long sf1_pos = sf1.pos();
 
 long long q0_buy = (sf1_pos >= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
 long long q0_sell = (sf1_pos <= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
 
-double v = ((tr.dir == BUY) ? q0_buy : q0_sell) * sf1.count();
+double v = ((d.dir == BUY) ? q0_buy : q0_sell) * sf1.count();
 if (!v) return 0;
 
-double mult = tr.quantity / v;
+double mult = d.amount / v;
 
-if (tr.dir == SELL)
+if (d.dir == SELL)
 {
     if (p.pos())
     {
@@ -1656,20 +1647,20 @@ else
 portfolio p = get_portfolio();
 security_fields sf1 = get_security_fields();
 
-trade_item tr = p.last_trade();
-if (!tr.quantity) return 0;
+deal_item d = p.deal();
+if (!d.amount) return 0;
 
 long long sf1_pos = sf1.pos();
 
 long long q0_buy = (sf1_pos >= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
 long long q0_sell = (sf1_pos <= 0) ? (p.v_side() == 0 ? p.v_in_l(): p.v_in_r()) : (p.v_side() == 0 ? p.v_out_l(): p.v_out_r());
 
-double v = ((tr.dir == BUY) ? q0_buy : q0_sell) * sf1.count();
+double v = ((d.dir == BUY) ? q0_buy : q0_sell) * sf1.count();
 if (!v) return 0;
 
-double mult = tr.quantity / v;
+double mult = d.amount / v;
 
-if (tr.dir == SELL)
+if (d.dir == SELL)
 {
     p.set_lim_b(p.lim_b() + mult * ((sf1_pos > 0) ? p.x() : p.k1()));
     p.set_lim_s(p.lim_s() + mult * ((sf1_pos > 0) ? p.k2() : p.k()));
