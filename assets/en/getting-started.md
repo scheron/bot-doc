@@ -5,47 +5,41 @@ section: 4
 
 # Getting Started
 
-The setup process for the robot differs slightly between production robots and robots available under the [role](introduction.md#roles) `Demo`. In demo robots, all necessary market data connections are pre-configured, and changing the state of market data connections (`Enabled`/`Disabled`) is prohibited. Creating trading connections is also disabled, as these robots are not intended for live trading. When initially setting up such robots, the section [Connection Setup](getting-started.md#connection_properties) should be skipped. Conversely, a production robot created for a client initially has no transactional connections and may lack active required market data connections to exchanges. Therefore, you must first configure connections to receive market data and add transactional connections.
+The process of setting up a robot differs somewhat for live robots and robots available under the [role](introduction.md#roles) `Demo`. Demo robots have all necessary market-data connections configured, and changing the state of market-data connections (`Enabled`/`Disabled`) is prohibited. Creating trade connections is also prohibited, as such robots are not intended for live trading. When initially setting up such robots, skip the [Connection Setup](getting-started.md#connection_properties) chapter. In contrast, a live robot created for a client initially has no transactional connections and may lack active necessary market-data connections to exchanges. Therefore, first set up connections to receive market data and add transactional connections.
 
 ## Connection Setup <Anchor :ids="['connection_properties']" />
 
-To activate market data connections, select the `Data Connections` widget, check the required market data connections, click the icon <img src="@images/icons/settings_black.svg" width="16" height="16"/> in the widget’s top panel, select the robot for which the connection is being enabled, and choose the action `Enable`.
+To activate market-data connections, select the `Data Connections` widget, check the necessary market-data connections, click the icon <img src="@images/icons/settings_black.svg" width="16" height="16"/> in the widget's top panel, select the robot for which the connection is activated, and choose `Enable`.
 
 ![Alt text](@images/3.1_1_2.jpg)
 
-To set up trading connections, select the `Trade connections` widget, click the icon <img src="@images/icons/settings_black.svg" width="16" height="16"/> in the widget’s top panel, select the robot for which the connection is being added, and choose the action `Add`.
+To configure trade connections, select the `Trade connections` widget, click the icon <img src="@images/icons/settings_black.svg" width="16" height="16"/> in the widget's top panel, select the robot for which the connection is added, and choose `Add`.
 
 ![Alt text](@images/3.1_2_2.jpg)
 
-In the window that opens, fill in the connection parameter fields.
-After completing all connection parameters, click `Add connection`.
+In the opened window, fill in the connection parameter fields. After filling all connection parameter fields, click `Add connection`.
 
-The `Status` column in the `Trade connections` and `Data connections` widgets displays the status of the corresponding data streams for exchange connections. If all statuses are green, the trading/market data connection is successfully connected to the exchange; otherwise, it is not connected.
+In the `Status` column of the `Trade connections` and `Data connections` widgets, the statuses of the "data streams" of the respective connections to exchanges are displayed. If all statuses are green, the trade/market-data connection is connected to the exchange; otherwise, it is not connected.
 
-**Important!** 
+**Important!**
 
-If a trading connection remains disconnected from the exchange during trading hours for an extended period, technical support will notify the client. If, two hours after notification, the connection remains disconnected, technical support reserves the right to deactivate the connection. This is due to the fact that incorrectly configured connections cause undesirable and excessive activity on the exchange. In response, the exchange may block the client's access.
+If a trade connection is not connected to the exchange during trading hours for a sufficiently long interval, technical support informs the client. If 2 hours after the client has been informed the connection remains disconnected from the exchange, technical support reserves the right to change such a connection to an inactive state. This is because an incorrectly configured connection leads to undesirable and excessive activity on the exchange. In response to such actions, the exchange may block access for the client.
 
-A deactivated trading connection can be edited. Once changes are applied, the trading connection becomes active again, and all statuses should turn green.
+A trade connection that is in an inactive state can be edited. After changes are applied, the trade connection becomes active and all statuses should turn green.
 
+## Hotkeys
 
-## Keyboard Shortcuts
+Hotkeys are assigned to calls to the main widgets and operations in portfolios. Hotkey combinations are shown in widget menus and in the `Actions` menu. The full list of hotkeys is available in the user menu at the top right under Keyboad Shortcuts.
 
-Hotkeys are assigned for accessing main widgets and performing portfolio operations. Hotkey combinations are displayed in widget menus and in the `Actions` menu.
-The complete list of hotkeys is available in the user menu (top-right corner) under "Keyboard Shortcuts".
+## Telegram Bot
 
+The [FKVikingBot](https://t.me/FKVikingBot) telegram bot is used for telegram notifications. To connect the telegram bot, do the following:
 
-## Telegram Bot <Anchor :ids="['telegram-bot']" />
-
-For Telegram notifications, the bot [FKVikingBot](https://t.me/FKVikingBot) is used. To connect the Telegram bot, follow these steps:
-
-- Add [FKVikingBot](https://t.me/FKVikingBot) to your Telegram account by clicking the link and pressing the "START" button in the chat with the bot;
-- Copy or note down the `TELEGRAM ID` sent by the bot;
-- Open the settings menu from the user icon and enter your `TELEGRAM ID` there.
-
+- Add [FKVikingBot](https://t.me/FKVikingBot) to your telegram account by clicking the link and pressing the "START" button in the dialog with the telegram bot;
+- Copy or write down the `TELEGRAM ID` sent by the telegram bot;
+- Open the settings menu under the user icon and enter your `TELEGRAM ID` there.
 
 ![Doc](@images/telegram.png)
-
 
 ## Portfolio Setup <Anchor :ids="['portfolio_add']" />
 
@@ -53,167 +47,165 @@ To create a portfolio, select the `Portfolios table` widget and click `ADD`.
 
 ![Doc](@images/3.3_1_1.jpg)
 
-In the window that opens, use the dropdown list to select the robot in which the new portfolio will be created, enter a name for the portfolio in the `Portfolio name` field (it is recommended to use descriptive names for easier navigation when managing multiple portfolios; note that the portfolio name cannot be changed later), then click `Submit`.
+In the opened window, in the drop-down list, select the robot in which the new portfolio will be created, in the `Portfolio name` field write the portfolio name (it is recommended to use meaningful names so that it is easier to navigate with a large number of portfolios; you cannot change the portfolio name later), and click `Submit`.
 
 ![Doc](@images/3.3_1_2.jpg)
 
-To add exchange instruments, go to the `AVAILABLE SECURITIES` section, select the desired exchange/market from the `Exchange` dropdown, and click `Reload security list` from exchanges. Then search for the instrument by its `SecKey` in the corresponding field. Once the required instrument is found, click the <img src="@images/icons/plus.svg" width="16" height="16"/> icon.
+To add exchange instruments, in the `AVAILABLE SECURITIES` section, in the `Exchange` drop-down list, select the exchange/market, and click `Reload security list from exchanges`. Then search for the exchange instrument by its `SecKey` in the same-name field. Once the desired instrument is found, click the icon <img src="@images/icons/plus.svg" width="16" height="16"/>.
 
 ![Doc](@images/3.3_1_3.jpg)
 
-The selected instrument will then appear in the `PORTFOLIO SECURITIES` section.
+After this, the selected instrument appears in the `PORTFOLIO SECURITIES` section.
 
 ![Doc](@images/3.3_1_4.jpg)
 
-Add all required instruments in the same way. After adding all instruments, click `Apply`. 
-This will open the portfolio settings window. [Portfolio parameters](params-description.md#p) are configured on the `Portfolio settings` tab, and [instrument parameters](params-description.md#portfolio-instrument-parameters) are set on the `Securities` tab. Detailed parameter descriptions can be viewed by clicking the <img src="@images/icons/help.svg" width="16" height="16"/> icon. For portfolio instrument parameters, the help icon <img src="@images/icons/help.svg" width="16" height="16"/> is located within the dropdown list: 
+Add the remaining instruments to the portfolio in the same way. After adding all instruments to the portfolio, click `Apply`. Then a window with portfolio settings opens. [Portfolio parameters](params-description.md#p) are set on the `Portfolio settings` tab, and [portfolio instrument parameters](params-description.md#portfolio-instrument-parameters) on the `Securities` tab. A detailed description of the parameters can be read by clicking the icon <img src="@images/icons/help.svg" width="16" height="16"/>. For portfolio instrument parameters, the icon <img src="@images/icons/help.svg" width="16" height="16"/> is in the drop-down list:
 
 ![Doc](@images/3.3_1_5.jpg)
- 
-A crossed-out instrument in the portfolio indicates that the financial instrument’s expiration date is within 3 or fewer trading days (excluding non-trading days). If a portfolio contains at least one such instrument, its name (`Name`) will also be displayed with a strikethrough.
 
-For real (non-virtual) trading, instead of the value `virtual`, select the transactional connection you previously created in the [Client code](params-description.md#s.client_code) field.
+A crossed-out instrument in the portfolio means that the expiration date of the financial instrument will occur in 3 days or less (excluding non-trading days). If the portfolio contains at least one such instrument, its name (`Name`) will also appear crossed out.
 
-For each portfolio, you can configure a trading schedule (on/off times) by navigating to the [Timetable](params-description.md#p.use_tt) tab.
- 
+For real (not virtual) trading, in the [Client code](params-description.md#s.client_code) field, select the transactional connection created earlier instead of the value `virtual`.
+
+For each portfolio, you can configure a trading on/off schedule by going to the [Timetable](params-description.md#p.use_tt) tab.
+
+A guide with a detailed description of portfolio setup can be found at this [link](https://instructions.fkviking.com/portfolio_creation_guide.pdf).
 
 ## Portfolio Management <Anchor :ids="['portfolio_actions']" />
 
-Portfolio management commands are located in the `ACTIONS` dropdown menu of the `Portfolios table` widget:
+Portfolio management commands are in the drop-down menu of `ACTIONS` in the `Portfolios table` widget:
 
-- **Start portfolios** <Anchor :ids="['portfolio_actions.start_portfolios']" /> – enables trading for selected portfolios by setting the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags. When a trading schedule is configured using the [Timetable](params-description.md#p.use_tt) parameter, enabling trading via the `Start portfolios` command has no effect.
+- **Start portfolios** <Anchor :ids="['portfolio_actions.start_portfolios']" /> – enables trading on the selected portfolios by setting the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags. When setting up a trading schedule using the [Timetable](params-description.md#p.use_tt) parameter, enabling trading with the `Start portfolios` command does not work.
 
-- **Stop portfolios** <Anchor :ids="['portfolio_actions.stop_portfolios']" /> - disables trading for selected portfolios by clearing the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags. First-leg orders are canceled; second-leg orders remain on the market and are re-quoted according to the settings of the [SL](params-description.md#s.sl) and [Timer](params-description.md#s.timer) parameters.  When a trading schedule is configured using the [Timetable](params-description.md#p.use_tt) parameter, disabling trading via the `Stop portfolios` command has no effect.
+- **Stop portfolios** <Anchor :ids="['portfolio_actions.stop_portfolios']" /> - disables trading on the selected portfolios by clearing the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags. Orders for the first leg are cancelled, orders for the second leg remain in the market and are moved according to the [SL](params-description.md#s.sl) and [Timer](params-description.md#s.timer) parameters. When setting up a trading schedule using the [Timetable](params-description.md#p.use_tt) parameter, disabling trading with the `Stop portfolios` command does not work.
 
-- **Hard stop** <Anchor :ids="['portfolio_actions.hard_stop']" /> - stops trading for selected portfolios (clears the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags),  attempts to cancel all active orders on both legs, and disables the trading schedule (the `Use timetable` flag is cleared). This is a complete shutdown of trading for the selected portfolios, after which no order submissions or replacements will occur for any of the portfolio instruments. 
+- **Hard stop** <Anchor :ids="['portfolio_actions.hard_stop']" /> - stops trading on the selected portfolios (the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) checkboxes are cleared), attempts to cancel placed orders on both legs, and disables the schedule (the `Use timetable` flag is cleared). This is a complete stop of trading on the selected portfolios, after which no orders will be placed or moved for any of the portfolio instruments.
 
-    **Important!** If certain portfolios have formulas that programmatically control the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags,  trading may resume according to those formulas.
+    **Important!** If some portfolios have formulas that use programmatic control of the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags, trading may continue in accordance with the configured formulas.
 
-- **Stop formulas** <Anchor :ids="['portfolio_actions.stop_formulas']" /> - stops trading for selected portfolios (clears the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) flags), attempts to cancel all active orders on both legs, and disables the trading schedule (the `Use timetable` flag is cleared). Additionally, all formula calculations are disabled—i.e., the [Custom trade](params-description.md#p.custom_trade) and [Extra formulas](params-description.md#p.ext_formulas) portfolio flags are cleared, and for each instrument in the portfolio, the [Count type](params-description.md#s.count_type) and [Ratio type](params-description.md#s.ratio_type) fields are set to constant value types. To use formulas again later, they must be manually re-enabled.
+- **Stop formulas** <Anchor :ids="['portfolio_actions.stop_formulas']" /> - stops trading on the selected portfolios (the [re_sell](params-description.md#p.re_sell) and [re_buy](params-description.md#p.re_buy) checkboxes are cleared), attempts to cancel placed orders on both legs, and disables the schedule (the `Use timetable` flag is cleared). Also, all formula calculations are disabled, i.e., the portfolio flags [Custom trade](params-description.md#p.custom_trade) and [Extra formulas](params-description.md#p.ext_formulas) are cleared, and for each portfolio instrument, the [Count type](params-description.md#s.count_type) and [Ratio type](params-description.md#s.ratio_type) fields are set to the type corresponding to a constant value. To use formulas again, enable them yourself.
 
-- **Reset statuses** <Anchor :ids="['portfolio_actions.reset_statuses']" /> - resets internal statuses of all orders for all instruments in the selected portfolios. There are situations when, for some reason, the exchange does not send an update about an order or sends it in a format not compliant with exchange documentation and thus unsupported by the robot. For example, the robot submits an order, the order is placed, the robot sends a cancellation request, the exchange cancels the order, but does not send confirmation of cancellation. In this case, the actual order status on the exchange and the internal status in the robot diverge, and because the robot is waiting for a response, the order remains stuck in the "canceling" status. 
-This button should be used ONLY IN EXTREME CASES, when trading is disabled for the portfolio and you are certain there are no active orders for that portfolio. Otherwise, the robot may lose track of active orders, leading to incorrect financial instrument positions in the robot.
+- **Reset statuses** <Anchor :ids="['portfolio_actions.reset_statuses']" /> - resets the internal statuses of all orders of all instruments of the selected portfolios. There are situations when, for some reason, the exchange does not send order information updates or sends them in a format that does not comply with the exchange documentation and is therefore not supported by the robot. For example, the robot placed an order, the order was placed, the robot sent a cancel request, the exchange cancelled the order but did not send information about the cancellation. In this case, the real status of the order on the exchange and the internal status of the order in the robot will differ, and since the robot waits for a response to its request, the order in the robot will hang in the "cancelling" status.
+Use this button ONLY IN EXTREME CASES, when trading on the portfolio is disabled and you are sure there are no active orders for this portfolio; otherwise, the robot will lose active orders, which will lead to an incorrect position for financial instruments in the robot.
 
-    **Important!**  Note that, unlike double-clicking the [Sell status](params-description.md#p.sell_status) and [Buy status](params-description.md#p.buy_status) fields in the `Portfolios table` widget, using this button resets internal statuses for all orders on both legs of the portfolio.
+    **Important!** Note that unlike double-clicking the [Sell status](params-description.md#p.sell_status) and [Buy status](params-description.md#p.buy_status) fields in the `Portfolios table` widget table, this button resets the internal statuses of all orders of both legs of the portfolio.
     
-    **Important!**  After using this button, ensure there are no active orders on the exchange and that exchange positions match those in the robot.
+    **Important!** After using this button, make sure there are no active orders on the exchange and that exchange positions match those in the robot.
 
-- **To market** <Anchor :ids="['portfolio_actions.to_market']" /> - forcibly aligns positions of the selected portfolios. The behavior is identical to using the [To market](params-description.md#p.to_market) clicker on the selected portfolios.
+- **To market** <Anchor :ids="['portfolio_actions.to_market']" /> - forcibly aligns positions of the selected portfolios. The behavior is exactly the same as using the [To market](params-description.md#p.to_market) clicker on the selected portfolios.
 
-- **To0** <Anchor :ids="['portfolio_actions.to0']" /> - restricts trading for selected portfolios, allowing trading only in the direction of position closing. Sets the [To0](params-description.md#p.to0) flag for the selected portfolios.
+- **To0** <Anchor :ids="['portfolio_actions.to0']" /> - limits trading on the selected portfolios, allowing trading only in the direction of closing the position. The [To0](params-description.md#p.to0) flags are set for the selected portfolios.
 
-- **Group TradingDays** <Anchor :ids="['portfolio_actions.trading_days']" /> - allows setting trading days for selected portfolios. Behavior is similar to setting trading days in each portfolio’s settings on the [Timetable](params-description.md#p.trading_days) tab, with the difference that only the entered changes are applied. For example, if two portfolios have different trading day lists—one with Monday, Tuesday, Friday, and another with Monday, Tuesday, Friday, Saturday, Sunday—you can add Thursday to both lists via this widget, but the lists will not become identical.
+- **Group TradingDays** <Anchor :ids="['portfolio_actions.trading_days']" /> - allows setting trading days for the selected portfolios. The behavior is similar to setting trading days in each portfolio's settings on the [Timetable](params-description.md#p.trading_days) tab, with the only difference being that only the changes made are applied to each portfolio. That is, if two portfolios had different lists of trading days: one had Monday, Tuesday, Friday, and the other had Monday, Tuesday, Friday, Saturday, Sunday, then if through this widget you add Thursday to both lists, the lists will not become equal.
     
-    **Important!**  This widget modifies only the list of trading days; the time intervals defining trading hours and the [Timetable](params-description.md#p.use_tt) checkbox itself remain unchanged.
+    **Important!** This widget changes only the list of trading days; intervals defining trading time and the [Timetable](params-description.md#p.use_tt) checkbox itself will not be changed.
 
-- **Group Timetable** <Anchor :ids="['portfolio_actions.timetable']" /> - allows setting trading intervals for selected portfolios or copying trading intervals from an existing timetable of another portfolio. The behavior is similar to setting trading intervals in each portfolio’s settings on the [Timetable](params-description.md#p.use_tt) tab, with the added ability to copy intervals from another portfolio.
+- **Group Timetable** <Anchor :ids="['portfolio_actions.timetable']" /> - allows setting trading intervals for the selected portfolios or copying trading intervals from an existing schedule of some portfolio. The behavior is similar to setting trading intervals in each portfolio's settings on the [Timetable](params-description.md#p.use_tt) tab, but additionally allows copying trading intervals from another portfolio.
 
     ![Doc](@images/group_timetable.gif)
 
 - **Remove** <Anchor :ids="['portfolio_actions.remove_portfolio']" /> - deletes the selected portfolios.
 
-- **Clone portfolio** <Anchor :ids="['portfolio_actions.clone_portfolio']" /> - creates a clone of the selected portfolio. The button clones the selected portfolio in the robot that contains the original portfolio being cloned. To transfer portfolios between different robots, we recommend you use [Export portfolio \ Import portfolio](portfolio_actions.disable_portfolio).
+  **Important!** When deleting a portfolio from the robot, related log records and trades are also deleted. Accordingly, they will also stop being displayed in widgets.
 
-    **Important!**  When cloning a portfolio, values that exist only as variables within formula code—including indicators and their states—are not copied.
+- **Clone portfolio** <Anchor :ids="['portfolio_actions.clone_portfolio']" /> - clones the selected portfolio in the same robot where the original cloned portfolio is located. To move portfolios between different robots, we recommend using [Export portfolio \ Import portfolio](portfolio_actions.disable_portfolio).
+
+    **Important!** When cloning a portfolio, values that exist only as variables inside formula code, including indicators and their state, are not cloned.
     
-- **Disable portfolio \ Enable portfolio** <Anchor :ids="['portfolio_actions.disable_portfolio', 'portfolio_actions.enable_portfolio']" />  - excludes selected portfolios from calculations or returns them to normal operation by clearing or setting the [Disabled](params-description.md#p.disabled) flag.  Do not confuse this with enabling/disabling trading for a portfolio. Using `Disable` allows excluding an unused portfolio from calculations. Market data and order books for all its instruments will stop updating (unless those instruments are used in other portfolios). Editing portfolio parameters is not possible while in `Disabled` status. Be careful! Before disabling a portfolio, ensure trading is stopped, no orders are active or being submitted, and that the portfolio’s fields and instruments are not used in formulas of other portfolios. Also note that re-enabling a portfolio may trigger the reopening of the trading order book.
+- **Disable portfolio \ Enable portfolio** <Anchor :ids="['portfolio_actions.disable_portfolio', 'portfolio_actions.enable_portfolio']" /> - excludes the selected portfolios from calculations or returns the selected portfolios to normal operation by clearing and setting the [Disabled](params-description.md#p.disabled) flag. Do not confuse this feature with enabling and disabling trading on a portfolio. Using `Disable` allows you to exclude a currently unused portfolio from calculations. Prices will no longer come for all portfolio instruments and order books will not be built (only if the instruments are not used in other portfolios). Editing portfolio parameters in the `Disable` status is impossible. Be careful! Before switching a portfolio to `Disabled` mode, make sure trading on the portfolio is off, orders for portfolio instruments are not on the exchange and are not being placed at the moment, and also check that the portfolio's fields and its instruments are not used in formulas of other portfolios. Also, note that returning a portfolio from the `Disabled` state to the working state may lead to reopening the trading order book.
 
-- **Export portfolio \ Import portfolio** <Anchor :ids="['portfolio_actions.export_portfolio', 'portfolio_actions.import_portfolio']" />  - exports selected portfolios from the robot to your computer as `.ini` files, or imports portfolios into the robot.
+- **Export portfolio \ Import portfolio** <Anchor :ids="['portfolio_actions.export_portfolio', 'portfolio_actions.import_portfolio']" /> - exports the selected portfolios from the robot to the computer as a .ini file or imports portfolios into the robot.
 
-  **Important!** The portfolio settings file, in addition to user-defined parameters, also contains exchange information about trading instruments. Therefore, when editing this file manually (via a text editor), any information not related to the user-defined parameters must remain unchanged.
+  **Important!** The portfolio settings file, in addition to user-defined parameters, also contains exchange information about trading instruments. Therefore, when manually editing this file (via a text editor), any information not related to user-defined parameters must not be changed.
 
 ## Charts
 
-The widgets are built on the TradingView chart platform. 
-Clicking the <img src="@images/icons/chart-2.svg" width="16" height="16"/> icon in the `Chart` column of the [Portfolios table](interface.md#portfolios_table) widget will open one of two widgets - [Portfolios historical chart](interface.md#portfolios_historical_chart) or [Portfolios realtime chart](interface.md#Portfolios_realtime_chart) - depending on whether parameter history recording is enabled for the portfolio.
+Widgets are based on the TradingView chart. When clicking the icon <img src="@images/icons/chart-2.svg" width="16" height="16"/> in the `Chart` column of the [Portfolios table](interface.md#portfolios_table) widget, one of the widgets [Portfolios historical chart](interface.md#portfolios_historical_chart) or [Portfolios realtime chart](interface.md#Portfolios_realtime_chart) will open, depending on whether portfolio parameter history recording is enabled.
 
 **RealTime mode for portfolios without parameter history recording**
 
-The chart opens with pre-set indicators: portfolio parameters [Sell](params-description.md#p.sell), [Buy](params-description.md#p.buy), [Lim_sell](params-description.md#p.lim_s) and [Lim_buy](params-description.md#p.lim_b). It is not possible to change or add other indicators. The chart time frame cannot be modified. Chart data begins rendering from the moment the widget is opened. Chart data is not preserved after page reload.
+The chart opens with preset portfolio parameter indicators [Sell](params-description.md#p.sell), [Buy](params-description.md#p.buy), [Lim_sell](params-description.md#p.lim_s), [Lim_buy](params-description.md#p.lim_b). You cannot change or add other indicators. The chart timeframe cannot be changed. Charts start drawing from the moment the widget opens. When the page is reloaded, chart data is not saved.
 
-**Historical mode for portfolios with parameter history recording enabled** 
+**Historical mode for portfolios with parameter history recording enabled**
 
-The chart opens with the same default indicators: [Sell](params-description.md#p.sell), [Buy](params-description.md#p.buy), [Lim_sell](params-description.md#p.lim_s) and [Lim_buy](params-description.md#p.lim_b).  These parameters can be removed or replaced. History recording is controlled by the user via the `Save history` setting in the schedule on the [Timetable](params-description.md#p.use_tt) tab in portfolio settings. The chart displays data for the selected period, and historical data is loaded progressively when scrolling rightward, back to the point when history recording began. For MOEX markets, it is recommended to follow the market schedule to avoid informational gaps in the history. There is a limit on the number of portfolios for which history recording is available. By default, this limit is 3 portfolios. To request an increase, please contact technical support. The chart supports multiple time frames, selectable in the upper-left corner. Selected indicators can be removed, and additional ones can be added from the dropdown list containing any user portfolio’s available parameters. Additional instruments can be added using the "+" button in the upper-left corner. The full list of available fields can be viewed in the `Field` field.
+The chart opens with preset portfolio parameter indicators [Sell](params-description.md#p.sell), [Buy](params-description.md#p.buy), [Lim_sell](params-description.md#p.lim_s), [Lim_buy](params-description.md#p.lim_b). These parameters can be removed or replaced. History recording is controlled by the user via the `Save history` parameter in the schedule on the [Timetable](params-description.md#p.use_tt) tab in the portfolio settings. The chart is shown for the displayed period, and historical data is loaded when scrolling right until the start of history recording. For MOEX markets, follow the market schedule to avoid uninformative gaps in history. There is a limit on the number of portfolios for which history saving is available. By default, the limit is 3 portfolios. For advice on increasing the limit, contact technical support. The chart can be viewed in different timeframes; change the timeframe at the top left. Selected indicators can be removed from the chart and other parameters available in the drop-down list of any user's portfolio can be added. Add instruments with the plus icon at the top left. The list can be viewed in the `Field` field.
 
-![Doc](@images/3.5_1(1).jpg) 
+![Doc](@images/3.5_1(1).jpg)
 
-The main instrument is always present on the chart and cannot be deleted, but it can be changed via the instrument selection menu on the `Main` tab.
-A significant portion of TradingView's toolset is available for use on the charts.
-It is possible to display multiple portfolios (with history recording enabled) on a single chart. Maximum history duration is 3 months; beyond that, older data is gradually overwritten starting from the earliest entries. Up to 10 chart widgets can be opened simultaneously.
+The main instrument is always present on the chart and cannot be removed; it can only be changed through the instrument addition menu on the `Main` tab. A significant part of TradingView's toolkit is available for the charts.
+You can add several portfolios with history recording to one chart. The maximum chart history duration is 3 months. Then it begins to gradually fade, starting with the oldest data. Up to 10 chart widgets can be open simultaneously.
 
-![Doc](@images/3.5_2.jpg) 
+![Doc](@images/3.5_2.jpg)
 
-Customized chart layouts are preserved as long as the chart widget remains open, and also persist across page reloads and workspace switches.
-Note that chart data represents periodic snapshots of real-time parameter values used by the robot. Data is updated approximately 3 times per second; therefore, if parameter values change multiple times within 0.3 seconds, only the most recent value will be displayed on the chart.
+The configured appearance is saved while the chart widget is open, as well as when reloading the page and switching Workspaces.
+Note that the data for drawing the chart is a snapshot of online data on the parameters the robot trades. Data arrives on average 3 times per second, so if there were different values within 0.3 seconds, the last one will be displayed on the chart.
 
+## Two-Factor Authentication <Anchor :ids="['two-factor-authentication']" />
 
-## Two-Factor Authentication
-
-To enhance user account security on the platform, two-factor authentication (2FA) is implemented. By default, 2FA is disabled.
+To increase the security of user accounts, the platform implements a two-factor authentication (2FA) function. By default, 2FA is disabled.
 
 **Enabling 2FA:**
 
-***Install an authenticator app:***  Install a mobile authenticator app that supports the Time-based One-time Password (TOTP) protocol, such as Google Authenticator, Authy, or Microsoft Authenticator.
+***Installing the app:*** Install an authenticator app on your smartphone that supports the Time-based One-time Password (TOTP) protocol, such as Google Authenticator, Authy, or Microsoft Authenticator.
 
-![Doc](@images/3.6_1.png) 
+![Doc](@images/3.6_1.png)
 
-***Platform setup:*** Log in to your account, go to the user menu, then navigate to `Settings` and proceed to `Security`. Click the `Enable 2FA` button.
+***Platform setup:*** Log in to your account, go to the user menu, then to `Settings` and then to `Security`. Click `Enable 2FA`.
 
-![Doc](@images/3.6_2.png) 
+![Doc](@images/3.6_2.png)
 
-***Scan the QR code:*** Use the installed app to scan the QR code displayed on the screen, then enter the confirmation code generated by the app.
+***Scanning the QR code:*** Use the installed app to scan the QR code displayed on the screen and enter the confirmation code from the app.
 
-![Doc](@images/3.6_3.png) 
+![Doc](@images/3.6_3.png)
 
-**2FA Usage Notes:**
+**Features of using 2FA:**
 
-***Device time:** Ensure that the time on your device is synchronized with accurate time, as this is critical for TOTP to function correctly.
+***Time on the device:*** Make sure the time on your device is synchronized with the exact time, as this is critical for the correct operation of TOTP.
 
-***Device limit:*** In the `Security` section, you can view the list of authorized devices. Up to 20 devices can be registered simultaneously.
+***Device limit:*** In the `Security` section, you can view the list of confirmed devices. There can be no more than 20 such devices at the same time.
 
-![Doc](@images/3.6_4.png) 
+![Doc](@images/3.6_4.png)
 
-***Disabling 2FA:*** To deactivate 2FA, click the `Disable 2FA` button in the `Security` section.
+***Disabling 2FA:*** To disable 2FA, click `Disable 2FA` in the `Security` section.
 
-![Doc](@images/3.6_5.png) 
+![Doc](@images/3.6_5.png)
 
-**Additional Information:**
+**Additional information:**
 
 ***Code validity period:*** You have 120 seconds to enter the 2FA code; after this time, the connection will be closed.
 
-***Re-authentication interval:*** 2FA confirmation is required every 14 days.
+***Confirmation frequency:*** You need to confirm 2FA every 14 days.
 
-***Lockout on failed attempts:*** Entering an incorrect 2FA code three times in a row will block further attempts from that device for 10 minutes.
+***Blocking on errors:*** If you enter an incorrect 2FA code 3 times in a row, input from this device will be blocked for 10 minutes.
 
-***Code uniqueness:*** The same 2FA code cannot be used more than once consecutively. If a code has already been used, wait for the next one to be generated before proceeding.
+***Code uniqueness:*** The same 2FA code cannot be used more than once in a row. If the code has already been used, wait for a new one to be generated for the next operation.
 
-***Activation window:*** When enabling 2FA, the secret key is valid for 10 minutes. If the setup is not confirmed within this time, the process must be repeated.
+***Confirmation upon activation:*** When enabling 2FA, the secret key is valid for 10 minutes. If you do not confirm the setting during this time, you will need to repeat the process.
 
-***Session termination:*** Upon 2FA activation, all existing user sessions will be terminated.
+***Ending sessions:*** When activating 2FA, all active user sessions will be ended.
 
-***Logging out:*** To "forget" 2FA for a specific device, log out of your account.
+***Logout:*** To "forget" 2FA for this device, log out of your account.
 
-***Recovery access:*** If you lose access to your 2FA method and cannot log in, contact technical support. After identity verification, 2FA will be reset, allowing you to reconfigure it.
+***Access recovery:*** If you lose access to 2FA and cannot log in to your account, contact technical support. After identity verification, 2FA will be reset, and you can set it up again.
 
-**It is strongly recommended to set up two-factor authentication to enhance the security of your account.**
+**It is recommended to set up two-factor authentication to increase the security of your account**
 
-## IP address whitelist. <Anchor :ids="['ip_wl']" />
+## IP Whitelist. <Anchor :ids="['ip_wl']" />
 
-For greater security, you can restrict access to the platform from your login by specifying the IP addresses from which access is permitted.
-Logging in as your user from a different IP address will be impossible.
+For greater security, you can restrict access to the platform from your login by specifying IP addresses from which access is allowed. It will be impossible to log in under your user from another IP address.
 
 ![Doc](@images/wl_ips.jpg)
 
-This setting is located in the user menu, then the `Settings` section, and then `Security`.
+The setting is in the user menu, then the `Settings` section, and then `Security`.
 
-You must define a list of IP addresses from which access is required, then enter them in the `Enter IP address` field and click `Add`.
+Define the list of IP addresses from which you need access, then enter them in the `Enter IP address` field and click `Add`.
 
-When the menu opens, the IP address currently connected will be detected and you will be prompted to immediately add it to the list.
+When opening the menu, the IP address from which the connection is currently made will be detected and you will be offered to add it to the list immediately.
 
-If the list is empty, access is permitted from any IP address. If at least one IP address is on the list, access is allowed only from that IP address.
+If the list is empty, access is allowed from any IP address. If the list contains at least 1 IP address, access is allowed only from it.
 
-The list can contain up to 10 IP addresses.
+The list length is up to 10 IP addresses.
 
-After adding all the required IP addresses, save the changes by clicking the `Apply Changes` button.
+After adding all necessary IP addresses, save the changes via the `Apply Changes` button.
 
-When applying an address list, all connections from a user not on the white list will be closed.
+When applying the address list, all user connections not on the whitelist will be closed.
