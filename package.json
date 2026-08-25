@@ -9,11 +9,15 @@
   },
   "repository": "bot-doc/bot-doc",
   "scripts": {
-    "generate-docs": "node scripts/generate-docs.js ru",
-    "generate-docs-en": "node scripts/generate-docs.js en",
+    "generate-docs": "node scripts/assets/generate-docs.js ru",
+    "generate-docs-en": "node scripts/assets/generate-docs.js en",
     "pre-process": "yarn generate-docs && yarn generate-docs-en",
-    "reset-assets": "node scripts/reset-assets.js",
-    "transliterate-assets": "node scripts/transliterate-assets.js",
+    "reset-assets": "node scripts/assets/reset-assets.js",
+    "transliterate-assets": "node scripts/assets/transliterate-assets.js",
+    "validate-translations": "node scripts/translation/validate-translations.mjs",
+    "translate": "node scripts/translation/translate-docs.mjs",
+    "mine-glossary": "node scripts/glossary/mine.mjs",
+    "test": "node --test \"scripts/**/*.test.mjs\"",
     "dev": "yarn pre-process && vuepress dev src",
     "build": "yarn pre-process && vuepress build src"
   },
@@ -22,6 +26,8 @@
     "@vuepress/plugin-active-header-links": "^1.9.9",
     "@vuepress/plugin-nprogress": "^1.9.9",
     "@vuepress/plugin-search": "^1.9.9",
+    "js-yaml": "^5.3.0",
+    "openai": "^7.5.0",
     "vuepress": "^1.5.3"
   },
   "dependencies": {
