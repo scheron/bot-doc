@@ -22,6 +22,9 @@
       "global": true
     }
   },
+  "selectors_exclude": [
+    ".no-index"
+  ],
   "custom_settings": {
     "attributesForFaceting": [
       "lang"
