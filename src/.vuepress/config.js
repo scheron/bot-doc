@@ -1,4 +1,5 @@
 const path = require('path');
+const aiDiscovery = require('./plugins/ai-discovery');
 
 module.exports = {
   /**
@@ -39,11 +40,23 @@ module.exports = {
   },
   themeConfig: {
     logo: '/images/vkg_logo_en.svg',
+    repositoryUrl: 'https://github.com/fkviking/bot-doc',
+    rawPublishedBase: 'https://raw.githubusercontent.com/fkviking/bot-doc/gh-pages',
     locales: {
       '/': {
         lang: 'ru-RU',
         title: 'Документация торговых роботов компании "Викинг"',
         description: 'Руководство пользователя, описание алгоритма и API',
+        footer: 'ФК Викинг | Copyright © 2010-2026',
+        copyPage: {
+          copy: 'Копировать страницу',
+          copying: 'Копирую…',
+          copied: 'Скопировано',
+          failed: 'Не удалось',
+          viewMarkdown: 'Посмотреть как Markdown',
+          openIn: 'Открыть в',
+          prompt: 'Прочитай {url} — я хочу задать вопросы по этой странице документации.'
+        },
         selectText: '🇷🇺 RU',
         label: '🇷🇺 RU',
         ariaLabel: 'Languages',
@@ -95,6 +108,16 @@ module.exports = {
         lang: 'en-US',
         title: 'Documentation for Viking\'s trading robots',
         description: 'User guide, algorithm description and API',
+        footer: 'FC Viking | Copyright © 2010-2026',
+        copyPage: {
+          copy: 'Copy page',
+          copying: 'Copying…',
+          copied: 'Copied',
+          failed: 'Failed',
+          viewMarkdown: 'View as Markdown',
+          openIn: 'Open in',
+          prompt: 'Read {url} — I want to ask questions about this documentation page.'
+        },
         selectText: '🇺🇸 EN',
         label: '🇺🇸 EN',
         ariaLabel: 'Languages',
@@ -144,6 +167,88 @@ module.exports = {
       }
     },
   },
+  /**
+   * Wording of llms.txt and sitemap.md, read by scripts/generate-ai-docs.js at build time.
+   * Page titles and summaries come from the frontmatter in assets/ru and assets/en.
+   */
+  aiDocs: {
+    ru: {
+      summary: 'Документация торговой платформы ФК «Викинг»: настройка арбитражных роботов, параметры портфелей, торговые подключения, формулы на C++ и WebSocket API.',
+      llmsTitle: 'Документация торговых роботов ФК «Викинг»',
+      formats: 'Каждая страница опубликована в двух видах: HTML по адресу `docs/<страница>.html` и Markdown по тому же пути с расширением `.md`. Ссылки ниже ведут на Markdown.',
+      notesTitle: 'Notes',
+      notes: [
+        'Ошибка заявки часто вызвана не самой заявкой, а параметрами торгового подключения — проверяйте «Добавление подключений» вместе с «Ошибками выставления, снятия и изменения заявок».',
+        'Статус `online` у торгового подключения не означает, что все его параметры корректны: часть параметров используется только при выставлении, изменении или снятии заявки.',
+        'Параметры портфеля и параметры отдельных инструментов портфеля — разные наборы; в «Описании параметров» они разведены по разным разделам.'
+      ],
+      optionalTitle: 'Optional',
+      fullNote: 'Вся документация одним файлом: {url}',
+      sitemapLabel: 'Карта документации',
+      sitemapSummary: 'Полный список страниц с адресами HTML- и Markdown-версий.',
+      otherLocaleLabel: 'Английская версия',
+      otherLocaleSummary: 'Та же документация на английском языке.',
+      sitemapTitle: 'Карта документации ФК «Викинг»',
+      sitemapIntro: 'Полный указатель опубликованных страниц. Для краткой навигации начните с llms.txt.',
+      entryPointsTitle: 'Точки входа',
+      entryPoints: {
+        site: 'Документация в браузере',
+        llms: 'Краткая карта для агентов',
+        llmsFull: 'Полный текст всех страниц подряд, в порядке разделов',
+        sitemapMd: 'Этот файл — полный указатель страниц',
+        sitemapXml: 'Карта сайта для поисковых роботов'
+      },
+      urlPatternsTitle: 'Адреса страниц',
+      pagePlaceholder: 'страница',
+      urlPatterns: {
+        html: 'HTML-страница',
+        markdown: 'Markdown-двойник',
+        englishHtml: 'HTML-страница на английском',
+        englishMarkdown: 'Markdown-двойник на английском',
+        russianHtml: 'HTML-страница на русском',
+        russianMarkdown: 'Markdown-двойник на русском'
+      },
+      pagesTitle: 'Страницы'
+    },
+    en: {
+      summary: 'Documentation for the FC Viking trading platform: arbitrage robot setup, portfolio parameters, trading connections, C++ formulas, and the WebSocket API.',
+      llmsTitle: 'FC Viking Trading Robots Documentation',
+      formats: 'Every page is published in two forms: HTML at `docs/<page>.html` and Markdown at the same path with a `.md` extension. The links below point at the Markdown twins.',
+      notesTitle: 'Notes',
+      notes: [
+        'An order error is often caused by the trading connection rather than the order itself — read "Adding Connections" alongside "Order Submission, Cancellation, and Modification Errors".',
+        'An `online` trading connection does not mean all of its parameters are valid: some are only used when placing, modifying, or cancelling an order.',
+        'Portfolio parameters and per-instrument parameters are separate sets; "Parameters Description" keeps them in separate sections.'
+      ],
+      optionalTitle: 'Optional',
+      fullNote: 'The whole documentation in one file: {url}',
+      sitemapLabel: 'Documentation map',
+      sitemapSummary: 'Full page list with both HTML and Markdown addresses.',
+      otherLocaleLabel: 'Russian version',
+      otherLocaleSummary: 'The same documentation in Russian.',
+      sitemapTitle: 'FC Viking Documentation Map',
+      sitemapIntro: 'Complete index of published pages. For a shorter navigation surface, start with llms.txt.',
+      entryPointsTitle: 'Entry points',
+      entryPoints: {
+        site: 'Documentation in a browser',
+        llms: 'Short navigation surface for agents',
+        llmsFull: 'The complete text of every page, in section order',
+        sitemapMd: 'This file — the full page index',
+        sitemapXml: 'XML sitemap for crawlers'
+      },
+      urlPatternsTitle: 'URL patterns',
+      pagePlaceholder: 'page',
+      urlPatterns: {
+        html: 'HTML page',
+        markdown: 'Markdown twin',
+        englishHtml: 'HTML page in English',
+        englishMarkdown: 'Markdown twin in English',
+        russianHtml: 'HTML page in Russian',
+        russianMarkdown: 'Markdown twin in Russian'
+      },
+      pagesTitle: 'Pages'
+    }
+  },
   markdown: {
     extractHeaders: ['h2', 'h3', 'h4', 'h5', 'h6'],
     extendMarkdown: md => {
@@ -171,6 +276,7 @@ module.exports = {
   plugins: [
     '@vuepress/plugin-back-to-top',
     '@vuepress/plugin-medium-zoom',
+    aiDiscovery,
   ],
   configureWebpack: {
     resolve: {

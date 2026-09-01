@@ -1,6 +1,7 @@
 ---
 title: 3. Website Interface
 section: 3
+summary: 'Widgets on bot.fkviking.com: which ones exist, and how to open and arrange them in the desktop and mobile layouts.'
 ---
 
 # Website Interface

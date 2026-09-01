@@ -1,6 +1,7 @@
 ---
 title: 2. About the Platform
 section: 2
+summary: 'How the platform is put together: what a robot consists of, system requirements, the role model, and how robots relate to companies.'
 ---
 
 # About the Platform

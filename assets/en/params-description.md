@@ -1,6 +1,7 @@
 ---
 title: 7. Parameters Description
 section: 7
+summary: Reference for portfolio, instrument, and connection parameters, including lot_size, the Is first flag, and notification parameters.
 ---
 
 # Parameters Description

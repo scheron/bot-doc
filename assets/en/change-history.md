@@ -2,6 +2,7 @@
 title: 1. Change Log
 section: 1
 ignore-section-number: true
+summary: 'What changed in the robot and the documentation from version to version: new portfolio parameters, C++ methods, and WebSocket API methods.'
 ---
 
 # Change Log

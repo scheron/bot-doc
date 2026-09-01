@@ -1,6 +1,7 @@
 ---
 title: 8. Algorithm Notes
 section: 8
+summary: 'Non-obvious details of the algorithm: how order books are built and re-opened, and why prices can disappear for a while.'
 ---
 
 # Algorithm Notes
