@@ -206,6 +206,11 @@ function testHtmlDiscovery () {
   })
 }
 
+/** Without .nojekyll GitHub Pages runs Jekyll over the twins and fails on their code samples. */
+function testJekyllIsDisabled () {
+  assert(exists('.nojekyll'), 'Missing .nojekyll: GitHub Pages would try to render the Markdown twins')
+}
+
 function testXmlSitemap () {
   assert(exists('sitemap.xml'), 'Missing sitemap.xml')
   const xml = fs.readFileSync(path.join(OUTPUT_ROOT, 'sitemap.xml'), 'utf8')
@@ -233,6 +238,7 @@ function testHomeFooterLinks () {
 
 testGeneratedPages()
 testHtmlDiscovery()
+testJekyllIsDisabled()
 testXmlSitemap()
 testHomeFooterLinks()
 console.log('AI documentation checks passed')

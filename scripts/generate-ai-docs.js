@@ -409,6 +409,10 @@ function generate (outputRoot) {
     fs.writeFileSync(path.join(localeRoot, 'sitemap.md'), sitemapMarkdown(locale, metadata[locale]), 'utf8')
   })
 
+  // GitHub Pages runs Jekyll over the published branch, and Jekyll parses .md
+  // files as Liquid templates, which breaks on braces in code samples.
+  fs.writeFileSync(path.join(outputRoot, '.nojekyll'), '', 'utf8')
+
   const imageDestination = path.join(outputRoot, 'docs', '00-img')
   fs.rmSync(imageDestination, { recursive: true, force: true })
   copyDirectory(path.join(REPO_ROOT, 'assets', '00-img'), imageDestination)
