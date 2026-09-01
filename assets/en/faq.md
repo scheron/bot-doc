@@ -70,7 +70,7 @@ summary: Answers to common questions about trading, portfolio setup, and robot b
     </details>
 ---
 - <details>
-    <summary><i>The robot has become slower at executing trades. What could be causing this?<Anchor :ids="['faq.making deals']" /></i></summary>
+    <summary><i>The robot has become slower at executing trades. What could be causing this?<Anchor :ids="['faq.making_deals']" /></i></summary>
 
     The speed at which the exchange matches orders depends on many factors that the robot cannot influence. For example, if your order for 1000 hits the opposite side of the order book, there is a significant difference between it being matched against a single opposing order of 1000 (or more), or being matched against 1000 separate orders of size 1 each. The second scenario will naturally take the exchange longer to process.
     
@@ -120,7 +120,7 @@ summary: Answers to common questions about trading, portfolio setup, and robot b
     </details>
 ---
 - <details>
-    <summary><i>Trades in the robot do not match trades in the terminal. What could be the reason?<Anchor :ids="['faq.prompt']" /></i></summary>
+    <summary><i>Trades in the robot do not match trades in the terminal. What could be the reason?<Anchor :ids="['faq.deals_mismatch']" /></i></summary>
 
     The robot does not use trade prices in its algorithm—they are used only for display purposes. Moreover, on many connections it is impossible to obtain the exact price of a specific trade. For this reason, and to improve performance, the robot may record the order placement price or the average execution price of fills within an order as the trade price. Additionally, on some connections, several consecutive trades may be aggregated by the robot into a single trade with the total executed volume. This behavior is not erroneous—there is no loss of position information.
     

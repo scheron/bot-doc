@@ -404,7 +404,7 @@ Best bid and ask prices stream. We recommend NOT enabling it simultaneously with
 
 Order book stream. We recommend NOT enabling it simultaneously with the Top of book stream.
 
-### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
+### Binary Protocol Transaction Gateway <Anchor :ids="['tc.SPB.binary_protocol_gateway']" />
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
@@ -498,7 +498,7 @@ Client account identifier, obtained from the broker. Multiple accounts can be ad
 
 One of the flood protection system parameters. To avoid triggering the broker's flood control, we count outgoing messages internally. This parameter defines the maximum number of messages allowed within a time interval. If the number of messages sent within the time interval defined by [Max trans interval](creating-connection.md#max-trans-interval) exceeds this value, the robot stops sending messages to the broker.
 
-### Max trans interval <Anchor :ids="['tc.EXANTE.max_transactions']" />
+### Max trans interval <Anchor :ids="['tc.EXANTE.max_transactions_interval']" />
 
 One of the flood protection system parameters. To avoid triggering the broker's flood control, we count outgoing messages internally. This parameter defines the time interval. If the number of messages sent within this interval exceeds the value set in [Max trans](creating-connection.md#max-trans), the robot stops sending messages to the broker.
 
@@ -1022,7 +1022,7 @@ A flag that is responsible for the automatic order cancellation by the exchange 
 
 Only one order with the ADDING status is allowed for each financial instrument. If you try to place another order, the error of placing an order is returned.
 
-### Bind IP <Anchor :ids="['tc.CEXIO.bind_ip = Bind IP']" />
+### Bind IP <Anchor :ids="['tc.CEXIO.bind_ip']" />
 
 You should [contact support](help@fkviking.ru) to clarify bind IP. The IP address specified in this field should not be provided to the exchange as the IP address of the server.
 
@@ -1034,7 +1034,7 @@ Connection to the Spot market of Huobi Global exchange. The robot supports only 
 
 A field for specifying the connection name. This value is set for convenience, to make it easier to identify the connection within the list of transactional connections. Allowed characters: `_ a-z A-Z 0-9`
 
-### Server <Anchor :ids="['tc.HUOBI.api_url ws_url']" />
+### Server <Anchor :ids="['tc.HUOBI.api_url', 'tc.HUOBI.ws_url']" />
 
 Select the server to connect to. If you plan to trade from a server hosted on AWS, choose the option api-aws.huobi.pro
 
@@ -1218,7 +1218,7 @@ Password for both trading and market data FIX connections; matches the password 
 
 A flag that, when enabled, prevents the robot from placing more than one order per instrument if no open position exists. As soon as this order is executed and an open position is created, all restrictions on placing further orders for that instrument are lifted.
 
-### Bind IP <Anchor :ids="['tc.EXANTE.bind_ip']" />
+### Bind IP <Anchor :ids="['tc.CTRADER.bind_ip']" />
 
 You should [contact support](help@fkviking.ru) to clarify bind IP. The IP address specified in this field should not be provided to the exchange as the IP address of the server.
 
@@ -1241,7 +1241,7 @@ Best bid and ask prices stream. We recommend NOT enabling it simultaneously with
 
 Order book stream. We recommend NOT enabling it simultaneously with the Top of book stream.
 
-### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
+### Binary Protocol Transaction Gateway <Anchor :ids="['tc.IMEX.binary_protocol_gateway']" />
 
 Make sure you ordered a binary, not a FIX login. Only one active connection is allowed per login.
 
@@ -1303,7 +1303,7 @@ Best buy and sell price stream. We recommend NOT enabling it simultaneously with
 
 Order book feed. We recommend NOT enabling it simultaneously with the Top of Book feed.
 
-### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
+### Binary Protocol Transaction Gateway <Anchor :ids="['tc.ITS.binary_protocol_gateway']" />
 
 Please make sure you ordered a binary login, not a fixed one. Multiple simultaneous connections cannot be added to a single login.
 
@@ -1361,7 +1361,7 @@ Best buy and sell price stream. We recommend NOT enabling it simultaneously with
 
 Order book feed. We recommend NOT enabling it simultaneously with the Top of Book feed.
 
-### Binary Protocol Transaction Gateway <Anchor :ids="['binary-protocol-gateway']" />
+### Binary Protocol Transaction Gateway <Anchor :ids="['tc.OREX.binary_protocol_gateway']" />
 
 Please make sure you ordered a binary login, not a fixed one. Multiple simultaneous connections cannot be added to a single login.
 

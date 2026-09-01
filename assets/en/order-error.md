@@ -1,7 +1,7 @@
 ---
 title: 9. Order Submission, Cancellation, and Modification Errors
 section: 9
-summary: Order errors explained, including how they trace back to trading-connection and portfolio parameters.
+summary: Categories of order submission, cancellation, and modification errors, what each reason means, and the exchange error code references.
 ---
 
 # Order Submission, Cancellation, and Modification Errors <Anchor :ids="['errors']" />
