@@ -6,6 +6,7 @@ const {
   SITE_ORIGIN,
   LOCALES,
   entries,
+  sections,
   localePrefix,
   sitePath,
   absoluteUrl
@@ -65,7 +66,7 @@ function assertLocalLinksExist (relativeFile) {
   const content = fs.readFileSync(path.join(OUTPUT_ROOT, relativeFile), 'utf8')
   linkDestinations(content).forEach(destination => {
     const outputPath = localOutputPath(destination, relativeFile)
-    if (!outputPath || !/\.(?:md|png|jpe?g|gif|svg|webp)$/i.test(outputPath)) return
+    if (!outputPath || !/\.(?:md|html|png|jpe?g|gif|svg|webp)$/i.test(outputPath)) return
     assert(exists(outputPath), `${relativeFile} contains a dead local link: ${destination}`)
   })
 }
@@ -83,9 +84,46 @@ function assertEveryPageHasTwin (locale) {
     })
 }
 
+/** Asserts llms-full.txt carries the full text of every published page. */
+function assertFullDocumentIsComplete (locale, pages) {
+  const prefix = localePrefix(locale)
+  const fullPath = `${prefix}llms-full.txt`
+  assert(exists(fullPath), `Missing ${fullPath}`)
+
+  const full = fs.readFileSync(path.join(OUTPUT_ROOT, fullPath), 'utf8')
+
+  pages.forEach(page => {
+    const twin = fs.readFileSync(path.join(OUTPUT_ROOT, `${prefix}docs/${page.slug}.md`), 'utf8')
+    const body = twin.replace(/^<!--[\s\S]*?-->\n\n/, '').trim()
+
+    assert(full.includes(body), `${fullPath} does not carry the full text of ${page.slug}`)
+  })
+}
+
+/** Asserts every section link in sitemap.md points at an anchor the page really renders. */
+function assertSectionAnchorsExist (locale, pages) {
+  const prefix = localePrefix(locale)
+
+  pages.forEach(page => {
+    const pageSections = sections(page.sourcePath)
+    if (!pageSections.length) return
+
+    const html = fs.readFileSync(path.join(OUTPUT_ROOT, `${prefix}docs/${page.slug}.html`), 'utf8')
+
+    pageSections.forEach(section => {
+      assert(
+        html.includes(`id="${section.anchor}"`),
+        `${prefix}docs/${page.slug}.html has no anchor ${section.anchor} for section "${section.title}"`
+      )
+    })
+  })
+}
+
 function testGeneratedPages () {
   LOCALES.forEach(locale => {
     assertEveryPageHasTwin(locale)
+    assertFullDocumentIsComplete(locale, entries(locale))
+    assertSectionAnchorsExist(locale, entries(locale))
 
     entries(locale).forEach(page => {
       const prefix = locale === 'en' ? 'en/' : ''

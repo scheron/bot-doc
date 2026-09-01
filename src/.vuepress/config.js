@@ -183,6 +183,7 @@ module.exports = {
         'Параметры портфеля и параметры отдельных инструментов портфеля — разные наборы; в «Описании параметров» они разведены по разным разделам.'
       ],
       optionalTitle: 'Optional',
+      fullNote: 'Вся документация одним файлом: {url}',
       sitemapLabel: 'Карта документации',
       sitemapSummary: 'Полный список страниц с адресами HTML- и Markdown-версий.',
       otherLocaleLabel: 'Английская версия',
@@ -193,6 +194,7 @@ module.exports = {
       entryPoints: {
         site: 'Документация в браузере',
         llms: 'Краткая карта для агентов',
+        llmsFull: 'Полный текст всех страниц подряд, в порядке разделов',
         sitemapMd: 'Этот файл — полный указатель страниц',
         sitemapXml: 'Карта сайта для поисковых роботов'
       },
@@ -219,6 +221,7 @@ module.exports = {
         'Portfolio parameters and per-instrument parameters are separate sets; "Parameters Description" keeps them in separate sections.'
       ],
       optionalTitle: 'Optional',
+      fullNote: 'The whole documentation in one file: {url}',
       sitemapLabel: 'Documentation map',
       sitemapSummary: 'Full page list with both HTML and Markdown addresses.',
       otherLocaleLabel: 'Russian version',
@@ -229,6 +232,7 @@ module.exports = {
       entryPoints: {
         site: 'Documentation in a browser',
         llms: 'Short navigation surface for agents',
+        llmsFull: 'The complete text of every page, in section order',
         sitemapMd: 'This file — the full page index',
         sitemapXml: 'XML sitemap for crawlers'
       },

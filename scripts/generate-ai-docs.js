@@ -190,14 +190,83 @@ function transformOutsideFences (markdown, locale) {
   }).join('\n')
 }
 
-/** Builds the Markdown twin of a page: its pre-processed text without Vue markup. */
-function generateMarkdownTwin (sourcePath, locale) {
+/** Page text with the Vue markup removed and links rewritten. */
+function twinBody (sourcePath, locale) {
   const source = fs.readFileSync(sourcePath, 'utf8')
   const { content } = matter(source)
   const plain = headingAnchors(removeEditorBanner(removeVueStyles(content)))
-  const transformed = transformOutsideFences(plain, locale).trim()
 
-  return `${GENERATED_WARNING.replace('{locale}', locale)}\n\n${transformed}\n`
+  return transformOutsideFences(plain, locale).trim()
+}
+
+/** Builds the Markdown twin of a page: its pre-processed text without Vue markup. */
+function generateMarkdownTwin (sourcePath, locale) {
+  return `${GENERATED_WARNING.replace('{locale}', locale)}\n\n${twinBody(sourcePath, locale)}\n`
+}
+
+/** Builds llms-full.txt: every page of a locale in one file, in sidebar order. */
+function llmsFullDocument (locale, pages) {
+  const text = config.aiDocs[locale]
+  const header = [
+    GENERATED_WARNING.replace('{locale}', locale),
+    '',
+    `# ${text.llmsTitle}`,
+    '',
+    `> ${text.summary}`,
+    ''
+  ].join('\n')
+
+  return `${header}\n${pages.map(page => twinBody(page.sourcePath, locale)).join('\n\n')}\n`
+}
+
+/** Lines of a document that are not inside a code fence. */
+function linesOutsideFences (markdown) {
+  let fence = null
+
+  return markdown.split('\n').filter(line => {
+    const fenceMatch = line.match(/^\s*(`{3,}|~{3,})/)
+
+    if (!fenceMatch) return !fence
+
+    const marker = fenceMatch[1][0]
+    if (fence === marker) fence = null
+    else if (!fence) fence = marker
+
+    return false
+  })
+}
+
+/**
+ * Sections of a page: its headings of the topmost level below the title,
+ * each with the anchor the site renders for it.
+ */
+function sections (sourcePath) {
+  const { content } = matter(fs.readFileSync(sourcePath, 'utf8'))
+  const headings = []
+
+  linesOutsideFences(content).forEach(line => {
+    const match = line.match(/^(#{2,6})\s+(.*)$/)
+    if (!match) return
+
+    const anchor = match[2].match(/<Anchor\b[^>]*?:ids="\[([\s\S]*?)\]"[^>]*?\/>/)
+    if (!anchor) return
+
+    const ids = Array.from(anchor[1].matchAll(/(['"])((?:\\.|(?!\1).)*)\1/g), found => found[2])
+    const title = match[2]
+      .replace(/<Anchor\b[^>]*?\/>/g, '')
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+      .trim()
+
+    if (!ids.length || !title) return
+
+    headings.push({ level: match[1].length, anchor: ids[ids.length - 1], title })
+  })
+
+  if (!headings.length) return []
+
+  const topLevel = Math.min(...headings.map(heading => heading.level))
+
+  return headings.filter(heading => heading.level === topLevel)
 }
 
 function otherLocale (locale) {
@@ -229,6 +298,8 @@ function llmsDocument (locale, pages) {
     `> ${text.summary}`,
     '',
     text.formats,
+    '',
+    text.fullNote.replace('{url}', absoluteUrl(sitePath(locale, 'llms-full.txt'))),
     '',
     `## ${text.pagesTitle}`,
     ''
@@ -269,6 +340,7 @@ function sitemapMarkdown (locale, pages) {
     '',
     `- [${siteUrl}](${siteUrl}) — ${text.entryPoints.site}`,
     `- [llms.txt](${absoluteUrl(sitePath(locale, 'llms.txt'))}) — ${text.entryPoints.llms}`,
+    `- [llms-full.txt](${absoluteUrl(sitePath(locale, 'llms-full.txt'))}) — ${text.entryPoints.llmsFull}`,
     `- [sitemap.md](${absoluteUrl(sitePath(locale, 'sitemap.md'))}) — ${text.entryPoints.sitemapMd}`,
     `- [sitemap.xml](${absoluteUrl(`${BASE}sitemap.xml`)}) — ${text.entryPoints.sitemapXml}`,
     '',
@@ -285,6 +357,10 @@ function sitemapMarkdown (locale, pages) {
 
   pages.forEach(page => {
     lines.push(`- [${page.title}](${htmlUrl(locale, page.slug)}) ([Markdown](${markdownUrl(locale, page.slug)})) — ${page.summary}`)
+
+    sections(page.sourcePath).forEach(section => {
+      lines.push(`  - [${section.title}](${htmlUrl(locale, page.slug)}#${encodeURIComponent(section.anchor)})`)
+    })
   })
   lines.push('')
 
@@ -329,6 +405,7 @@ function generate (outputRoot) {
     })
 
     fs.writeFileSync(path.join(localeRoot, 'llms.txt'), llmsDocument(locale, metadata[locale]), 'utf8')
+    fs.writeFileSync(path.join(localeRoot, 'llms-full.txt'), llmsFullDocument(locale, metadata[locale]), 'utf8')
     fs.writeFileSync(path.join(localeRoot, 'sitemap.md'), sitemapMarkdown(locale, metadata[locale]), 'utf8')
   })
 
@@ -352,6 +429,7 @@ module.exports = {
   LOCALES,
   entries,
   twinEntries,
+  sections,
   localePrefix,
   sitePath,
   absoluteUrl,

@@ -132,7 +132,8 @@ NODE_OPTIONS=--openssl-legacy-provider yarn run dev
 docs/faq.html   - страница на сайте
 docs/faq.md     - та же страница в Markdown
 llms.txt        - краткая карта документации
-sitemap.md      - полный список страниц
+llms-full.txt   - вся документация одним файлом
+sitemap.md      - список страниц и их разделов со ссылками на якоря
 sitemap.xml     - карта сайта для поисковых роботов
 ```
 
