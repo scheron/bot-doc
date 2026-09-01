@@ -1,6 +1,7 @@
 ---
 title: 13. Client server requirements
 section: 13
+summary: 'Server requirements for hosting robots in colocation: CPU, memory, network, and data-center recommendations.'
 ---
 
 # Client server requirements

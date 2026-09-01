@@ -2,6 +2,7 @@
 title: 13. Frequently Asked Questions
 section: 13
 ignore-section-number: true
+summary: Answers to common questions about trading, portfolio setup, and robot behaviour.
 ---
 
 # Frequently Asked Questions

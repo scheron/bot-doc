@@ -1,6 +1,7 @@
 ---
 title: 10. Formulas in C++
 section: 10
+summary: 'C++ formulas: access to market and portfolio data, changing parameters, plus the limits and the debugging workflow.'
 ---
 
 # Formulas in C++ <Anchor :ids="['cpp']" />

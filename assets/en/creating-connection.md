@@ -1,6 +1,7 @@
 ---
 title: 6. Adding Connections
 section: 6
+summary: 'Connections to exchanges and brokers: supported markets and every parameter you set when creating a connection.'
 ---
 
 # Adding Connections

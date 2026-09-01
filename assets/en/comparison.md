@@ -1,6 +1,7 @@
 ---
 title: 12. Comparison of C++ Formulas and WebSocket API
 section: 12
+summary: A side-by-side comparison of the two ways to extend the robot, and which one fits which task.
 ---
 
 # Comparison of C++ Formulas and WebSocket API

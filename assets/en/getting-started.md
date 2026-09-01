@@ -1,6 +1,7 @@
 ---
 title: 4. Getting Started
 section: 4
+summary: 'First-time robot setup: enabling market-data connections, adding trading connections, and creating the first portfolio.'
 ---
 
 # Getting Started

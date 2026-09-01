@@ -1,6 +1,7 @@
 ---
 title: 11. WebSocket API
 section: 11
+summary: 'WebSocket API: методы управления роботами и портфелями и получение тех же данных, что видны на сайте.'
 ---
 
 # WebSocket API <Anchor :ids="['api']" />

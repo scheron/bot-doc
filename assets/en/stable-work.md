@@ -1,6 +1,7 @@
 ---
 title: 5. Providing Feedback
 section: 5
+summary: 'How the robot reports problems: pop-up notifications, logs, and the signals that a situation needs the trader''s attention.'
 ---
 
 # Ensuring Informative Feedback from the Robot to the Trader via the Website Interface

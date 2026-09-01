@@ -12,10 +12,12 @@
     "generate-docs": "node scripts/generate-docs.js ru",
     "generate-docs-en": "node scripts/generate-docs.js en",
     "pre-process": "yarn generate-docs && yarn generate-docs-en",
+    "generate-ai-docs": "node scripts/generate-ai-docs.js",
+    "test:ai-docs": "node scripts/test-ai-docs.js",
     "reset-assets": "node scripts/reset-assets.js",
     "transliterate-assets": "node scripts/transliterate-assets.js",
     "dev": "yarn pre-process && vuepress dev src",
-    "build": "yarn pre-process && vuepress build src"
+    "build": "yarn pre-process && vuepress build src && yarn generate-ai-docs && yarn test:ai-docs"
   },
   "license": "MIT",
   "devDependencies": {
