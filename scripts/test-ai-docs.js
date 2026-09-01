@@ -92,11 +92,12 @@ function assertFullDocumentIsComplete (locale, pages) {
 
   const full = fs.readFileSync(path.join(OUTPUT_ROOT, fullPath), 'utf8')
 
+  assert(!/AUTO-GENERATED/i.test(full), `${fullPath} shows a build banner to the reader`)
+
   pages.forEach(page => {
     const twin = fs.readFileSync(path.join(OUTPUT_ROOT, `${prefix}docs/${page.slug}.md`), 'utf8')
-    const body = twin.replace(/^<!--[\s\S]*?-->\n\n/, '').trim()
 
-    assert(full.includes(body), `${fullPath} does not carry the full text of ${page.slug}`)
+    assert(full.includes(twin.trim()), `${fullPath} does not carry the full text of ${page.slug}`)
   })
 }
 
@@ -119,8 +120,43 @@ function assertSectionAnchorsExist (locale, pages) {
   })
 }
 
+/**
+ * Anchors are the addresses the documentation links itself by, and llms.txt and
+ * sitemap.md publish them. Checked against the sources, so headings that never
+ * reach a section list are covered too.
+ */
+function assertAnchorsAreAddressable (locale) {
+  const directory = path.join(REPO_ROOT, 'assets', locale)
+
+  fs.readdirSync(directory).filter(name => name.endsWith('.md')).forEach(name => {
+    const source = fs.readFileSync(path.join(directory, name), 'utf8')
+    const seen = new Set()
+
+    Array.from(source.matchAll(/<Anchor\b[^>]*?:ids="\[([\s\S]*?)\]"[^>]*?\/>/g)).forEach(declaration => {
+      Array.from(declaration[1].matchAll(/(['"])((?:\\.|(?!\1).)*)\1/g), found => found[2]).forEach(id => {
+        const where = `assets/${locale}/${name}`
+
+        assert(id.trim(), `${where} declares an empty anchor`)
+        assert(
+          !/\s/.test(id),
+          `${where} declares the anchor "${id}" with a space in it — ` +
+          'it reaches the browser percent-encoded. Use an underscore.'
+        )
+        assert(
+          !seen.has(id),
+          `${where} declares the anchor "${id}" twice — a link to it stops at the ` +
+          'first one and the second heading becomes unreachable. Give it its own name.'
+        )
+
+        seen.add(id)
+      })
+    })
+  })
+}
+
 function testGeneratedPages () {
   LOCALES.forEach(locale => {
+    assertAnchorsAreAddressable(locale)
     assertEveryPageHasTwin(locale)
     assertFullDocumentIsComplete(locale, entries(locale))
     assertSectionAnchorsExist(locale, entries(locale))
@@ -134,6 +170,7 @@ function testGeneratedPages () {
 
       const markdown = fs.readFileSync(path.join(OUTPUT_ROOT, markdownPath), 'utf8')
       assert(!markdown.includes('@images/'), `${markdownPath} contains @images alias`)
+      assert(!/AUTO-GENERATED/i.test(markdown), `${markdownPath} shows a build banner to the reader`)
       assert(!markdown.includes('<Anchor'), `${markdownPath} contains a Vue Anchor component`)
       assertLocalLinksExist(markdownPath)
     })
@@ -197,7 +234,7 @@ function testHtmlDiscovery () {
       assert(/rel="describedby"/.test(html), `${htmlPath} lacks llms discovery metadata`)
       assert(html.includes(`href="${llmsHref}"`), `${htmlPath} has the wrong llms URL`)
       assert(html.includes('class="site-footer"'), `${htmlPath} lacks the site footer`)
-      assert(html.includes(`href="${RAW_PUBLISHED_BASE}/${prefix}llms.txt"`), `${htmlPath} footer has the wrong raw llms.txt URL`)
+      assert(html.includes(`href="${sitePath(locale, 'llms.txt')}"`), `${htmlPath} footer must link the canonical llms.txt`)
       assert(html.includes(`href="${RAW_PUBLISHED_BASE}/${prefix}sitemap.md"`), `${htmlPath} footer has the wrong raw sitemap URL`)
       assert(html.includes('class="copy-page"'), `${htmlPath} lacks the copy page button`)
       assert(html.includes('class="github-link"'), `${htmlPath} lacks the GitHub repository icon`)
@@ -230,7 +267,7 @@ function testHomeFooterLinks () {
 
     assert(html.includes('class="site-footer"'), `${homePath} lacks the home footer`)
     assert(html.includes('class="machine-readable-links'), `${homePath} lacks the compact AI footer group`)
-    assert(html.includes(`href="${RAW_PUBLISHED_BASE}/${prefix}llms.txt"`), `${homePath} footer has the wrong raw llms.txt URL`)
+    assert(html.includes(`href="${sitePath(locale, 'llms.txt')}"`), `${homePath} footer must link the canonical llms.txt`)
     assert(html.includes(`href="${RAW_PUBLISHED_BASE}/${prefix}sitemap.md"`), `${homePath} footer has the wrong raw sitemap URL`)
     assert(!html.includes('Машиночитаемая документация') && !html.includes('Machine-readable documentation'), `${homePath} must not show an explanatory AI label`)
   })

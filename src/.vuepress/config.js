@@ -173,14 +173,15 @@ module.exports = {
    */
   aiDocs: {
     ru: {
-      summary: 'Документация торговой платформы ФК «Викинг»: настройка арбитражных роботов, параметры портфелей, торговые подключения, формулы на C++ и WebSocket API.',
+      summary: 'Документация торговых роботов ФК «Викинг»: настройка арбитражных роботов, параметры портфелей, торговые подключения, формулы на C++ и WebSocket API.',
       llmsTitle: 'Документация торговых роботов ФК «Викинг»',
-      formats: 'Каждая страница опубликована в двух видах: HTML по адресу `docs/<страница>.html` и Markdown по тому же пути с расширением `.md`. Ссылки ниже ведут на Markdown.',
-      notesTitle: 'Notes',
+      formats: 'Это индекс документации: начинайте с него и предпочитайте Markdown-версию страницы её HTML-версии. Каждая страница опубликована в двух видах: HTML по адресу `docs/<страница>.html` и Markdown по тому же пути с расширением `.md`. Ссылки ниже ведут на Markdown.',
+      notesTitle: 'Примечания',
       notes: [
-        'Ошибка заявки часто вызвана не самой заявкой, а параметрами торгового подключения — проверяйте «Добавление подключений» вместе с «Ошибками выставления, снятия и изменения заявок».',
-        'Статус `online` у торгового подключения не означает, что все его параметры корректны: часть параметров используется только при выставлении, изменении или снятии заявки.',
-        'Параметры портфеля и параметры отдельных инструментов портфеля — разные наборы; в «Описании параметров» они разведены по разным разделам.'
+        'Ошибки выставления, снятия и изменения заявок — штатное поведение, а не признак поломки робота. Постфикс `LOCAL` означает, что заявку отклонил сам робот и на биржу она не уходила; ошибка без `LOCAL` — ответ биржи, робот лишь транслирует её текст.',
+        'Параметры портфеля и параметры отдельных инструментов портфеля — разные наборы; в «Описании параметров» они разведены по разным разделам.',
+        'Ссылайтесь на разделы по якорю (`params-description.html#p.sell`), а не по номеру: нумерация заголовков проставляется при сборке и сдвигается при изменении порядка разделов. Якоря вида `#p.sell` и `#faq.license` одинаковы в русской и английской версиях.',
+        'Каждый вопрос из «Часто задаваемых вопросов» адресуется отдельно (`faq.html#faq.license`); полный список вопросов со ссылками — в sitemap.md.'
       ],
       optionalTitle: 'Optional',
       fullNote: 'Вся документация одним файлом: {url}',
@@ -211,14 +212,15 @@ module.exports = {
       pagesTitle: 'Страницы'
     },
     en: {
-      summary: 'Documentation for the FC Viking trading platform: arbitrage robot setup, portfolio parameters, trading connections, C++ formulas, and the WebSocket API.',
+      summary: 'Documentation for the FC Viking trading robots: arbitrage robot setup, portfolio parameters, trading connections, C++ formulas, and the WebSocket API.',
       llmsTitle: 'FC Viking Trading Robots Documentation',
-      formats: 'Every page is published in two forms: HTML at `docs/<page>.html` and Markdown at the same path with a `.md` extension. The links below point at the Markdown twins.',
+      formats: 'This file is the documentation index: start here, and prefer the Markdown version of a page over its HTML version. Every page is published in two forms: HTML at `docs/<page>.html` and Markdown at the same path with a `.md` extension. The links below point at the Markdown twins.',
       notesTitle: 'Notes',
       notes: [
-        'An order error is often caused by the trading connection rather than the order itself — read "Adding Connections" alongside "Order Submission, Cancellation, and Modification Errors".',
-        'An `online` trading connection does not mean all of its parameters are valid: some are only used when placing, modifying, or cancelling an order.',
-        'Portfolio parameters and per-instrument parameters are separate sets; "Parameters Description" keeps them in separate sections.'
+        'Order submission, cancellation, and modification errors are normal behaviour, not a sign that the robot is broken. A `LOCAL` suffix means the robot rejected the order itself and never sent it to the exchange; an error without `LOCAL` is the exchange\'s own answer, which the robot only relays.',
+        'Portfolio parameters and per-instrument parameters are separate sets; "Parameters Description" keeps them in separate sections.',
+        'Link to a section by its anchor (`params-description.html#p.sell`), not by its number: heading numbers are generated at build time and shift whenever sections are reordered. Anchors such as `#p.sell` and `#faq.license` are the same in the Russian and English versions.',
+        'Every question in the FAQ is addressable on its own (`faq.html#faq.license`); the full list of questions with links is in sitemap.md.'
       ],
       optionalTitle: 'Optional',
       fullNote: 'The whole documentation in one file: {url}',
