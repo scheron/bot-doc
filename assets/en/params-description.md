@@ -987,7 +987,7 @@ Coefficient used in the calculation of [Sell](params-description.md#p.sell) and 
 
 ### Fin res multiplier <Anchor :ids="['s.fin_res_mult']" />
 
-`Fin res multiplier` - a multiplier applied to the instrument price when calculating the financial result, ensuring that the transaction price corresponds to the actual transaction value, taking into account the lot size and the quoted currency. For example, if prices in the order book are given for one share, but a trade with one lot corresponds to a trade with 10 shares, then the Fin Res Multiplier should be equal to 10. Or, if quotes are given in one currency, but the financial result is calculated in another, then the `Fin Res Multiplier` should correspond to the conversion rate of these currencies.
+`Fin res multiplier` - a multiplier applied to the instrument price when calculating [the financial result](params-description.md#p.fin_res), ensuring that the transaction price corresponds to the actual transaction value, taking into account the lot size and the quoted currency. For example, if prices in the order book are given for one share, but a trade with one lot corresponds to a trade with 10 shares, then the Fin Res Multiplier should be equal to 10. Or, if quotes are given in one currency, but the financial result is calculated in another, then the `Fin Res Multiplier` should correspond to the conversion rate of these currencies.
 
 The `Fin res multiplier` field is not retroactive - if you change its value, the new value will only be used for new transactions; old transactions will not be recalculated.
 
